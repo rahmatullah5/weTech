@@ -28,6 +28,12 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
+      <?php
+      if (!empty($this->session->flashdata('response'))) {
+        $message = $this->session->flashdata('response');
+        echo "<p>".$message['msg']."</p>";
+      }
+      ?>
       <form action="<?=base_url('admin/auth/action_login')?>" method="post">
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">

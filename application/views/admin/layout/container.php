@@ -54,13 +54,16 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-        <div class="image">
+        <div class="image mr-2">
           <img src="<?=base_url('assets/dist/img/user2-160x160.jpg')?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">
-            <?=$this->session->userdata['login']['username']?> <br> <?=$this->session->userdata['login']['type']?>
+            <?=$this->session->userdata['login']['username']?>
+            <br>
+            <small><?=$this->session->userdata['login']['type']?></small>
           </a>
+          <a class="text-danger" href="auth/logout">Logout</a>
         </div>
       </div>
 
