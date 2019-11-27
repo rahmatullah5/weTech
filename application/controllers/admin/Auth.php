@@ -35,6 +35,11 @@ class Auth extends CI_Controller {
 			
 			redirect('/admin/dashboard');
 		} else {
+			$this->session->set_flashdata('response', [
+				'error' => true,
+				'msg' => 'Username atau password salah'
+			]);
+
 			redirect('/admin/auth');
 		}
 	}
