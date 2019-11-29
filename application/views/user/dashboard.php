@@ -72,14 +72,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
-						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-								<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						</li>
-						<li class="text-center text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
-						</li>
+						<?php if ($this->session){ ?>
+							<li class="text-center border-right text-white">
+					            <?php echo $this->session->userdata['login']['username'] ?>
+					        </li>
+					        <li class="text-center border-right text-white">
+					            <a href="admin/auth/logout" class="text-white">Logout</a>
+					        </li>
+				        <?php }else{ ?>
+							<li class="text-center border-right text-white">
+								<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+									<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
+							</li>
+							<li class="text-center text-white">
+								<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+									<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
+							</li>
+				    	<?php } ?>
 					</ul>
 					<!-- //header lists -->
 				</div>
@@ -478,14 +487,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form action="<?=base_url('admin/auth/action_login')?>" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<input type="text" class="form-control" placeholder=" " name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Log in">
@@ -516,22 +525,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form method="POST" action="<?php echo base_url(); ?>index.php/user/dashboard/insert">
 						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<label class="col-form-label">Fullname</label>
+							<input type="text" class="form-control" placeholder=" " name="fullname" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Username</label>
+							<input type="text" class="form-control" placeholder="Code for login" name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
+							<input type="email" class="form-control" placeholder=" " name="email" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" id="password1" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+							<input type="password" class="form-control" placeholder=" " name="c_password" id="password2" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Register">
