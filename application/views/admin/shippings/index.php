@@ -14,7 +14,7 @@
     <!-- Main content -->
     <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Select2 (Bootstrap4 Theme)</h3>
+            <h3 class="card-title">Form Shipping</h3>
 
             <div class="card-tools">
             </div>
@@ -78,7 +78,59 @@
                     </tr>
                     </table>
               </div>
-              
+              <!--View Data Shipping-->
+              <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data View</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nama Penerima</th>
+                      <th>Tanggal Dikirim</th>
+                      <th>Tanggal Diterima</th>
+                      <th>Status</th>
+                      <th>Status</th>   
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SM00001</td>
+                      <td>Dei Julian</td>
+                      <td>11-7-2019</td>
+                      <td>15-7-2019</td>
+                      <td>Delivered</td>
+                      <td>Delivered</td>
+                    </tr>
+                    <tr>
+                      <td>AS0003</td>
+                      <td>Rahmat</td>
+                      <td>11-7-2014</td>
+                      <td>On Progress</span></td>
+                      <td>Courier Delivery</td>
+                      <td>Barang Diterima Oleh Deindra</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+              </div>
+              </div>
               <!-- /.col -->
             </div>
             <!-- /.row -->
