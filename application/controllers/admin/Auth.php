@@ -33,7 +33,11 @@ class Auth extends CI_Controller {
 
 			$this->session->set_userdata('login', $sessionData);
 			
-			redirect('/admin/dashboard');
+			if ($userData->user_type == 'user') {
+				redirect('/');
+			}else{
+				redirect('/admin/dashboard');
+			}
 		} else {
 			$this->session->set_flashdata('response', [
 				'error' => true,
@@ -46,7 +50,14 @@ class Auth extends CI_Controller {
 
 	public function logout()
 	{
+		if ($this->session->userdata['login']['type'] == 'user') {
+			$page = '/user';
+		}else{
+			$page = '/admin/auth';
+		}
+
 		$this->session->sess_destroy();
-		redirect('/admin/auth');
+
+		redirect($page);
 	}
 }
