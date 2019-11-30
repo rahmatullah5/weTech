@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
-						<?php if ($this->session){ ?>
+						<?php if (!$this->session){ ?>
 							<li class="text-center border-right text-white">
 					            <?php echo $this->session->userdata['login']['username'] ?>
 					        </li>
