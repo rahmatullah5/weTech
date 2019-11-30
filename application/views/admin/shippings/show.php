@@ -92,38 +92,6 @@
                     </div>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nama Penerima</th>
-                          <th>Tanggal Dikirim</th>
-                          <th>Tanggal Diterima</th>
-                          <th>Status</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>SM00001</td>
-                          <td>Dei Julian</td>
-                          <td>11-7-2019</td>
-                          <td>15-7-2019</td>
-                          <td>Delivered</td>
-                          <td>Delivered</td>
-                        </tr>
-                        <tr>
-                          <td>AS0003</td>
-                          <td>Rahmat</td>
-                          <td>11-7-2014</td>
-                          <td>On Progress</span></td>
-                          <td>Courier Delivery</td>
-                          <td>Barang Diterima Oleh Deindra</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
               </div>
             </div>
