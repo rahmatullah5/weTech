@@ -127,6 +127,17 @@
               </a>
             </li>
           <?php endif ?>
+          <!-- ADMIN FINANCE -->
+          <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-finance'])): ?>
+            <li class="nav-item">
+              <a href="pages/widgets.html" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  FINANCE
+                </p>
+              </a>
+            </li>
+          <?php endif ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
