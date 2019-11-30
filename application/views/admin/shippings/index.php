@@ -41,8 +41,8 @@
                           <td>Bandung</td>
                           <td>Jakarta</td>
                           <td>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button>Lihat Data</button></a>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">
                             Hapus Data
                             </button></a>
                           </td>
@@ -55,8 +55,8 @@
                           <td>Bandung</td>
                           <td>Jakarta</td>
                           <td>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button>Lihat Data</button></a>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">
                             Hapus Data
                             </button></a>
                           </td>
