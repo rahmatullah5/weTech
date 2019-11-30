@@ -17,11 +17,10 @@ class VoucherModel extends CI_Model {
 
 	public function delete($id)
 	{
-		return $this
-			->db
-			->delete('voucher', [
-				'voucher_id' => $id
-			]);
+		$this->db->where('voucher_id', $id);
+		return $this->db->update('voucher', [
+			'is_removed' => 1
+		]);
 	}
 
 	public function getAll()
