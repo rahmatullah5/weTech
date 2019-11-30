@@ -6,8 +6,6 @@ class Finance extends MY_Controller {
     }
     
     public function form_receipt(){
-        $content['body'] = $this->load->view('admin/finance/form_receipt', null, true);
-        
         $this->template->load('admin/layout/container','admin/finance/form_receipt');
     }
 }
