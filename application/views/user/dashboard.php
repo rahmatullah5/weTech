@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="zxx">
 
 <head>
-	<title>Electro Store Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+	<title>weTech</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />

@@ -20,8 +20,14 @@
                 <div class="card">
                   <!-- /.card-header -->
                   <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
-                      <thead>
+                    <table class="table table-hover">                    
+                        <thead>
+                        <div class="input-group input-group-sm">
+                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                        </div> 
                         <tr>
                           <th>Shipping ID</th>
                           <th>Kode Resi</th>
@@ -42,9 +48,8 @@
                           <td>Jakarta</td>
                           <td>
                              <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">
-                            Hapus Data
-                            </button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">Hapus Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-primary">Print Data</button></a>
                           </td>
                         </tr>
                         <tr>
@@ -56,9 +61,8 @@
                           <td>Jakarta</td>
                           <td>
                              <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">
-                            Hapus Data
-                            </button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">Hapus Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-primary">Print Data</button></a>
                           </td>
                         </tr>
                       </tbody>
