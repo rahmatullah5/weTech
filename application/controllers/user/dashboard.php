@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 
-        $content['body'] = $this->load->view('user/dashboard', null, true);
+        $content['body'] = $this->load->view('user/	', null, true);
 
 		$this->load->view('user/dashboard', $content);
 	}
