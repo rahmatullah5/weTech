@@ -107,7 +107,7 @@
           <!-- ADMIN SHIPPING -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-shipping'])): ?>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="<?=base_url('admin/shippings/index')?>" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   SHIPPING
@@ -123,6 +123,17 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   ADVERTISING
+                </p>
+              </a>
+            </li>
+          <?php endif ?>
+          <!-- ADMIN FINANCE -->
+          <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-finance'])): ?>
+            <li class="nav-item">
+              <a href="pages/widgets.html" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  FINANCE
                 </p>
               </a>
             </li>

@@ -1,84 +1,82 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Shipping</h1>
           </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
+          </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <div class="card card-default">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <!--View Data Shipping-->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <!-- /.card-header -->
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-hover">                    
+                        <thead>
+                        <div class="input-group input-group-sm">
+                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                        </div> 
+                        <tr>
+                          <th>Shipping ID</th>
+                          <th>Kode Resi</th>
+                          <th>Kurir</th>
+                          <th>Penerima</th>
+                          <th>Alamat Pengiriman</th>
+                          <th>Alamat Tujuan</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>SM00001</td>
+                          <td>KD00001</td>
+                          <td>JNE</td>
+                          <td>Rahmatullah</td>
+                          <td>Bandung</td>
+                          <td>Jakarta</td>
+                          <td>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">Hapus Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-primary">Print Data</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>SM00001</td>
+                          <td>KD00001</td>
+                          <td>JNE</td>
+                          <td>Rahmatullah</td>
+                          <td>Bandung</td>
+                          <td>Jakarta</td>
+                          <td>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-danger">Hapus Data</button></a>
+                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-primary">Print Data</button></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!--footer-->
+    </div>
   </div>
