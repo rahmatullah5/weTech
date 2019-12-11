@@ -55,4 +55,17 @@ class Dashboard extends CI_Controller {
 			header('location:'.base_url().$this->index());
 		}
 	}
+
+	public function productdetail(){
+
+		$this->load->view('user/productdetail');
+
+	}
+
+	public function checkout(){
+
+		$this->load->view('user/checkout');
+
+	}
+
 }

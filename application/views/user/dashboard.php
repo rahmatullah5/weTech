@@ -795,10 +795,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<a class="dropdown-item" href="product.html">Product 1</a>
 								<a class="dropdown-item" href="product2.html">Product 2</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="single.html">Single Product 1</a>
+								<a class="dropdown-item" href="<?=base_url('user/dashboard/productdetail')?>">Single Product 1</a>
 								<a class="dropdown-item" href="single2.html">Single Product 2</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="checkout.html">Checkout Page</a>
+								<a class="dropdown-item" href="<?=base_url('user/dashboard/checkout')?>">Checkout Page</a>
 								<a class="dropdown-item" href="payment.html">Payment Page</a>
 							</div>
 						</li>
@@ -914,13 +914,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Samsung Galaxy J7</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$200.00</span>
@@ -951,7 +951,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m2.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 											<span class="product-new-top">New</span>
@@ -959,7 +959,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">OPPO A37f</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">OPPO A37f</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$230.00</span>
@@ -991,7 +991,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m3.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 											<span class="product-new-top">New</span>
@@ -999,7 +999,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Apple iPhone X</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Apple iPhone X</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$280.00</span>
@@ -1037,13 +1037,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m4.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Sony 80 cm (32 inches)</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Sony 80 cm (32 inches)</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$320.00</span>
@@ -1074,7 +1074,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m5.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 											<span class="product-new-top">New</span>
@@ -1082,7 +1082,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Artis Speaker</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Artis Speaker</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$349.00</span>
@@ -1114,13 +1114,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m6.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Philips Speakers</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Philips Speakers</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$249.00</span>
@@ -1169,14 +1169,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m7.jpg"')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<span class="product-new-top">New</span>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Whirlpool 245</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Whirlpool 245</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$230.00</span>
@@ -1208,13 +1208,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m8.jpg"')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">BPL Washing Machine</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">BPL Washing Machine</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$180.00</span>
@@ -1246,13 +1246,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<img src="<?=base_url('assets/assetsUser/images/m9.jpg')?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
+													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
 												</div>
 											</div>
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="single.html">Microwave Oven</a>
+												<a href="<?=base_url('user/dashboard/productdetail')?>">Microwave Oven</a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price">$199.00</span>
