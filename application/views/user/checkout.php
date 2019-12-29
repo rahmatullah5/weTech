@@ -36,6 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- pop-up-box -->
 	<link href="<?=base_url('assets/assetsUser/css/menu.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
+	<link href="<?=base_url('assets/assetsUser/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom-Files -->
 
 	<!-- web fonts -->
@@ -429,152 +430,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span>C</span>heckout
 			</h3>
 			<!-- //tittle heading -->
-			<div class="checkout-right">
-				<h4 class="mb-sm-4 mb-3">Your shopping cart contains:
-					<span>3 Products</span>
-				</h4>
-				<div class="table-responsive">
-					<table class="timetable_sub">
-						<thead>
-							<tr>
-								<th>SL No.</th>
-								<th>Product</th>
-								<th>Quality</th>
-								<th>Product Name</th>
-
-								<th>Price</th>
-								<th>Remove</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="rem1">
-								<td class="invert">1</td>
-								<td class="invert-image">
-									<a href="single.html">
-										<img src="<?=base_url('assets/assetsUser/images/a.jpg')?>" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Back Cover</td>
-								<td class="invert">$259</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close1"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<a href="single2.html">
-										<img src="<?=base_url('assets/assetsUser/images/a4.jpg')?>" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">$1,999</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<a href="single.html">
-										<img src="<?=base_url('assets/assetsUser/images/a3.jpg')?>" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Nikon Camera</td>
-								<td class="invert">$37,490</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+					  	<div class="panel-heading">Address 
+					  		<!-- <a href="#" data-toggle="modal" data-target="#address" class="btn btn-primary pull-right"> Add New Address</a> -->
+					  	</div>
+					  	<div class="panel-body"> Gedung Telkom
+							Jl Japati No 1, Citarum, Sadang Serang, Coblong, Kota Bandung, Jawa Barat 40133
+							Coblong, Bandung
+							Jawa Barat, 40133
+							Indonesia
+							6283829829660 
+						</div>
+					</div>
+					<!-- <span> Address <select id="" style="margin-left: 100px;"><option> Choice </option></select></span> -->
 				</div>
 			</div>
-			<div class="checkout-left">
-				<div class="address_form_agile mt-sm-5 mt-4">
-					<h4 class="mb-sm-4 mb-3">Add a new Details</h4>
-					<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
-						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
-							<div class="information-wrapper">
-								<div class="first-row">
-									<div class="controls form-group">
-										<input class="billing-address-name form-control" type="text" name="name" placeholder="Full Name" required="">
-									</div>
-									<div class="w3_agileits_card_number_grids">
-										<div class="w3_agileits_card_number_grid_left form-group">
-											<div class="controls">
-												<input type="text" class="form-control" placeholder="Mobile Number" name="number" required="">
-											</div>
-										</div>
-										<div class="w3_agileits_card_number_grid_right form-group">
-											<div class="controls">
-												<input type="text" class="form-control" placeholder="Landmark" name="landmark" required="">
-											</div>
-										</div>
-									</div>
-									<div class="controls form-group">
-										<input type="text" class="form-control" placeholder="Town/City" name="city" required="">
-									</div>
-									<div class="controls form-group">
-										<select class="option-w3ls">
-											<option>Select Address type</option>
-											<option>Office</option>
-											<option>Home</option>
-											<option>Commercial</option>
 
-										</select>
-									</div>
-								</div>
-								<button class="submit check_out btn">Delivery to this Address</button>
-							</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+					  	<div class="panel-heading">Detail </div>
+					  	<div class="panel-body"> 
+					  		<span>Total Harga Barang Rp 1.084.000</span><br>
+					  		<span>Biaya Kirim & Penanganan Rp 0</span><br>
+					  		<span>Biaya Perlindungan Pengiriman Rp 0</span><br><br>
+					  		<span>Total Belanja  Rp1.084.000</span><br>
 						</div>
-					</form>
-					<div class="checkout-right-basket">
-						<a href="payment.html">Make a Payment
-							<span class="far fa-hand-point-right"></span>
-						</a>
+						<div class="panel-footer"><a href="#" class="btn btn-primary "> Bayar </a></div>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<!-- //checkout page -->

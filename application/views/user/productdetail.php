@@ -197,20 +197,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<button class="btn my-2 my-sm-0" type="submit">Search</button>
 							</form>
 						</div>
-						<!-- //search -->
-						<!-- cart details -->
-						<!-- <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-								<form action="#" method="post" class="last">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="display" value="1">
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
-										<i class="fas fa-cart-arrow-down"></i>
-									</button>
-								</form>
-							</div>
-						</div> -->
-						<!-- //cart details -->
 					</div>
 				</div>
 			</div>
@@ -513,7 +499,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
+									<a href="http://localhost/weTech/user/dashboard/checkout?id=1000" class="btn btn-primary "> Checkout </a>
+									<!-- <input type="submit" name="submit" value="Add to cart" class="button" /> -->
 								</fieldset>
 							</form>
 						</div>
