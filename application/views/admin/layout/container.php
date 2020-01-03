@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="<?=base_url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')?>">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?=base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')?>">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="<?=base_url('assets/plugins/jqvmap/jqvmap.min.css')?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url('assets/dist/css/adminlte.min.css')?>">
   <!-- overlayScrollbars -->
@@ -72,7 +70,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -123,8 +121,29 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   ADVERTISING
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?=base_url('admin/voucher')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Voucher</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?=base_url('admin/promo')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Promo</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?=base_url('admin/analisis')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Analisis Pasar</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           <?php endif ?>
           <!-- ADMIN FINANCE -->
@@ -178,11 +197,6 @@
 <script src="<?=base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 <!-- ChartJS -->
 <script src="<?=base_url('assets/plugins/chart.js/Chart.min.js')?>"></script>
-<!-- Sparkline -->
-<script src="<?=base_url('assets/plugins/sparklines/sparkline.js')?>"></script>
-<!-- JQVMap -->
-<script src="<?=base_url('assets/plugins/jqvmap/jquery.vmap.min.js')?>"></script>
-<script src="<?=base_url('assets/plugins/jqvmap/maps/jquery.vmap.usa.js')?>"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?=base_url('assets/plugins/jquery-knob/jquery.knob.min.js')?>"></script>
 <!-- daterangepicker -->
