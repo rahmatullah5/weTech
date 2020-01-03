@@ -83,7 +83,7 @@
           <!-- ADMIN SALES -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-sales'])): ?>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="<?=base_url('admin/selling/getAllOrder')?>" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   SALES

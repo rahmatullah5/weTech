@@ -209,7 +209,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="agileits-navi_search">
-					<form action="#" method="post">
+					<!-- <form action="#" method="post">
 						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
 							<option value="">All Categories</option>
 							<option value="Televisions">Televisions</option>
@@ -222,7 +222,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
 							<option value="Home Audio & Theater">Home Audio & Theater</option>
 						</select>
-					</form>
+					</form> -->
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				    aria-expanded="false" aria-label="Toggle navigation">

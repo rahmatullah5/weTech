@@ -199,7 +199,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 						<!-- //search -->
 						<!-- cart details -->
-						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
+						<!-- <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
 							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
 								<form action="#" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
@@ -209,7 +209,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</button>
 								</form>
 							</div>
-						</div>
+						</div> -->
 						<!-- //cart details -->
 					</div>
 				</div>
@@ -223,7 +223,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="agileits-navi_search">
-					<form action="#" method="post">
+					<!-- <form action="#" method="post">
 						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
 							<option value="">All Categories</option>
 							<option value="Televisions">Televisions</option>
@@ -236,7 +236,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
 							<option value="Home Audio & Theater">Home Audio & Theater</option>
 						</select>
-					</form>
+					</form> -->
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				    aria-expanded="false" aria-label="Toggle navigation">
@@ -458,7 +458,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					  		<span>Biaya Perlindungan Pengiriman Rp 0</span><br><br>
 					  		<span>Total Belanja  Rp1.084.000</span><br>
 						</div>
-						<div class="panel-footer"><a href="#" class="btn btn-primary "> Bayar </a></div>
+						<div class="panel-footer"><a href="#" class="btn btn-primary " id="checkout"> Bayar </a></div>
 					</div>
 				</div>
 			</div>
@@ -641,6 +641,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				easingType: 'easeOutQuart'
 			});
 
+		});
+
+		$('#checkout').click(function(){
+
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/user/dashboard/checkoutAct',
+		        data    : {
+		                    order_status 	: 'SUBMITED',
+		                    user_id 		: 3,
+		                    product_id 		: 1,
+		                    pay_by 			: 'ATM BCA',
+		                    ship_id 		: 3,
+		                    price 			: 5000000,
+		                    discount 		: 0,
+		                },
+		        success: function(result){
+
+		            if (result['code'] == 0 ) {
+
+		                alert('Sukses');
+
+		            }else{
+
+		                alert('gagal');
+		            }
+
+		        },
+		        error: function(xhr) {
+		           
+		            
+		            if(xhr.status != 200){
+		                alert('gagal');
+		                
+		            }
+		        }
+		    });
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
