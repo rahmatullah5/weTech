@@ -6,33 +6,44 @@ class Shippings extends MY_Controller {
 
 	public function index()
 	{
-		// dd
 	    $data['shippings'] = $this->ShippingModel->getAll();		
         $content['body'] = $this->load->view('admin/shippings/index', $data);
 
 		$this->load->view('admin/layout/container', $content);
 	}	
 
-	public function show()
+	public function show($id)
 	{
-        $this->uri->segment(3);
-        $content['body'] = $this->load->view('admin/shippings/show', null, true);
+
+		$data['shipping'] = $this->ShippingModel->getById($id);
+        $content['body'] = $this->load->view('admin/shippings/show', $data);
 
 		$this->load->view('admin/layout/container', $content);
 	}
 
 	public function update($id)
 	{
-        $content['body'] = $this->load->view('admin/shippings/index', null, true);
 
-		$this->load->view('admin/layout/container', $content);
+		$data = [
+			'status' => $this->input->post('status')
+		];	
+		$this->ShippingModel->update($data, $id);
+		$this->session->set_flashdata('response', [
+			'error' => false,
+			'msg' => 'Data berhasil disimpan'
+		]);
+	
+		redirect('/admin/shippings/index/');	
+		// $data['shippings'] = $this->ShippingModel->update($id);
+  //       $content['body'] = $this->load->view('admin/shippings/index', null, true);
+
+		// $this->load->view('admin/layout/container', $content);
 	}	
 
 
 	public function destroy($id)
 	{
-        $content['body'] = $this->load->view('admin/shippings/index', null, true);
-
-		$this->load->view('admin/layout/container', $content);
+		$data['shippings'] = $this->ShippingModel->delete($id);
+        redirect('/admin/shippings/index');
 	}
 }
