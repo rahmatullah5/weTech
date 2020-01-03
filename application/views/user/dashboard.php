@@ -38,11 +38,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- menu style -->
 	<!-- //Custom-Files -->
 
-	<!-- web fonts -->
-	<!-- <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet"> -->
-	<!-- //web fonts -->
 	<link href="<?=base_url('assets/assetsUser/css/font-style.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<link href="<?=base_url('assets/assetsUser/css/font-style-2.css')?>" rel="stylesheet" type="text/css" media="all" />
 
@@ -62,18 +57,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- header lists -->
 					<ul>
 						<li class="text-center border-right text-white">
-							<a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
-								<i class="fas fa-map-marker mr-2"></i>Select Location</a>
-						</li>
-						<li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
 								<i class="fas fa-truck mr-2"></i>Track Order</a>
 						</li>
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
-						<?php if (!$this->session){ ?>
+						<?php if (isset($this->session->userdata['login'])){ ?>
 							<li class="text-center border-right text-white">
+
 					            <?php echo $this->session->userdata['login']['username'] ?>
 					        </li>
 					        <li class="text-center border-right text-white">
@@ -95,385 +87,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div>
-
-	<!-- Button trigger modal(select-location) -->
-	<div id="small-dialog1" class="mfp-hide">
-		<div class="select-city">
-			<h3>
-				<i class="fas fa-map-marker"></i> Please Select Your Location</h3>
-			<select class="list_of_cities">
-				<optgroup label="Popular Cities">
-					<option selected style="display:none;color:#eee;">Select City</option>
-					<option>Birmingham</option>
-					<option>Anchorage</option>
-					<option>Phoenix</option>
-					<option>Little Rock</option>
-					<option>Los Angeles</option>
-					<option>Denver</option>
-					<option>Bridgeport</option>
-					<option>Wilmington</option>
-					<option>Jacksonville</option>
-					<option>Atlanta</option>
-					<option>Honolulu</option>
-					<option>Boise</option>
-					<option>Chicago</option>
-					<option>Indianapolis</option>
-				</optgroup>
-				<optgroup label="Alabama">
-					<option>Birmingham</option>
-					<option>Montgomery</option>
-					<option>Mobile</option>
-					<option>Huntsville</option>
-					<option>Tuscaloosa</option>
-				</optgroup>
-				<optgroup label="Alaska">
-					<option>Anchorage</option>
-					<option>Fairbanks</option>
-					<option>Juneau</option>
-					<option>Sitka</option>
-					<option>Ketchikan</option>
-				</optgroup>
-				<optgroup label="Arizona">
-					<option>Phoenix</option>
-					<option>Tucson</option>
-					<option>Mesa</option>
-					<option>Chandler</option>
-					<option>Glendale</option>
-				</optgroup>
-				<optgroup label="Arkansas">
-					<option>Little Rock</option>
-					<option>Fort Smith</option>
-					<option>Fayetteville</option>
-					<option>Springdale</option>
-					<option>Jonesboro</option>
-				</optgroup>
-				<optgroup label="California">
-					<option>Los Angeles</option>
-					<option>San Diego</option>
-					<option>San Jose</option>
-					<option>San Francisco</option>
-					<option>Fresno</option>
-				</optgroup>
-				<optgroup label="Colorado">
-					<option>Denver</option>
-					<option>Colorado</option>
-					<option>Aurora</option>
-					<option>Fort Collins</option>
-					<option>Lakewood</option>
-				</optgroup>
-				<optgroup label="Connecticut">
-					<option>Bridgeport</option>
-					<option>New Haven</option>
-					<option>Hartford</option>
-					<option>Stamford</option>
-					<option>Waterbury</option>
-				</optgroup>
-				<optgroup label="Delaware">
-					<option>Wilmington</option>
-					<option>Dover</option>
-					<option>Newark</option>
-					<option>Bear</option>
-					<option>Middletown</option>
-				</optgroup>
-				<optgroup label="Florida">
-					<option>Jacksonville</option>
-					<option>Miami</option>
-					<option>Tampa</option>
-					<option>St. Petersburg</option>
-					<option>Orlando</option>
-				</optgroup>
-				<optgroup label="Georgia">
-					<option>Atlanta</option>
-					<option>Augusta</option>
-					<option>Columbus</option>
-					<option>Savannah</option>
-					<option>Athens</option>
-				</optgroup>
-				<optgroup label="Hawaii">
-					<option>Honolulu</option>
-					<option>Pearl City</option>
-					<option>Hilo</option>
-					<option>Kailua</option>
-					<option>Waipahu</option>
-				</optgroup>
-				<optgroup label="Idaho">
-					<option>Boise</option>
-					<option>Nampa</option>
-					<option>Meridian</option>
-					<option>Idaho Falls</option>
-					<option>Pocatello</option>
-				</optgroup>
-				<optgroup label="Illinois">
-					<option>Chicago</option>
-					<option>Aurora</option>
-					<option>Rockford</option>
-					<option>Joliet</option>
-					<option>Naperville</option>
-				</optgroup>
-				<optgroup label="Indiana">
-					<option>Indianapolis</option>
-					<option>Fort Wayne</option>
-					<option>Evansville</option>
-					<option>South Bend</option>
-					<option>Hammond</option>
-				</optgroup>
-				<optgroup label="Iowa">
-					<option>Des Moines</option>
-					<option>Cedar Rapids</option>
-					<option>Davenport</option>
-					<option>Sioux City</option>
-					<option>Waterloo</option>
-				</optgroup>
-				<optgroup label="Kansas">
-					<option>Wichita</option>
-					<option>Overland Park</option>
-					<option>Kansas City</option>
-					<option>Topeka</option>
-					<option>Olathe </option>
-				</optgroup>
-				<optgroup label="Kentucky">
-					<option>Louisville</option>
-					<option>Lexington</option>
-					<option>Bowling Green</option>
-					<option>Owensboro</option>
-					<option>Covington</option>
-				</optgroup>
-				<optgroup label="Louisiana">
-					<option>New Orleans</option>
-					<option>Baton Rouge</option>
-					<option>Shreveport</option>
-					<option>Metairie</option>
-					<option>Lafayette</option>
-				</optgroup>
-				<optgroup label="Maine">
-					<option>Portland</option>
-					<option>Lewiston</option>
-					<option>Bangor</option>
-					<option>South Portland</option>
-					<option>Auburn</option>
-				</optgroup>
-				<optgroup label="Maryland">
-					<option>Baltimore</option>
-					<option>Frederick</option>
-					<option>Rockville</option>
-					<option>Gaithersburg</option>
-					<option>Bowie</option>
-				</optgroup>
-				<optgroup label="Massachusetts">
-					<option>Boston</option>
-					<option>Worcester</option>
-					<option>Springfield</option>
-					<option>Lowell</option>
-					<option>Cambridge</option>
-				</optgroup>
-				<optgroup label="Michigan">
-					<option>Detroit</option>
-					<option>Grand Rapids</option>
-					<option>Warren</option>
-					<option>Sterling Heights</option>
-					<option>Lansing</option>
-				</optgroup>
-				<optgroup label="Minnesota">
-					<option>Minneapolis</option>
-					<option>St. Paul</option>
-					<option>Rochester</option>
-					<option>Duluth</option>
-					<option>Bloomington</option>
-				</optgroup>
-				<optgroup label="Mississippi">
-					<option>Jackson</option>
-					<option>Gulfport</option>
-					<option>Southaven</option>
-					<option>Hattiesburg</option>
-					<option>Biloxi</option>
-				</optgroup>
-				<optgroup label="Missouri">
-					<option>Kansas City</option>
-					<option>St. Louis</option>
-					<option>Springfield</option>
-					<option>Independence</option>
-					<option>Columbia</option>
-				</optgroup>
-				<optgroup label="Montana">
-					<option>Billings</option>
-					<option>Missoula</option>
-					<option>Great Falls</option>
-					<option>Bozeman</option>
-					<option>Butte-Silver Bow</option>
-				</optgroup>
-				<optgroup label="Nebraska">
-					<option>Omaha</option>
-					<option>Lincoln</option>
-					<option>Bellevue</option>
-					<option>Grand Island</option>
-					<option>Kearney</option>
-				</optgroup>
-				<optgroup label="Nevada">
-					<option>Las Vegas</option>
-					<option>Henderson</option>
-					<option>North Las Vegas</option>
-					<option>Reno</option>
-					<option>Sunrise Manor</option>
-				</optgroup>
-				<optgroup label="New Hampshire">
-					<option>Manchesters</option>
-					<option>Nashua</option>
-					<option>Concord</option>
-					<option>Dover</option>
-					<option>Rochester</option>
-				</optgroup>
-				<optgroup label="New Jersey">
-					<option>Newark</option>
-					<option>Jersey City</option>
-					<option>Paterson</option>
-					<option>Elizabeth</option>
-					<option>Edison</option>
-				</optgroup>
-				<optgroup label="New Mexico">
-					<option>Albuquerque</option>
-					<option>Las Cruces</option>
-					<option>Rio Rancho</option>
-					<option>Santa Fe</option>
-					<option>Roswell</option>
-				</optgroup>
-				<optgroup label="New York">
-					<option>New York</option>
-					<option>Buffalo</option>
-					<option>Rochester</option>
-					<option>Yonkers</option>
-					<option>Syracuse</option>
-				</optgroup>
-				<optgroup label="North Carolina">
-					<option>Charlotte</option>
-					<option>Raleigh</option>
-					<option>Greensboro</option>
-					<option>Winston-Salem</option>
-					<option>Durham</option>
-				</optgroup>
-				<optgroup label="North Dakota">
-					<option>Fargo</option>
-					<option>Bismarck</option>
-					<option>Grand Forks</option>
-					<option>Minot</option>
-					<option>West Fargo</option>
-				</optgroup>
-				<optgroup label="Ohio">
-					<option>Columbus</option>
-					<option>Cleveland</option>
-					<option>Cincinnati</option>
-					<option>Toledo</option>
-					<option>Akron</option>
-				</optgroup>
-				<optgroup label="Oklahoma">
-					<option>Oklahoma City</option>
-					<option>Tulsa</option>
-					<option>Norman</option>
-					<option>Broken Arrow</option>
-					<option>Lawton</option>
-				</optgroup>
-				<optgroup label="Oregon">
-					<option>Portland</option>
-					<option>Eugene</option>
-					<option>Salem</option>
-					<option>Gresham</option>
-					<option>Hillsboro</option>
-				</optgroup>
-				<optgroup label="Pennsylvania">
-					<option>Philadelphia</option>
-					<option>Pittsburgh</option>
-					<option>Allentown</option>
-					<option>Erie</option>
-					<option>Reading</option>
-				</optgroup>
-				<optgroup label="Rhode Island">
-					<option>Providence</option>
-					<option>Warwick</option>
-					<option>Cranston</option>
-					<option>Pawtucket</option>
-					<option>East Providence</option>
-				</optgroup>
-				<optgroup label="South Carolina">
-					<option>Columbia</option>
-					<option>Charleston</option>
-					<option>North Charleston</option>
-					<option>Mount Pleasant</option>
-					<option>Rock Hill</option>
-				</optgroup>
-				<optgroup label="South Dakota">
-					<option>Sioux Falls</option>
-					<option>Rapid City</option>
-					<option>Aberdeen</option>
-					<option>Brookings</option>
-					<option>Watertown</option>
-				</optgroup>
-				<optgroup label="Tennessee">
-					<option>Memphis</option>
-					<option>Nashville</option>
-					<option>Knoxville</option>
-					<option>Chattanooga</option>
-					<option>Clarksville</option>
-				</optgroup>
-				<optgroup label="Texas">
-					<option>Houston</option>
-					<option>San Antonio</option>
-					<option>Dallas</option>
-					<option>Austin</option>
-					<option>Fort Worth</option>
-				</optgroup>
-				<optgroup label="Utah">
-					<option>Salt Lake City</option>
-					<option>West Valley City</option>
-					<option>Provo</option>
-					<option>West Jordan</option>
-					<option>Orem</option>
-				</optgroup>
-				<optgroup label="Vermont">
-					<option>Burlington</option>
-					<option>Essex</option>
-					<option>South Burlington</option>
-					<option>Colchester</option>
-					<option>Rutland</option>
-				</optgroup>
-				<optgroup label="Virginia">
-					<option>Virginia Beach</option>
-					<option>Norfolk</option>
-					<option>Chesapeake</option>
-					<option>Arlington</option>
-					<option>Richmond</option>
-				</optgroup>
-				<optgroup label="Washington">
-					<option>Seattle</option>
-					<option>Spokane</option>
-					<option>Tacoma</option>
-					<option>Vancouver</option>
-					<option>Bellevue</option>
-				</optgroup>
-				<optgroup label="West Virginia">
-					<option>Charleston</option>
-					<option>Huntington</option>
-					<option>Parkersburg</option>
-					<option>Morgantown</option>
-					<option>Wheeling</option>
-				</optgroup>
-				<optgroup label="Wisconsin">
-					<option>Milwaukee</option>
-					<option>Madison</option>
-					<option>Green Bay</option>
-					<option>Kenosha</option>
-					<option>Racine</option>
-				</optgroup>
-				<optgroup label="Wyoming">
-					<option>Cheyenne</option>
-					<option>Casper</option>
-					<option>Laramie</option>
-					<option>Gillette</option>
-					<option>Rock Springs</option>
-				</optgroup>
-			</select>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<!-- //shop locator (popup) -->
 
 	<!-- modals -->
 	<!-- log in -->
@@ -908,243 +521,100 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
 							<h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
 							<div class="row">
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+								<?php
+									for ($x = 1; $x <= 3; $x++) {
+								?> 
+									<div class="col-md-4 product-men mt-5">
+										<div class="men-pro-item simpleCart_shelfItem">
+											<div class="men-thumb-item text-center">
+												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
+												<div class="men-cart-pro">
+													<div class="inner-men-cart-pro">
+														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+													</div>
+												</div>
+											</div>
+											<div class="item-info-product text-center border-top mt-4">
+												<h4 class="pt-1">
+													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
+												</h4>
+												<div class="info-product-price my-2">
+													<span class="item_price">$200.00</span>
+													<del>$280.00</del>
+												</div>
+												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+													<form action="#" method="post">
+														<fieldset>
+															<input type="hidden" name="cmd" value="_cart" />
+															<input type="hidden" name="add" value="1" />
+															<input type="hidden" name="business" value=" " />
+															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+															<input type="hidden" name="amount" value="200.00" />
+															<input type="hidden" name="discount_amount" value="1.00" />
+															<input type="hidden" name="currency_code" value="USD" />
+															<input type="hidden" name="return" value=" " />
+															<input type="hidden" name="cancel_return" value=" " />
+															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
+														</fieldset>
+													</form>
 												</div>
 											</div>
 										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$200.00</span>
-												<del>$280.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-														<input type="hidden" name="amount" value="200.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-										</div>
 									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m2.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-											<span class="product-new-top">New</span>
-
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">OPPO A37f</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$230.00</span>
-												<del>$250.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="OPPO A37f" />
-														<input type="hidden" name="amount" value="230.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m3.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-											<span class="product-new-top">New</span>
-
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Apple iPhone X</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$280.00</span>
-												<del>$300.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Apple iPhone X" />
-														<input type="hidden" name="amount" value="280.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php 
+									}
+								?>
 							</div>
 						</div>
+						 
 						<!-- //first section -->
 						<!-- second section -->
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							<h3 class="heading-tittle text-center font-italic">Tv & Audio</h3>
+							<h3 class="heading-tittle text-center font-italic">Another Product</h3>
 							<div class="row">
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m4.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+								<?php
+									for ($x = 1; $x <= 3; $x++) {
+								?> 
+									<div class="col-md-4 product-men mt-5">
+										<div class="men-pro-item simpleCart_shelfItem">
+											<div class="men-thumb-item text-center">
+												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
+												<div class="men-cart-pro">
+													<div class="inner-men-cart-pro">
+														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+													</div>
+												</div>
+											</div>
+											<div class="item-info-product text-center border-top mt-4">
+												<h4 class="pt-1">
+													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
+												</h4>
+												<div class="info-product-price my-2">
+													<span class="item_price">$200.00</span>
+													<del>$280.00</del>
+												</div>
+												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+													<form action="#" method="post">
+														<fieldset>
+															<input type="hidden" name="cmd" value="_cart" />
+															<input type="hidden" name="add" value="1" />
+															<input type="hidden" name="business" value=" " />
+															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+															<input type="hidden" name="amount" value="200.00" />
+															<input type="hidden" name="discount_amount" value="1.00" />
+															<input type="hidden" name="currency_code" value="USD" />
+															<input type="hidden" name="return" value=" " />
+															<input type="hidden" name="cancel_return" value=" " />
+															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
+														</fieldset>
+													</form>
 												</div>
 											</div>
 										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Sony 80 cm (32 inches)</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$320.00</span>
-												<del>$340.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Sony 80 cm (32 inches)" />
-														<input type="hidden" name="amount" value="320.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-										</div>
 									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m5.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-											<span class="product-new-top">New</span>
-
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Artis Speaker</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$349.00</span>
-												<del>$399.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Artis Speaker" />
-														<input type="hidden" name="amount" value="349.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m6.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Philips Speakers</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$249.00</span>
-												<del>$300.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Philips Speakers" />
-														<input type="hidden" name="amount" value="249.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php 
+									}
+								?>
 							</div>
 						</div>
 						<!-- //second section -->
@@ -1161,122 +631,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<!-- //third section -->
 						<!-- fourth section -->
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
-							<h3 class="heading-tittle text-center font-italic">Large Appliances</h3>
+							<h3 class="heading-tittle text-center font-italic">Iphone</h3>
 							<div class="row">
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m7.jpg"')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+								<?php
+									for ($x = 1; $x <= 3; $x++) {
+								?> 
+									<div class="col-md-4 product-men mt-5">
+										<div class="men-pro-item simpleCart_shelfItem">
+											<div class="men-thumb-item text-center">
+												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
+												<div class="men-cart-pro">
+													<div class="inner-men-cart-pro">
+														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+													</div>
+												</div>
+											</div>
+											<div class="item-info-product text-center border-top mt-4">
+												<h4 class="pt-1">
+													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
+												</h4>
+												<div class="info-product-price my-2">
+													<span class="item_price">$200.00</span>
+													<del>$280.00</del>
+												</div>
+												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+													<form action="#" method="post">
+														<fieldset>
+															<input type="hidden" name="cmd" value="_cart" />
+															<input type="hidden" name="add" value="1" />
+															<input type="hidden" name="business" value=" " />
+															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+															<input type="hidden" name="amount" value="200.00" />
+															<input type="hidden" name="discount_amount" value="1.00" />
+															<input type="hidden" name="currency_code" value="USD" />
+															<input type="hidden" name="return" value=" " />
+															<input type="hidden" name="cancel_return" value=" " />
+															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
+														</fieldset>
+													</form>
 												</div>
 											</div>
 										</div>
-										<span class="product-new-top">New</span>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Whirlpool 245</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$230.00</span>
-												<del>$280.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Whirlpool 245" />
-														<input type="hidden" name="amount" value="230.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
-										</div>
 									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m8.jpg"')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">BPL Washing Machine</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$180.00</span>
-												<del>$200.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="BPL Washing Machine" />
-														<input type="hidden" name="amount" value="180.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											<img src="<?=base_url('assets/assetsUser/images/m9.jpg')?>" alt="">
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-										</div>
-										<div class="item-info-product text-center border-top mt-4">
-											<h4 class="pt-1">
-												<a href="<?=base_url('user/dashboard/productdetail')?>">Microwave Oven</a>
-											</h4>
-											<div class="info-product-price my-2">
-												<span class="item_price">$199.00</span>
-												<del>$299.00</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Microwave Oven" />
-														<input type="hidden" name="amount" value="199.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php 
+									}
+								?>
 							</div>
 						</div>
 						<!-- //fourth section -->
@@ -1731,254 +1130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- //quick links -->
 			</div>
 		</div>
-		<!-- //footer third section -->
 
-		<!-- footer fourth section -->
-		<div class="agile-sometext py-md-5 py-sm-4 py-3">
-			<div class="container">
-				<!-- brands -->
-				<div class="sub-some">
-					<h5 class="font-weight-bold mb-2">Mobile & Tablets :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Android Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Smartphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Feature Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Unboxed Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Refurbished Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2"> Tablets</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">CDMA Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Value Added Services</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Sell Old</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Used Mobiles</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Computers :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Laptops </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Printers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Routers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Ink & Toner Cartridges</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Monitors</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Video Games</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Unboxed & Refurbished Laptops</a>
-						</li>
-						<li>
-							<a href="product.html" class="border-right pr-2">Assembled Desktops</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Data Cards</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">TV, Audio & Large Appliances :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">TVs & DTH</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Home Theatre Systems</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Hidden Cameras & CCTVs</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Refrigerators</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Washing Machines</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Air Conditioners</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Cameras</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Speakers</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Mobile & Laptop Accessories :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Power Banks </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Backpacks</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Mobile Cases & Covers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Pen Drives</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">External Hard Disks</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Mouse</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Smart Watches & Fitness Bands</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">MicroSD Cards</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Appliances :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Trimmers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Hair Dryers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Emergency Lights</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Water Purifiers </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Electric Kettles</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Hair Straighteners</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Induction Cooktops</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Sewing Machines</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Geysers</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Popular on Electro Store</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Offers & Coupons</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Couple Watches</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Gas Stoves</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Air Coolers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Air Purifiers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Headsets</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Pressure Cookers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Sandwich Makers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Air Friers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Irons</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">LED TV</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Sandwich Makers</a>
-						</li>
-					</ul>
-				</div>
-				<!-- //brands -->
-				<!-- payment -->
-				<div class="sub-some child-momu mt-4">
-					<h5 class="font-weight-bold mb-3">Payment Method</h5>
-					<ul>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay2.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay5.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay1.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay4.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay6.png')?>" alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay3.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay7.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay8.png')?>"  alt="">
-						</li>
-						<li>
-							<img src="<?=base_url('assets/assetsUser/images/pay9.png')?>"  alt="">
-						</li>
-					</ul>
-				</div>
-				<!-- //payment -->
-			</div>
-		</div>
-		<!-- //footer fourth section (text) -->
 	</footer>
 	<!-- //footer -->
 	<!-- copyright -->
@@ -1989,14 +1141,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</p>
 		</div>
 	</div>
-	<!-- //copyright -->
 
-	<!-- js-files -->
-	<!-- jquery -->
 	<script src="<?=base_url('assets/assetsUser/js/jquery-2.2.3.min.js')?>" ></script>
-	<!-- //jquery -->
-
-	<!-- nav smooth scroll -->
+	
 	<script>
 		$(document).ready(function () {
 			$(".dropdown").hover(

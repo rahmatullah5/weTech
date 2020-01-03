@@ -34,7 +34,7 @@ class Auth extends CI_Controller {
 			$this->session->set_userdata('login', $sessionData);
 			
 			if ($userData->user_type == 'user') {
-				redirect('/');
+				redirect('/',$sessionData);
 			}else{
 				redirect('/admin/dashboard');
 			}
