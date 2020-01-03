@@ -18,60 +18,62 @@
             </div>
           </div>
           <!-- /.card-header -->
+          <form action='<?=base_url('admin/shippings/update/'.$shipping["shipping_id"])?>'method='post'>
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Ship ID</label>
-                  <input type="text" class="form-control" placeholder="SM0001" Disabled>
+                  <input type="text" class="form-control" value=<?=$shipping['shipping_id']?> disabled>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Nomor Resi</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" value=<?=$shipping['code_resi']?> disabled>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nama Penerima</label>
-                  <input type="text" class="form-control" placeholder="Dei Julian" Disabled>
+                  <input type="text" class="form-control" value=<?=$shipping['receiver']?> disabled>
                 </div>
               </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Alamat Pengiriman</label>
+                  <input type="text" class="form-control" value=<?=$shipping['depart']?> disabled>
+                </div>
+              </div>              
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Alamat Penerima</label>
-                  <input type="text" class="form-control" placeholder="Jalan Cikutra 204 Bandung" disabled>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Ekspedisi</label>
-                  <input type="text" class="form-control" placeholder="JNE" Disabled>
+                  <input type="text" class="form-control" value=<?=$shipping['destination']?> disabled>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label>Nama Kurir</label>
-                  <input type="text" class="form-control" placeholder="Enter ..." disabled>
+                  <label>Kurir</label>
+                  <input type="text" class="form-control" value=<?=$shipping['courier']?> disabled>
                 </div>
               </div>
               <div class="col-sm-6">
                 <!-- select -->
                 <div class="form-group">
                   <label>Select</label>
-                  <select class="form-control">
-                    <option>Pending</option>
-                    <option>Inbound</option>
-                    <option>On Progress</option>
-                    <option>Delivered</option>
+                  <select name="status" class="form-control">
+                    <option value='Pending'>Pending</option>
+                    <option value='Inbound'>Inbound</option>
+                    <option value='On Progress'>On Progress</option>
+                    <option value='Delivered'>Delivered</option>
                   </select>
                 </div>
               </div>
               <table class="table text-center">
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <!-- <button type="button" class="btn btn-primary">Simpan</button> -->
+                    <input type="submit" name="">
                   </td>
                 </tr>
               </table>
