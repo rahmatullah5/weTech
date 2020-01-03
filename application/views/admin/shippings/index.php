@@ -46,42 +46,28 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php
+                          foreach ($shippings as $v):
+                        ?>
                         <tr>
-                        <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox">
-                          <label class="form-check-label"></label>
-                        </div>
-                        </td>
-                          <td>SM00001</td>
-                          <td>KD00001</td>
-                          <td>JNE</td>
-                          <td>Rahmatullah</td>
-                          <td>Bandung</td>
-                          <td>Jakarta</td>
-                          <td>Dikirim</td>
+                          <td></td>
+                          <td><?=$v->shipping_id?></td>
+                          <td><?=$v->code_resi?></td>
+                          <td><?=$v->courier?></td>
+                          <td><?=$v->receiver?></td>
+                          <!-- <td><?=$v->image?></td> -->
+                          <td><?=$v->depart?></td>
+                          <td><?=$v->destination?></td>
+                          <td><?=$v->status?></td>
                           <td>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
+                            <!-- <button class='btn btn-primary btn-sm'>Edit</button> -->
+                            <a href='<?=base_url('admin/shippings/show/'.$v->shipping_id)?>' class='btn btn-primary btn-sm'>Detail</a>
+                            <a href='<?=base_url('admin/shippings/destroy/'.$v->shipping_id)?>' class='btn btn-danger btn-sm'>Hapus</a>
                           </td>
                         </tr>
-                        <tr>
-                        <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox">
-                          <label class="form-check-label"></label>
-                        </div>
-                        </td>
-                          <td>SM00001</td>
-                          <td>KD00001</td>
-                          <td>JNE</td>
-                          <td>Rahmatullah</td>
-                          <td>Bandung</td>
-                          <td>Jakarta</td>
-                          <td>Dikirim</td>
-                          <td>
-                             <a href="<?=base_url('admin/shippings/show')?>" class="nav-link"><button class="btn btn-success">Lihat Data</button></a>
-                          </td>
-                        </tr>
+                        <?php
+                          endforeach
+                        ?>                        
                       </tbody>
                     </table>
                   </div>
