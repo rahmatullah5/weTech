@@ -132,13 +132,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/boxed.html" class="nav-link">
+                  <a href="<?=base_url('admin/promo')?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Promo</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/boxed.html" class="nav-link">
+                  <a href="<?=base_url('admin/analisis')?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Analisis Pasar</p>
                   </a>
