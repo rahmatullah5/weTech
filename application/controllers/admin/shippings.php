@@ -15,7 +15,8 @@ class Shippings extends MY_Controller {
 	public function show($id)
 	{
 
-		$data['shipping'] = $this->ShippingModel->getById($id);
+	$data['shipping'] = $this->ShippingModel->getById($id);
+	$data['order'] = $this->ShippingModel->getRelatedOrder($id);
         $content['body'] = $this->load->view('admin/shippings/show', $data);
 
 		$this->load->view('admin/layout/container', $content);
