@@ -182,7 +182,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-3 logo_agile">
 					<h1 class="text-center">
 						<a href="index.html" class="font-weight-bold font-italic">
-							<img src="<?=base_url('assets/assetsUser/images/logo2.png')?>" alt=" " class="img-fluid">Electro Store
+							<img src="<?=base_url('assets/assetsUser/images/logo2.jpg')?>" alt=" " width="90" height="87" class="img-fluid">WeTech Store
 						</a>
 					</h1>
 				</div>
