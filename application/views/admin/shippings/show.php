@@ -30,7 +30,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Nomor Resi</label>
-                  <input type="text" class="form-control" value=<?=$shipping['code_resi']?> disabled>
+                  <input type="text" class="form-control" name="code_resi" value="<?=$shipping['code_resi']?>"  required  <?php echo (empty($order))? 'disabled' : '' ?>>
                 </div>
               </div>
               <div class="col-md-6">
@@ -57,15 +57,16 @@
                   <input type="text" class="form-control" value=<?=$shipping['courier']?> disabled>
                 </div>
               </div>
+                    
               <div class="col-sm-6">
                 <!-- select -->
                 <div class="form-group">
-                  <label>Select</label>
-                  <select name="status" class="form-control">
-                    <option value='Pending'>Pending</option>
-                    <option value='Inbound'>Inbound</option>
-                    <option value='On Progress'>On Progress</option>
-                    <option value='Delivered'>Delivered</option>
+                  <label>Perbaharui Status</label>
+                  <select name="status" class="form-control" <?php echo (empty($order))? 'disabled' : '' ?>>
+                    <option value='Pending' <?php echo ($shipping['status'] == 'Pending')? 'selected' : '' ?> >Pending</option>
+                    <option value='Inbound' <?php echo ($shipping['status'] == 'Inbound')? 'selected' : '' ?>>Inbound</option>
+                    <option value='On Progress' <?php echo ($shipping['status'] == 'On Progress')? 'selected' : '' ?>>On Progress</option>
+                    <option value='Delivered' <?php echo ($shipping['status'] == 'Delivered')? 'selected' : '' ?>>Delivered</option>
                   </select>
                 </div>
               </div>
@@ -73,7 +74,10 @@
                 <tr>
                   <td>
                     <!-- <button type="button" class="btn btn-primary">Simpan</button> -->
-                    <input type="submit" name="">
+                    <a href='<?=base_url('admin/shippings/index/')?>' class='btn btn-success btn-sm'>Kembali</a>
+                    <?php if (!empty($order)){ ?>
+                    <input type="submit" class="btn btn-primary" value="Simpan Data">
+                  <?php } ?>
                   </td>
                 </tr>
               </table>

@@ -26,7 +26,8 @@ class Shippings extends MY_Controller {
 	{
 
 		$data = [
-			'status' => $this->input->post('status')
+			'status' => $this->input->post('status'),
+			'code_resi' => $this->input->post('code_resi')
 		];	
 		$this->ShippingModel->update($data, $id);
 		$this->session->set_flashdata('response', [
@@ -34,7 +35,7 @@ class Shippings extends MY_Controller {
 			'msg' => 'Data berhasil disimpan'
 		]);
 	
-		redirect('/admin/shippings/index/');	
+		redirect('/admin/shippings/show/'.$id);	
 		// $data['shippings'] = $this->ShippingModel->update($id);
   //       $content['body'] = $this->load->view('admin/shippings/index', null, true);
 
