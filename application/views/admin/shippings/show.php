@@ -83,9 +83,30 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Data View</h3>
-                    <div class="card-tools">                     
-                    </div>
+                    <table class="table table-hover">
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Order Status</th>
+                        <th>User ID</th>
+                        <th>Product ID</th>
+                        <th>Transaction Date</th>
+                        <th>Pay By</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                      </tr>
+                      <tr>
+                       <?php if (!empty($order)) { ?>
+                        <td><?=$order['order_id']?></td>
+                        <td><?=$order['order_status']?></td>
+                        <td><?=$order['user_id']?></td>
+                        <td><?=$order['product_id']?></td>
+                        <td><?=$order['date_transaction']?></td>
+                        <td><?=$order['pay_by']?></td>
+                        <td>Rp. <?=$order['price']?></td>
+                        <td><?=$order['discount']?></td>
+                      <?php } ?>
+                      </tr>
+                    </table>           
                   </div>
                   <!-- /.card-header -->
                 </div>
