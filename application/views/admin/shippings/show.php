@@ -30,7 +30,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Nomor Resi</label>
-                  <input type="text" class="form-control" name="code_resi" value=<?=$shipping['code_resi']?> >
+                  <input type="text" class="form-control" name="code_resi" value="<?=$shipping['code_resi']?>"  required  <?php echo (empty($order))? 'disabled' : '' ?>>
                 </div>
               </div>
               <div class="col-md-6">
@@ -62,7 +62,7 @@
                 <!-- select -->
                 <div class="form-group">
                   <label>Perbaharui Status</label>
-                  <select name="status" class="form-control">
+                  <select name="status" class="form-control" <?php echo (empty($order))? 'disabled' : '' ?>>
                     <option value='Pending' <?php echo ($shipping['status'] == 'Pending')? 'selected' : '' ?> >Pending</option>
                     <option value='Inbound' <?php echo ($shipping['status'] == 'Inbound')? 'selected' : '' ?>>Inbound</option>
                     <option value='On Progress' <?php echo ($shipping['status'] == 'On Progress')? 'selected' : '' ?>>On Progress</option>
@@ -75,7 +75,9 @@
                   <td>
                     <!-- <button type="button" class="btn btn-primary">Simpan</button> -->
                     <a href='<?=base_url('admin/shippings/index/')?>' class='btn btn-success btn-sm'>Kembali</a>
+                    <?php if (!empty($order)){ ?>
                     <input type="submit" class="btn btn-primary" value="Simpan Data">
+                  <?php } ?>
                   </td>
                 </tr>
               </table>
