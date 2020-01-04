@@ -47,7 +47,7 @@
                         <td><?php echo $data['id_receipt']?></td>
                         <td><?php echo $data['title']?></td>
                         <td><?php echo $data['description']?></td>
-                        <td><?php echo $data['amount']?></td>
+                        <td><?php echo number_format($data['amount'],2,",",".");?></td>
                       </tr>
                     <?php }?>
                   </tbody>
