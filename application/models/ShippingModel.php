@@ -31,4 +31,9 @@ class ShippingModel extends CI_Model {
 		return $this->db->delete('shippings');
 	}
 
+	public function getRelatedOrder($id){
+		$query = $this->db->get_where('order_transaction',array('ship_id'=>$id));
+		return $query->row_array();
+	}
+
 }
