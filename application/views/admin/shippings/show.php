@@ -58,9 +58,15 @@
                 </div>
               </div>
               <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Status Saat Ini</label>
+                  <input type="text" class="form-control" value=<?=$shipping['status']?> disabled>
+                </div>
+              </div>              
+              <div class="col-sm-6">
                 <!-- select -->
                 <div class="form-group">
-                  <label>Select</label>
+                  <label>Perbaharui Status</label>
                   <select name="status" class="form-control">
                     <option value='Pending'>Pending</option>
                     <option value='Inbound'>Inbound</option>
@@ -73,7 +79,7 @@
                 <tr>
                   <td>
                     <!-- <button type="button" class="btn btn-primary">Simpan</button> -->
-                    <input type="submit" name="">
+                    <input type="submit" class="btn btn-primary" value="Simpan Data">
                   </td>
                 </tr>
               </table>
