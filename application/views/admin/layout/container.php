@@ -15,6 +15,8 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="<?=base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')?>">
   <!-- Theme style -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="<?=base_url('assets/dist/css/adminlte.min.css')?>">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?=base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')?>">
@@ -24,6 +26,21 @@
   <link rel="stylesheet" href="<?=base_url('assets/plugins/summernote/summernote-bs4.css')?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/i18n/id.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -148,13 +165,28 @@
           <?php endif ?>
           <!-- ADMIN FINANCE -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-finance'])): ?>
-            <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+            <li class="nav-item" id="nav_finance">
+              <a href="" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   FINANCE
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?=base_url('admin/finance/view_account')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>MasterAccount</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?php echo base_url('admin/finance');?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Receipt</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           <?php endif ?>
         </ul>
@@ -186,7 +218,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?=base_url('assets/plugins/jquery-ui/jquery-ui.min.js')?>"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -200,8 +232,6 @@
 <!-- jQuery Knob Chart -->
 <script src="<?=base_url('assets/plugins/jquery-knob/jquery.knob.min.js')?>"></script>
 <!-- daterangepicker -->
-<script src="<?=base_url('assets/plugins/moment/moment.min.js')?>"></script>
-<script src="<?=base_url('assets/plugins/daterangepicker/daterangepicker.js')?>"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="<?=base_url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')?>"></script>
 <!-- Summernote -->
@@ -214,5 +244,6 @@
 <script src="<?=base_url('assets/dist/js/pages/dashboard.js')?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url('assets/dist/js/demo.js')?>"></script>
+
 </body>
 </html>
