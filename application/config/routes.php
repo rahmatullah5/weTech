@@ -41,6 +41,8 @@
 $route['shippings'] = "home";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+$route['admin/voucher/delete/(:any)'] = "admin/voucher/action_delete/$1";
+$route['admin/promo/delete/(:any)'] = "admin/promo/action_delete/$1";
 
 
 /* End of file routes.php */
