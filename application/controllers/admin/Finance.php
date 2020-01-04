@@ -2,7 +2,8 @@
 
 class Finance extends MY_Controller {
 	public function index(){
-        $this->template->load('admin/layout/container','admin/finance/view_receipt');
+        $data['result'] = $this->db->get('receipt')->result_array();
+        $this->template->load('admin/layout/container','admin/finance/view_receipt', $data);
     }
     
     public function form_receipt(){
@@ -40,6 +41,13 @@ class Finance extends MY_Controller {
         else {  $update     = false;  }
         
         $result = $this->M_finance->saveaccount($update);
+        echo json_encode($result);
+    }
+
+    public function savereceipt(){
+        $_POST['created_by'] = $this->session->userdata('username');
+        $_POST['amount']     = str_replace('.','', $_POST['amount']);
+        $result = $this->db->insert('receipt', $_POST);
         echo json_encode($result);
     }
 

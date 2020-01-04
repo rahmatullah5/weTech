@@ -34,12 +34,23 @@
                   <thead>
                     <tr>
                       <th>Date</th>
+                      <th>ID</th>
                       <th>Title</th>
                       <th>Description</th>
                       <th>Amount</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php foreach ($result as $data) {?>
+                      <tr>
+                        <td><?php echo $data['created_date']?></td>
+                        <td><?php echo $data['id_receipt']?></td>
+                        <td><?php echo $data['title']?></td>
+                        <td><?php echo $data['description']?></td>
+                        <td><?php echo $data['amount']?></td>
+                      </tr>
+                    <?php }?>
+                  </tbody>
                 </table>
               </div>
               </div>

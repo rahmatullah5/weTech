@@ -18,11 +18,10 @@
         </div>
         <div class="card-body">
                 <form action="#" method="post" id="postreceipt">
-                    <input type="hidden" name="receipts_id">
                     <div class="form-group row">
                         <label for="receipt_date" class="col-sm-3 col-form-label">Receipt Date<sup style="color:red"><b>*</b></sup></label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control datePicker readonly" id="receipt_date" name="receipt_date" placeholder="receipt date fill in here">
+                            <input type="date" class="form-control datePicker readonly" id="created_date" name="created_date" placeholder="receipt date fill in here">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -40,7 +39,7 @@
                     <div class="form-group row">
                         <label for="total_amount" class="col-sm-3 col-form-label">Total Amount<sup style="color:red"><b>*</b></sup></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="total_amount" name="total_amount" placeholder="amount fill in here">
+                            <input type="text" class="form-control" id="amount" name="amount" placeholder="amount fill in here">
                         </div>
                     </div>
                     <div align="right">
@@ -78,12 +77,10 @@
 <script>
     $("#postreceipt").validate({
         rules       : {
-            account_code        :   {
-                required        : true,
-                number          : true, 
-            },
-            account_name        :   "required",
-            parent_account      :   "required",
+            created_date        :   "required",
+            title               :   "required",
+            amount              :   "required",
+            description         :   "required",
         },
         errorClass              : "text-danger",
         errorElement            : "b",
@@ -105,16 +102,16 @@
         submitHandler           : function(form){
             $.ajax({
                 type : "POST",
-                url  : "<?php echo base_url('admin/finance/saveaccount')?>",
+                url  : "<?php echo base_url('admin/finance/savereceipt')?>",
                 dataType : "JSON",
-                data : $('#postmentee').serialize(),
+                data : $('#postreceipt').serialize(),
                 beforeSend: function(){
                     $("#btnSave").find('span').attr('class','fa fa-spinner fa-spin');
                     $("#btnSave").attr('disabled','true');
                     $("#clear").attr('disabled','true');
                 },
                 success: function(data){
-                    window.location.href="<?php echo base_url('admin/finance/view_account');?>";
+                    window.location.href="<?php echo base_url('admin/finance');?>";
                     Swal.fire({
                         icon: 'success',
                         type: 'success',
@@ -137,6 +134,48 @@
                 }
             });
         }
+    });
+
+    
+    $(document).ready(function () {
+        var rp = document.getElementById('amount');
+        rp.addEventListener('keyup', function(e) {
+            rp.value = formatRupiah(this.value);
+        });
+            
+        rp0.addEventListener('keydown', function(event) {
+            limitCharacter(event);
+        });
+
+        /* Fungsi */
+        function formatRupiah(bilangan, prefix) {
+            var number_string = bilangan.replace(/[^,\d]/g, '').toString(),
+            split   = number_string.split(','),
+            sisa    = split[0].length % 3,
+            rupiah  = split[0].substr(0, sisa),
+            ribuan  = split[0].substr(sisa).match(/\d{1,3}/gi);
+                
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+                
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? + rupiah : '');
+        }
+            
+        function limitCharacter(event) {
+            key = event.which || event.keyCode;
+            if ( key != 188 // Comma
+                && key != 8 // Backspace
+                && key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+                && (key < 48 || key > 57) // Non digit
+                // Dan masih banyak lagi seperti tombol del, panah kiri dan kanan, tombol tab, dll
+                ) {
+                    event.preventDefault();
+                    return false;
+                }
+        } 
     });
 
 </script>
