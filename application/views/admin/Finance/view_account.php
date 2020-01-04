@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <button type="button" class="btn btn-primary" onclick="window.location.href='<?php echo site_url();?>/admin/finance/form_receipt'">Create New</button>
+                <button type="button" class="btn btn-primary" id="showmodal-add">Create New</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -39,6 +39,16 @@
                       <th>Action</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php foreach ($result as $data) {?>
+                        <tr>
+                            <td><?php echo $data['account_code']?></td>
+                            <td><?php echo $data['nama']?></td>
+                            <td><?php echo $data['parent_account']?></td>
+                            <td><button type="button" class="btn btn-warning showmodal-edit" id-account="<?php echo $data['id_account']?>" account_name="<?php echo $data['nama']?>" account_code="<?php echo $data['account_code']?>" parent_account="<?php echo $data['parent_account']?>"><span class="fa fa-edit"></span></button></td>
+                        </tr>
+                    <?php }?>
+                  </tbody>
                 </table>
               </div>
               </div>
@@ -69,13 +79,13 @@
                     <div class="form-group row" hidden>
                         <label for="nama" class="col-sm-3">ID Mentee</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="id_mentee" id="id_mentee" placeholder="id mentee isi disini">
+                            <input type="text" class="form-control" name="id_account" id="id_account" placeholder="id mentee isi disini">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nama" class="col-sm-3">Account Code</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="account_code" id="account_code" placeholder="account code fill in here">
+                            <input type="text" class="form-control" name="account_code" id="account_code" placeholder="account code fill in here">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -99,11 +109,26 @@
         </div>
     </div>
 </div>
+<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/i18n/id.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
 <script type="text/javascript">
     $(document).on('click','.showmodal-edit',function(){
-        var fakultas  =   $(this).attr('fakultas');
-        getjurusan(fakultas);
+        $('#account_code').attr('readonly','true');
         $('#id_account').val($(this).attr('id-account'));
         $('#account_name').val($(this).attr('account_name'));
         $('#account_code').val($(this).attr('account_code'));
@@ -111,7 +136,7 @@
         $('#show-add').modal('show');
     });
 
-    $(document).on('click','.showmodal-add',function(){
+    $(document).on('click','#showmodal-add',function(){
         var validator = $("#postmentee").validate();
         $('#postmentee')[0].reset();
         validator.resetForm();
@@ -123,42 +148,8 @@
             language        :{
                 "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
             },
-            serverSide 		: true,
             processing 		: true,
             pagingType 		: "simple",
-            ajax: {
-                url: "<?php echo base_url('admin/finance/loadList')?>",
-                type: "POST",
-            },
-            columns: [
-                { data: "account_code"},
-                { data: "account_name"},
-                { data: "parent_account"},
-                { data: "Action",
-                    render: function(data, type, row, meta) {
-                        txt = '';
-                        /* button Edit Group */
-                        txt 	+= '<button ';
-                        txt 	+= '	title 			= "Edit ."';
-                        txt 	+= '	class			= "btn btn-warning btn-xs showmodal-edit"';
-                        txt 	+= '	id-account   	= "'+row.id_account+'"';
-                        txt 	+= '	account_code    = "'+row.account_code+'"';
-                        txt 	+= '	account_name    = "'+row.account_name+'"';
-                        txt 	+= '	prent_accunt    = "'+row.parent_account+'"';
-                        txt     += '    data-toggle="tooltip" data-placement="top"';
-                        txt 	+= '>';
-                        txt 	+= '	<span class= "fa fa-pencil"></span>';
-                        txt 	+= '</button> ';
-                        return txt;
-                    }
-                },
-            ],
-            columnDefs      : [ 
-                { className	: "text-center", targets: [4], orderable: false, searchable: false}
-            ],
-            initComplete: function() {
-                $('[data-toggle="tooltip"]').tooltip();
-            }
         });
     });
 
@@ -200,8 +191,7 @@
                     $("#clear").attr('disabled','true');
                 },
                 success: function(data){
-                    $("#table-account").DataTable().ajax.reload();
-                    $('#show-add').modal('hide');
+                    window.location.href="<?php echo base_url('admin/finance/view_account');?>";
                     Swal.fire({
                         icon: 'success',
                         type: 'success',

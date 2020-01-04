@@ -10,7 +10,8 @@ class Finance extends MY_Controller {
     }
 
     public function view_account(){
-        $this->template->load('admin/layout/container','admin/finance/view_account');
+        $data['result'] = $this->db->get('account')->result_array();
+        $this->template->load('admin/layout/container','admin/finance/view_account', $data);
     }
 
     public function loadList(){
