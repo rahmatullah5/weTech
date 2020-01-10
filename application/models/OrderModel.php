@@ -26,4 +26,17 @@ class OrderModel extends CI_Model {
 		return $this->db->update('order_transaction', $user);
 	}
 
+	public function updateOrderAndCreateShipping($id) {
+			$this->db->where('order_id', $id);
+			$this->db->update('order_status', 'sent');
+			$this->db->insert('shippings', {
+		                    courier: 'JNE',
+		                    reciever: 'Rahmat',
+		                    depart: 'cimahi',
+		                    destination: 'bandung',
+		                    status: 'Pending'
+		                    order_id: $id
+		                });
+
+	}
 }
