@@ -57,7 +57,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- header lists -->
 					<ul>
 						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+							<a href="https://www.jne.co.id/en/tracking/trace"  class="text-white">
 								<i class="fas fa-truck mr-2"></i>Track Order</a>
 						</li>
 						<li class="text-center border-right text-white">

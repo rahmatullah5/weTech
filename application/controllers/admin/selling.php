@@ -15,4 +15,9 @@ class Selling extends CI_Controller {
 		$this->load->view('admin/layout/container', $content);
 
 	}
+
+	public function initShippingOnRelatedOrder($id){
+			    $shipping_id = $this->OrderModel->updateOrderAndCreateShipping($id);
+			 	redirect('/admin/shippings/show/'.$shipping_id);		
+		}
 }

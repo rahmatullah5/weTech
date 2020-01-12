@@ -30,16 +30,27 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+                <table class="table table-hover" id="table-receipt">
                   <thead>
                     <tr>
                       <th>Date</th>
+                      <th>ID</th>
                       <th>Title</th>
                       <th>Description</th>
                       <th>Amount</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php foreach ($result as $data) {?>
+                      <tr>
+                        <td><?php echo $data['created_date']?></td>
+                        <td><?php echo $data['id_receipt']?></td>
+                        <td><?php echo $data['title']?></td>
+                        <td><?php echo $data['description']?></td>
+                        <td><?php echo number_format($data['amount'],2,",",".");?></td>
+                      </tr>
+                    <?php }?>
+                  </tbody>
                 </table>
               </div>
               </div>
@@ -54,52 +65,33 @@
      <!--footer-->
   </div>
 </div>
+<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/i18n/id.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+
 <script>
-              $(document).on('click','.remove-receipt',function(){
-                receipts_id 	= $(this).attr('receipts_id');
-                title           = $(this).attr('title1');
-                bootbox.confirm("Are you sure <b>"+title+"</b> ?",function(res){
-                    if(res){
-                        $.ajax({
-                            url 		: "<?php echo site_url() ?>/admin/finance/",
-                            type 		: "POST",
-                            data 		: {
-                                receipts_id 	: receipts_id
-                            },
-                            beforeSend	:function(){				
-                                $("#remove-receipt").find('span').attr('class','fa fa-trash');
-                            },
-                            success 	: function(res){
-                                $(".toast").remove();
-                                if(res.code == 0){
-                                    $.toast({
-                                        title 	: "Success <span class='fa fa-check' ></span>",
-                                        content : "Success removing receipt",
-                                        type 	: "success",
-                                        delay 	: 5000
-                                    });
-                                }else{
-                                    $.toast({
-                                        title 	: "Failed",
-                                        content : res.info,
-                                        type 	: "warning",
-                                        delay 	: 5000
-                                    });
-                                }
-                            },
-                            complete 	:function(){
-                                $("#table-receipt").DataTable().ajax.reload();	
-                            },
-                            error 		: function(){
-                                $.toast({
-                                    title 	: "Warning",
-                                    content : "Error. "+title+" has been used in transaction.",
-                                    type 	: "warning",
-                                    delay 	: 5000
-                                });
-                            }
-                        });
-                    }
-                });
-            });
+$(document).ready(function(){
+    $("#nav_finance").addClass('active');//attr('class','active'); 
+    $('#table-receipt').DataTable({
+        language        :{
+            "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
+        },
+        processing 		: true,
+        pagingType 		: "simple",
+    });
+});
 </script>
