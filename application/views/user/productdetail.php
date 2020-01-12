@@ -235,167 +235,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Electronics
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">Mobiles, Computers</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">All Mobile Phones</a>
-												</li>
-												<li>
-													<a href="product.html">All Mobile Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Cases & Covers</a>
-												</li>
-												<li>
-													<a href="product.html">Screen Protectors</a>
-												</li>
-												<li>
-													<a href="product.html">Power Banks</a>
-												</li>
-												<li>
-													<a href="product.html">All Certified Refurbished</a>
-												</li>
-												<li>
-													<a href="product.html">Tablets</a>
-												</li>
-												<li>
-													<a href="product.html">Wearable Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Smart Home</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">Laptops</a>
-												</li>
-												<li>
-													<a href="product.html">Drives & Storage</a>
-												</li>
-												<li>
-													<a href="product.html">Printers & Ink</a>
-												</li>
-												<li>
-													<a href="product.html">Networking Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Game Zone</a>
-												</li>
-												<li>
-													<a href="product.html">Software</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Appliances
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">TV, Appliances, Electronics</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Televisions</a>
-												</li>
-												<li>
-													<a href="product2.html">Home Entertainment Systems</a>
-												</li>
-												<li>
-													<a href="product2.html">Headphones</a>
-												</li>
-												<li>
-													<a href="product2.html">Speakers</a>
-												</li>
-												<li>
-													<a href="product2.html">MP3, Media Players & Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Audio & Video Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">DSLR Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">Camera Accessories</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Musical Instruments</a>
-												</li>
-												<li>
-													<a href="product2.html">Gaming Consoles</a>
-												</li>
-												<li>
-													<a href="product2.html">All Electronics</a>
-												</li>
-												<li>
-													<a href="product2.html">Air Conditioners</a>
-												</li>
-												<li>
-													<a href="product2.html">Refrigerators</a>
-												</li>
-												<li>
-													<a href="product2.html">Washing Machines</a>
-												</li>
-												<li>
-													<a href="product2.html">Kitchen & Home Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">Heating & Cooling Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">All Appliances</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
+						
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="about.html">About Us</a>
 						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product.html">New Arrivals</a>
-						</li>
+
 						<li class="nav-item dropdown active mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Pages
+								Product
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="product.html">Product 1</a>
-								<a class="dropdown-item" href="product2.html">Product 2</a>
+								<a class="dropdown-item" href="product.html">Iphone</a>
+								<a class="dropdown-item" href="product2.html">ASUS</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item active" href="single.html">Single Product 1</a>
-								<a class="dropdown-item" href="single2.html">Single Product 2</a>
+								<a class="dropdown-item" href="single.html">Samsung</a>
+								<a class="dropdown-item" href="single2.html">OPPO</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?=base_url('user/dashboard/checkout')?>">Checkout Page</a>
-								<a class="dropdown-item" href="payment.html">Payment Page</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -560,8 +415,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- copyright -->
 	<div class="copy-right py-3">
 		<div class="container">
-			<p class="text-center text-white">© 2018 Electro Store. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
+			<p class="text-center text-white">© 2020 WeTech Store. All rights reserved | Design by
+				<a href="http://w3layouts.com"> B2.</a>
 			</p>
 		</div>
 	</div>

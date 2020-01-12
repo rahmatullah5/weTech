@@ -36,7 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- pop-up-box -->
 	<link href="<?=base_url('assets/assetsUser/css/menu.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
-	<link href="<?=base_url('assets/assetsUser/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" media="all" />
+	<!-- <link href="<?=base_url('assets/assetsUser/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" media="all" /> -->
 	<!-- //Custom-Files -->
 
 	<!-- web fonts -->
@@ -197,20 +197,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<button class="btn my-2 my-sm-0" type="submit">Search</button>
 							</form>
 						</div>
-						<!-- //search -->
-						<!-- cart details -->
-						<!-- <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-								<form action="#" method="post" class="last">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="display" value="1">
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
-										<i class="fas fa-cart-arrow-down"></i>
-									</button>
-								</form>
-							</div>
-						</div> -->
-						<!-- //cart details -->
 					</div>
 				</div>
 			</div>
@@ -223,20 +209,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="agileits-navi_search">
-					<!-- <form action="#" method="post">
-						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
-							<option value="">All Categories</option>
-							<option value="Televisions">Televisions</option>
-							<option value="Headphones">Headphones</option>
-							<option value="Computers">Computers</option>
-							<option value="Appliances">Appliances</option>
-							<option value="Mobiles">Mobiles</option>
-							<option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-							<option value="iPad & Tablets">iPad & Tablets</option>
-							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
-							<option value="Home Audio & Theater">Home Audio & Theater</option>
-						</select>
-					</form> -->
+					
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				    aria-expanded="false" aria-label="Toggle navigation">
@@ -249,167 +222,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Electronics
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">Mobiles, Computers</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">All Mobile Phones</a>
-												</li>
-												<li>
-													<a href="product.html">All Mobile Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Cases & Covers</a>
-												</li>
-												<li>
-													<a href="product.html">Screen Protectors</a>
-												</li>
-												<li>
-													<a href="product.html">Power Banks</a>
-												</li>
-												<li>
-													<a href="product.html">All Certified Refurbished</a>
-												</li>
-												<li>
-													<a href="product.html">Tablets</a>
-												</li>
-												<li>
-													<a href="product.html">Wearable Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Smart Home</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">Laptops</a>
-												</li>
-												<li>
-													<a href="product.html">Drives & Storage</a>
-												</li>
-												<li>
-													<a href="product.html">Printers & Ink</a>
-												</li>
-												<li>
-													<a href="product.html">Networking Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Game Zone</a>
-												</li>
-												<li>
-													<a href="product.html">Software</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Appliances
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">TV, Appliances, Electronics</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Televisions</a>
-												</li>
-												<li>
-													<a href="product2.html">Home Entertainment Systems</a>
-												</li>
-												<li>
-													<a href="product2.html">Headphones</a>
-												</li>
-												<li>
-													<a href="product2.html">Speakers</a>
-												</li>
-												<li>
-													<a href="product2.html">MP3, Media Players & Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Audio & Video Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">DSLR Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">Camera Accessories</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Musical Instruments</a>
-												</li>
-												<li>
-													<a href="product2.html">Gaming Consoles</a>
-												</li>
-												<li>
-													<a href="product2.html">All Electronics</a>
-												</li>
-												<li>
-													<a href="product2.html">Air Conditioners</a>
-												</li>
-												<li>
-													<a href="product2.html">Refrigerators</a>
-												</li>
-												<li>
-													<a href="product2.html">Washing Machines</a>
-												</li>
-												<li>
-													<a href="product2.html">Kitchen & Home Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">Heating & Cooling Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">All Appliances</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
+						
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="about.html">About Us</a>
 						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product.html">New Arrivals</a>
-						</li>
+
 						<li class="nav-item dropdown active mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Pages
+								Product
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="product.html">Product 1</a>
-								<a class="dropdown-item" href="product2.html">Product 2</a>
+								<a class="dropdown-item" href="product.html">Iphone</a>
+								<a class="dropdown-item" href="product2.html">ASUS</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="single.html">Single Product 1</a>
-								<a class="dropdown-item" href="single2.html">Single Product 2</a>
+								<a class="dropdown-item" href="single.html">Samsung</a>
+								<a class="dropdown-item" href="single2.html">OPPO</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item active" href="<?=base_url('user/dashboard/checkout')?>">Checkout Page</a>
-								<a class="dropdown-item" href="payment.html">Payment Page</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -431,34 +259,88 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</h3>
 			<!-- //tittle heading -->
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="panel panel-default">
-					  	<div class="panel-heading">Address 
-					  		<!-- <a href="#" data-toggle="modal" data-target="#address" class="btn btn-primary pull-right"> Add New Address</a> -->
-					  	</div>
-					  	<div class="panel-body"> Gedung Telkom
-							Jl Japati No 1, Citarum, Sadang Serang, Coblong, Kota Bandung, Jawa Barat 40133
-							Coblong, Bandung
-							Jawa Barat, 40133
-							Indonesia
-							6283829829660 
+				<div class="col-sm-6" style="border: 1px solid black;">
+					<h2>Form Data </h2> 
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Nama Lengkap </label>
+							<div class="col-xs-3">
+								<input type="text" id="user_id" class="form-control" hidden="" />
+								<input type="text" id="fullname" class="form-control" style="height: 32px;" placeholder="Nama Lengkap" name="DatDir"/>
+							</div>
 						</div>
-					</div>
-					<!-- <span> Address <select id="" style="margin-left: 100px;"><option> Choice </option></select></span> -->
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Alamat </label>
+							<div class="col-xs-3">
+								<textarea placeholder="Alamat Penerima" class="form-control" id="address"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left">Nomor Handphone</label>
+							<div class="col-xs-3">
+								<input type="text" id="mobile" class="form-control" style="height: 32px;" placeholder="MDN" name="DatDir"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Keterangan Tambahan </label>
+							<div class="col-xs-3">
+								<textarea placeholder="Contoh : Warna hitam,merah,dan lain-lain." class="form-control" id="ket"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Jasa Pengiriman </label>
+							<div class="col-xs-3">
+								<input type="text" id="jasping" class="form-control" style="height: 32px;" value="JNE" disabled=""/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Smartphone </label>
+							<div class="col-xs-3">
+								<input type="text" id="idbarang" class="form-control" hidden="" />
+								<input type="text" id="spdes" class="form-control" style="height: 32px;" value="Samsung Galaksi J7" disabled="" />
+							</div>
+						</div>
+						<!-- <div class="form-group">
+							<label id="label-acc" class="col-xs-3 control-label no-padding-left">Order Limit</label>
+							<div class="col-xs-3">
+								<select class="chosen form-control" id="o_limit" name="o_limit">
+									<option value="">-- Silakan Pilih --</option>
+									<option value="25">25 Order</option>
+									<option value="50">50 Order</option>
+									<option value="75">75 Order</option>
+									<option value="100">100 Order</option>
+								</select>
+							</div>
+						</div> -->
+					</form>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="panel panel-default">
-					  	<div class="panel-heading">Detail </div>
-					  	<div class="panel-body"> 
-					  		<span>Total Harga Barang Rp 1.084.000</span><br>
-					  		<span>Biaya Kirim & Penanganan Rp 0</span><br>
-					  		<span>Biaya Perlindungan Pengiriman Rp 0</span><br><br>
-					  		<span>Total Belanja  Rp1.084.000</span><br>
-						</div>
-						<div class="panel-footer"><a href="#" class="btn btn-primary " id="checkout"> Bayar </a></div>
+				<div class="col-sm-1"></div>
+				
+				<div class="col-sm-4" style="border: 1px solid black; height: 320px;">
+					<h2>Detail Pembayaran</h2> 
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Total Harga Bayar </label>
+								<div class="col-xs-3">
+									<input type="text" id="price" value="Rp 1.084.000" class="form-control" style="height: 32px;" disabled="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Biaya Kirim & Penanganan </label>
+								<div class="col-xs-3">
+									<input type="text" id="pricedes" value="Rp 10.000" class="form-control" style="height: 32px;" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left">Total Belanja</label>
+								<div class="col-xs-3">
+									<input type="text" id="allprice" value="Rp 1.094.000" class="form-control" style="height: 32px;" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="panel-footer"><a href="#" class="btn btn-primary " id="checkout"> Bayar </a></div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -470,8 +352,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- copyright -->
 	<div class="copy-right py-3">
 		<div class="container">
-			<p class="text-center text-white">© 2018 Electro Store. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
+			<p class="text-center text-white">© 2020 WeTech Store. All rights reserved | Design by
+				<a href="http://w3layouts.com"> B2.</a>
 			</p>
 		</div>
 	</div>

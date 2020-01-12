@@ -247,172 +247,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
-						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="index.html">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Electronics
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">Mobiles, Computers</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">All Mobile Phones</a>
-												</li>
-												<li>
-													<a href="product.html">All Mobile Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Cases & Covers</a>
-												</li>
-												<li>
-													<a href="product.html">Screen Protectors</a>
-												</li>
-												<li>
-													<a href="product.html">Power Banks</a>
-												</li>
-												<li>
-													<a href="product.html">All Certified Refurbished</a>
-												</li>
-												<li>
-													<a href="product.html">Tablets</a>
-												</li>
-												<li>
-													<a href="product.html">Wearable Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Smart Home</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.html">Laptops</a>
-												</li>
-												<li>
-													<a href="product.html">Drives & Storage</a>
-												</li>
-												<li>
-													<a href="product.html">Printers & Ink</a>
-												</li>
-												<li>
-													<a href="product.html">Networking Devices</a>
-												</li>
-												<li>
-													<a href="product.html">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="product.html">Game Zone</a>
-												</li>
-												<li>
-													<a href="product.html">Software</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Appliances
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">TV, Appliances, Electronics</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Televisions</a>
-												</li>
-												<li>
-													<a href="product2.html">Home Entertainment Systems</a>
-												</li>
-												<li>
-													<a href="product2.html">Headphones</a>
-												</li>
-												<li>
-													<a href="product2.html">Speakers</a>
-												</li>
-												<li>
-													<a href="product2.html">MP3, Media Players & Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Audio & Video Accessories</a>
-												</li>
-												<li>
-													<a href="product2.html">Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">DSLR Cameras</a>
-												</li>
-												<li>
-													<a href="product2.html">Camera Accessories</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product2.html">Musical Instruments</a>
-												</li>
-												<li>
-													<a href="product2.html">Gaming Consoles</a>
-												</li>
-												<li>
-													<a href="product2.html">All Electronics</a>
-												</li>
-												<li>
-													<a href="product2.html">Air Conditioners</a>
-												</li>
-												<li>
-													<a href="product2.html">Refrigerators</a>
-												</li>
-												<li>
-													<a href="product2.html">Washing Machines</a>
-												</li>
-												<li>
-													<a href="product2.html">Kitchen & Home Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">Heating & Cooling Appliances</a>
-												</li>
-												<li>
-													<a href="product2.html">All Appliances</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
+						
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="about.html">About Us</a>
 						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product.html">New Arrivals</a>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+
+						<li class="nav-item dropdown active mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Pages
+								Product
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="product.html">Product 1</a>
-								<a class="dropdown-item" href="product2.html">Product 2</a>
+								<a class="dropdown-item" href="product.html">Iphone</a>
+								<a class="dropdown-item" href="product2.html">ASUS</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?=base_url('user/dashboard/productdetail')?>">Single Product 1</a>
-								<a class="dropdown-item" href="single2.html">Single Product 2</a>
+								<a class="dropdown-item" href="single.html">Samsung</a>
+								<a class="dropdown-item" href="single2.html">OPPO</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?=base_url('user/dashboard/checkout')?>">Checkout Page</a>
-								<a class="dropdown-item" href="payment.html">Payment Page</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -686,206 +541,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- product right -->
 				<div class="col-lg-3 mt-lg-0 mt-4 p-lg-0">
 					<div class="side-bar p-sm-4 p-3">
-						<div class="search-hotel border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Search Here..</h3>
-							<form action="#" method="post">
-								<input type="search" placeholder="Product name..." name="search" required="">
-								<input type="submit" value=" ">
-							</form>
-						</div>
-						<!-- price -->
-						<div class="range border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Price</h3>
-							<div class="w3l-range">
-								<ul>
-									<li>
-										<a href="#">Under $1,000</a>
-									</li>
-									<li class="my-1">
-										<a href="#">$1,000 - $5,000</a>
-									</li>
-									<li>
-										<a href="#">$5,000 - $10,000</a>
-									</li>
-									<li class="my-1">
-										<a href="#">$10,000 - $20,000</a>
-									</li>
-									<li>
-										<a href="#">$20,000 $30,000</a>
-									</li>
-									<li class="mt-1">
-										<a href="#">Over $30,000</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- //price -->
-						<!-- discounts -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Discount</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">5% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">10% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">20% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">30% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">50% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">60% or More</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //discounts -->
-						<!-- reviews -->
-						<div class="customer-rev border-bottom left-side py-2">
-							<h3 class="agileits-sear-head mb-3">Customer Review</h3>
-							<ul>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>5.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>4.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star-half"></i>
-										<span>3.5</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>3.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star-half"></i>
-										<span>2.5</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<!-- //reviews -->
-						<!-- electronics -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Electronics</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Cameras & Photography</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Car & Vehicle Electronics</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Computers & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">GPS & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Headphones</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Home Audio</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Home Theater, TV & Video</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Mobiles & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Portable Media Players</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Tablets</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Telephones & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Wearable Technology</span>
-								</li>
-							</ul>
-						</div>
+					
 						<!-- //electronics -->
 						<!-- delivery -->
 						<div class="left-side border-bottom py-2">
 							<h3 class="agileits-sear-head mb-3">Cash On Delivery</h3>
 							<ul>
 								<li>
-									<input type="checkbox" class="checked">
+									<!-- <input type="checkbox" class="checked"> -->
 									<span class="span">Eligible for Cash On Delivery</span>
 								</li>
 							</ul>
 						</div>
-						<!-- //delivery -->
-						<!-- arrivals -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">New Arrivals</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Last 30 days</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Last 90 days</span>
-								</li>
-							</ul>
-						</div>
+						
 						<!-- //arrivals -->
 						<!-- best seller -->
 						<div class="f-grid py-2">
@@ -1136,8 +804,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- copyright -->
 	<div class="copy-right py-3">
 		<div class="container">
-			<p class="text-center text-white">© 2018 Electro Store. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
+			<p class="text-center text-white">© 2020 WeTech Store. All rights reserved | Design by
+				<a href="http://w3layouts.com"> B2.</a>
 			</p>
 		</div>
 	</div>

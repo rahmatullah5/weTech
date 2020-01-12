@@ -76,9 +76,9 @@ class Dashboard extends CI_Controller {
 		$order['product_id'] 		= $this->input->post('product_id');
 		$order['date_transaction']	= date("Y-m-d H:i:s");
 		$order['pay_by'] 			= $this->input->post('pay_by');
-		$order['ship_id'] 			= $this->input->post('ship_id');
 		$order['price'] 			= $this->input->post('price');
 		$order['discount'] 			= $this->input->post('discount');
+		$order['address'] 			= $this->input->post('address');
  
 		$query = $this->OrderModel->saveOrder($order);
  
