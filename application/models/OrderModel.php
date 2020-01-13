@@ -44,4 +44,24 @@ class OrderModel extends CI_Model {
 		return $this->db->update('order_transaction', $param);
 	}
 
+	public function initShippingOnRelatedOrder($id){
+			    $shipping_id = $this->OrderModel->updateOrderAndCreateShipping($id);
+			 	redirect('/admin/shippings/show/'.$shipping_id);		
+		}
+
+	public function updateOrderAndCreateShipping($id) {
+			$this->db->insert('shippings', [
+		                    'courier' => 'JNE',
+		                    'receiver' => 'Rahmat',
+		                    'depart' => 'cimahi',
+		                    'destination' => 'bandung',
+		                    'status' => 'Pending',
+		                    'order_id' => $id
+		                ]);
+			$ship_id = $this->db->insert_id();
+			$this->db->where('order_id', $id);
+			$this->db->update('order_transaction', ['order_status' => 'sent', 'ship_id' => $ship_id]);
+			return $ship_id;
+	}		
+
 }
