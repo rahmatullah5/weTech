@@ -60,7 +60,7 @@ class OrderModel extends CI_Model {
 		                ]);
 			$ship_id = $this->db->insert_id();
 			$this->db->where('order_id', $id);
-			$this->db->update('order_transaction', ['order_status' => 'sent', 'ship_id' => $ship_id]);
+			$this->db->update('order_transaction', ['order_status' => 'TOSHIPPING', 'ship_id' => $ship_id]);
 			return $ship_id;
 	}		
 
