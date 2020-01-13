@@ -57,19 +57,17 @@
                   <input type="text" class="form-control" value=<?=$shipping['courier']?> disabled>
                 </div>
               </div>
-                    
               <div class="col-sm-6">
                 <!-- select -->
                 <div class="form-group">
-                  <label>Perbaharui Status</label>
-                  <select name="status" class="form-control" <?php echo (empty($order))? 'disabled' : '' ?>>
-                    <option value='Pending' <?php echo ($shipping['status'] == 'Pending')? 'selected' : '' ?> >Pending</option>
-                    <option value='Inbound' <?php echo ($shipping['status'] == 'Inbound')? 'selected' : '' ?>>Inbound</option>
-                    <option value='On Progress' <?php echo ($shipping['status'] == 'On Progress')? 'selected' : '' ?>>On Progress</option>
-                    <option value='Delivered' <?php echo ($shipping['status'] == 'Delivered')? 'selected' : '' ?>>Delivered</option>
-                  </select>
+                  <label>Status</label>
+                     <input type="text" class="form-control" value="<?=$shipping['status']?>"  disabled>
+                     <input type="hidden" class="form-control" value="Sent" name='status'>
+
                 </div>
-              </div>
+              </div>              
+                    
+              
               <table class="table text-center">
                 <tr>
                   <td>
