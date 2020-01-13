@@ -2,38 +2,14 @@
 
 class Finance extends MY_Controller {
 	public function index(){
-        $data['result'] = $this->db->get('receipt')->result_array();
-        $this->template->load('admin/layout/container','admin/finance/view_receipt', $data);
-    }
-    
-    public function form_receipt(){
-        $this->template->load('admin/layout/container','admin/finance/form_receipt');
+        $this->db->where('order_status', 'SUBMITED');
+        $data['result'] = $this->db->get('order_transaction')->result_array();
+        $this->template->load('admin/layout/container','admin/finance/index', $data);
     }
 
     public function view_account(){
         $data['result'] = $this->db->get('account')->result_array();
         $this->template->load('admin/layout/container','admin/finance/view_account', $data);
-    }
-
-    public function loadList(){
-        $list = $this->M_finance->get_datatables();
-        $data = array();
-        $no = $_POST['start'];
-        foreach ($list as $field) {
-            // $no++;
-            // $data['no'] = $no;
-            $data[]      = $field;
-        }
-        // echo "<pre>"; print_r($data); echo "</pre>";die();
-        
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->M_finance->count_all(),
-            "recordsFiltered" => $this->M_finance->count_filtered(),
-            "data" => $data,
-        );
-        //output dalam format JSON
-        echo json_encode($output);
     }
 
     public function saveaccount(){
@@ -44,11 +20,28 @@ class Finance extends MY_Controller {
         echo json_encode($result);
     }
 
-    public function savereceipt(){
-        $_POST['created_by'] = $this->session->userdata('username');
-        $_POST['amount']     = str_replace('.','', $_POST['amount']);
-        $result = $this->db->insert('receipt', $_POST);
+    public function upstatus(){
+        //update status table order transaction
+        $this->db->set('order_status','APPROVED');
+        $this->db->where('order_id', $_POST['id']);
+        $this->db->update('order_transaction');
+        
+        //insert jurnal
+        $this->M_finance->insertjurnal($_POST['id'], 111, 'd', $_POST['nominal']);
+        $this->M_finance->insertjurnal($_POST['id'], 411, 'c', $_POST['nominal']);
+        
+        $result = 0;
         echo json_encode($result);
+    }
+
+    public function countRevenue(){
+        $result = $this->M_finance->countRevenue();
+        $row   = array();
+        foreach ($result as $data) {
+            $row['total'] = $data;
+        }
+
+        echo json_encode($row);
     }
 
 }
