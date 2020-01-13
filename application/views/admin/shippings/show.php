@@ -77,7 +77,7 @@
                     <a href='<?=base_url('admin/shippings/index/')?>' class='btn btn-success btn-sm'>Kembali</a>
                     <?php if (!empty($order)){ ?>
                     <input type="submit" class="btn btn-primary" value="Simpan Data">
-                  <?php } ?>
+                    <?php } ?>
                   </td>
                 </tr>
               </table>
