@@ -45,7 +45,7 @@
                             <td><?php echo $data['account_code']?></td>
                             <td><?php echo $data['nama']?></td>
                             <td><?php echo $data['parent_account']?></td>
-                            <td><button type="button" class="btn btn-warning showmodal-edit" id-account="<?php echo $data['id_account']?>" account_name="<?php echo $data['nama']?>" account_code="<?php echo $data['account_code']?>" parent_account="<?php echo $data['parent_account']?>"><span class="fa fa-edit"></span></button></td>
+                            <td><button type="button" class="btn btn-warning btn-sm showmodal-edit" id-account="<?php echo $data['id_account']?>" account_name="<?php echo $data['nama']?>" account_code="<?php echo $data['account_code']?>" parent_account="<?php echo $data['parent_account']?>"><span class="fa fa-edit"></span></button></td>
                         </tr>
                     <?php }?>
                   </tbody>
