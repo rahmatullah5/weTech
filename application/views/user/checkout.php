@@ -183,23 +183,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="modal-body">
 						<div class="row">
-		                    <div class="col-xs-12">
-		                        <div class="table-responsive">
-		                            <table id="table-history" class="table table-striped table-bordered table-hover">
-		                                <thead>
-		                                    <tr>
-		                                        <th>Product Name</th>
-		                                        <th>Submit By</th>
-		                                        <th>Receiver</th>
-		                                        <th>Handphone Number</th>
-		                                        <th>Status</th>
-		                                        <th>Amount</th>
-		                                        <th>Date Transaction</th>
-		                                    </tr>
-		                                </thead>
-		                            </table>
-		                        </div>  
-		                    </div>
+	                        <div class="table-responsive">
+	                            <table id="table-history" class="table table-striped table-bordered table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Product Name</th>
+	                                        <th>Submit By</th>
+	                                        <th>Receiver</th>
+	                                        <th>Handphone Number</th>
+	                                        <th>Amount</th>
+	                                        <th>Status</th>
+	                                        <th>Date Transaction</th>
+	                                    </tr>
+	                                </thead>
+	                            </table>
+	                        </div>  
 		                </div>
 					</div>
 				</div>
@@ -621,6 +619,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		function loadtransaction(){
 			$('#m-transaction').modal('show');
+			$('#table-history').DataTable().clear().draw();
 			$.ajax({
 		        type    : 'POST',
 		        dataType: 'json',
@@ -632,15 +631,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		        	if (result.code == 0) {
 					    $('#table-history').DataTable( {
-					        data: result.data,
-					        columns: [
-					            { data: "name" },
-					            { data: "fullname" },
-					            { data: "receiver" },
-					            { data: "no_mobile" },
-					            { data: "price" },
-					            { data: "order_status" },
-					            { data: "date_transaction" }
+					    	"processing" 	: true,
+                    		"serverSide" 	: false,
+                    		"paging" 		: true,
+                    		"autoWidth"		: true,
+                    		"destroy"		: true,
+					        "data" 			: result.data,
+					        "columns" : [
+					            { "data": "name" },
+					            { "data": "fullname" },
+					            { "data": "receiver" },
+					            { "data": "no_mobile" },
+					            { "data": "price" },
+					            { "data": "order_status" },
+					            { "data": "date_transaction" }
 					        ]
 					    } );
 		        	}
