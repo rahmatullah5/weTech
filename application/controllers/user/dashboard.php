@@ -69,4 +69,10 @@ class Dashboard extends CI_Controller {
 
 	}
 
+	public function transdetail(){
+
+		$this->load->view('user/transdetail');
+
+	}
+
 }
