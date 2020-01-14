@@ -95,7 +95,7 @@
           <!-- ADMIN INVENTORY -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-inventory'])): ?>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="<?php echo base_url('admin/inventory/index')?>" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   INVENTORY
