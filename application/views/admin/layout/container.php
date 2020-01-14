@@ -150,25 +150,25 @@
           <?php endif ?>
           <!-- ADMIN FINANCE -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-finance'])): ?>
-            <li class="nav-item" id="nav_finance">
-              <a href="" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  FINANCE
+                  Finance
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?=base_url('admin/finance/view_account')?>" class="nav-link">
+                  <a href="<?php echo base_url('admin/finance');?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>MasterAccount</p>
+                    <p>Transaction History</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?php echo base_url('admin/finance');?>" class="nav-link">
+                  <a href="<?php echo base_url('admin/finance/view_account');?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Receipt</p>
+                    <p>AccountMaster</p>
                   </a>
                 </li>
               </ul>
