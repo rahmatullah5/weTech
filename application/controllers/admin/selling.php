@@ -47,6 +47,10 @@ class Selling extends CI_Controller {
 
 		if ($this->input->post('status')) {
 			$param['order_status'] 	= $this->input->post('status');
+
+			if ($param['order_status']  == 'FINISH') {
+				$param['date_receipt']	= date("Y-m-d H:i:s");
+			}
 		}
 
 		if ($this->input->post('shipping_id')) {

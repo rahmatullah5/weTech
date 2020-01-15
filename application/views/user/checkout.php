@@ -194,6 +194,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	                                        <th>Amount</th>
 	                                        <th>Status</th>
 	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
 	                                    </tr>
 	                                </thead>
 	                            </table>
@@ -644,7 +645,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					            { "data": "no_mobile" },
 					            { "data": "price" },
 					            { "data": "order_status" },
-					            { "data": "date_transaction" }
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
 					        ]
 					    } );
 		        	}
@@ -656,8 +661,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		            }
 		        }
 		    });
-			
-			
 		}
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->

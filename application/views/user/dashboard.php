@@ -40,6 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<link href="<?=base_url('assets/assetsUser/css/font-style.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<link href="<?=base_url('assets/assetsUser/css/font-style-2.css')?>" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?=base_url('assets/assetsUser/css/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 
@@ -89,6 +90,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<!-- modals -->
+	<div class="modal fade" id="m-transaction" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content" style="margin-left: -200px; width: 200%;" >
+					<div class="modal-header">
+						<h5 class="modal-title">Transaction</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+	                        <div class="table-responsive">
+	                            <table id="table-history" class="table table-striped table-bordered table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Product Name</th>
+	                                        <th>Submit By</th>
+	                                        <th>Receiver</th>
+	                                        <th>Handphone Number</th>
+	                                        <th>Amount</th>
+	                                        <th>Status</th>
+	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
+	                                    </tr>
+	                                </thead>
+	                            </table>
+	                        </div>  
+		                </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<!-- log in -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -272,6 +305,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact Us</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
 						</li>
 					</ul>
 				</div>
@@ -931,11 +968,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 
 		});
+
+		function loadtransaction_history(){
+			$('#m-transaction').modal('show');
+			$('#table-history').DataTable().clear().draw();
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
+		        data    : {
+		                    order_status 	: 'SUBMITTED',
+		                },
+		        success: function(result){
+
+		        	if (result.code == 0) {
+					    $('#table-history').DataTable( {
+					    	"processing" 	: true,
+                    		"serverSide" 	: false,
+                    		"paging" 		: true,
+                    		"autoWidth"		: true,
+                    		"destroy"		: true,
+					        "data" 			: result.data,
+					        "columns" : [
+					            { "data": "name" },
+					            { "data": "fullname" },
+					            { "data": "receiver" },
+					            { "data": "no_mobile" },
+					            { "data": "price" },
+					            { "data": "order_status" },
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
+					        ]
+					    } );
+		        	}
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+		}
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
 	<script src="<?=base_url('assets/assetsUser/js/bootstrap.js')?>"></script>
+	<script src="<?=base_url('assets/assetsUser/js/jquery.dataTables.min.js')?>"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 </body>
