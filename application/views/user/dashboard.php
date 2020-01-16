@@ -36,6 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- pop-up-box -->
 	<link href="<?=base_url('assets/assetsUser/css/menu.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
+	<link href="<?=base_url('assets/assetsUser/css/inventory.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom-Files -->
 
 	<link href="<?=base_url('assets/assetsUser/css/font-style.css')?>" rel="stylesheet" type="text/css" media="all" />
