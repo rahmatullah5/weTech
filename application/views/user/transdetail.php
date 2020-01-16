@@ -289,96 +289,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container py-xl-4 py-lg-2">
 				<!-- tittle heading -->
 				<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-					<span>C</span>heckout
+					<span>Transaction </span> Detail
 				</h3>
 				<!-- //tittle heading -->
 				<div class="row">
-					<div class="col-sm-6" style="border: 1px solid black;">
+					<div class="col-sm-7" style="border: 1px solid black;">
 						<h2>Form Data </h2> 
-						<form class="form-horizontal">
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Nama Lengkap </label>
-								<div class="col-xs-3">
-									<input type="text" id="user_id" class="form-control" hidden="" value="8" />
-									<input type="text" id="fullname" class="form-control" style="height: 32px;" placeholder="Nama Lengkap"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Alamat </label>
-								<div class="col-xs-3">
-									<textarea placeholder="Alamat Penerima" class="form-control" id="address"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left">Nomor Handphone</label>
-								<div class="col-xs-3">
-									<input type="text" id="mobile" class="form-control" style="height: 32px;" placeholder="Contoh : 083829829660"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Keterangan Tambahan </label>
-								<div class="col-xs-3">
-									<textarea placeholder="Contoh : Warna hitam,merah,dan lain-lain." class="form-control" id="ket"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Jasa Pengiriman </label>
-								<div class="col-xs-3">
-									<input type="text" id="jasping" class="form-control" style="height: 32px;" value="JNE" disabled=""/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Smartphone </label>
-								<div class="col-xs-3">
-									<input type="text" id="idbarang" class="form-control" hidden="" value="1"/>
-									<input type="text" id="spdes" class="form-control" style="height: 32px;" value="Samsung Galaksi J7" disabled="" />
-								</div>
-							</div>
-							<!-- <div class="form-group">
-								<label id="label-acc" class="col-xs-3 control-label no-padding-left">Order Limit</label>
-								<div class="col-xs-3">
-									<select class="chosen form-control" id="o_limit" name="o_limit">
-										<option value="">-- Silakan Pilih --</option>
-										<option value="25">25 Order</option>
-										<option value="50">50 Order</option>
-										<option value="75">75 Order</option>
-										<option value="100">100 Order</option>
-									</select>
-								</div>
-							</div> -->
-						</form>
+						<div class="col-sm-12">
+							<div class="col-sm-5" style="background: #eaeaea;color: black;">Transaction Number <br><span>11241241241</span></div><div class="col-sm-3" style="background: #b0b0b0;color: black;">Transaction Number <br><span>11241241241</span></div>
+						</div>
 					</div>
 					<div class="col-sm-1"></div>
 					
 					<div class="col-sm-4" style="border: 1px solid black; height: 320px;">
-						<h2>Detail Pembayaran</h2> 
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Total Harga Bayar </label>
-									<div class="col-xs-3">
-										<input type="text" id="price" value="Rp. 1.084.000" class="form-control" style="height: 32px;" disabled="" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Biaya Kirim & Penanganan </label>
-									<div class="col-xs-3">
-										<input type="text" id="pricedes" value="Rp. 10.000" class="form-control" style="height: 32px;" disabled=""/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label id="label-acc" class="col-xs-3 control-label no-padding-left">Total Belanja</label>
-									<div class="col-xs-3">
-										<input type="text" id="allprice" value="Rp. 1.094.000" class="form-control" style="height: 32px;" disabled=""/>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="panel-footer"><a href="#" class="btn btn-primary " id="checkout"> Bayar </a></div>
-								</div>
-							</form>
-						</div>
+						
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<!-- //checkout page -->
@@ -477,55 +403,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			//empty string means no validation error
 		}
 	</script>
-	<!-- //password-script -->
-
-	<!-- quantity -->
-	<script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
-
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-		});
-	</script>
-	<!--quantity-->
-	<script>
-		$(document).ready(function (c) {
-			$('.close1').on('click', function (c) {
-				$('.rem1').fadeOut('slow', function (c) {
-					$('.rem1').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close2').on('click', function (c) {
-				$('.rem2').fadeOut('slow', function (c) {
-					$('.rem2').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close3').on('click', function (c) {
-				$('.rem3').fadeOut('slow', function (c) {
-					$('.rem3').remove();
-				});
-			});
-		});
-	</script>
-	<!-- //quantity -->
-
-	<!-- smoothscroll -->
-	<script src="<?=base_url('assets/assetsUser/js/SmoothScroll.min.js')?>"></script>
-	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->
 
@@ -660,14 +537,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			
 		}
 	</script>
-	<!-- //smooth-scrolling-of-move-up -->
 
-	<!-- for bootstrap working -->
 	<script src="<?=base_url('assets/assetsUser/js/bootstrap.js')?>"></script>
 	<script src="<?=base_url('assets/assetsUser/js/jquery.dataTables.min.js')?>"></script>
-
-	<!-- //for bootstrap working -->
-	<!-- //js-files -->
 
 </body>
 

@@ -29,12 +29,12 @@ class Selling extends CI_Controller {
 			$result = array( 	'code' => 0,
                                 'info' => 'Berhasil',
                                 'data' => $data 
-                                ); 
+                            ); 
 		}else{
 			$result = array( 	'code' => 1,
                                 'info' => 'Data tidak ditemukan!',
                                 'data' => $data  
-                                );
+                            );
 		}
     	
     	echo json_encode($result);
@@ -69,6 +69,41 @@ class Selling extends CI_Controller {
                                                 
                                             )  
                             );
+		}
+    	
+    	echo json_encode($result);
+
+	}
+
+	public function checkoutAct(){
+
+		$order['order_status'] 		= $this->input->post('order_status');
+		$order['order_desc'] 		= $this->input->post('order_desc');
+		$order['user_id'] 			= $this->input->post('user_id');
+		$order['product_id'] 		= $this->input->post('product_id');
+		$order['date_transaction']	= date("Y-m-d H:i:s");
+		$order['pay_by'] 			= $this->input->post('pay_by');
+		$order['price'] 			= $this->input->post('price');
+		$order['receiver'] 			= $this->input->post('fullname');
+		$order['address'] 			= $this->input->post('address');
+		$order['no_mobile'] 		= $this->input->post('mobile');
+ 
+		$query = $this->OrderModel->saveOrder($order);
+ 
+		if($query){
+			$result = array( 	'code' => 0,
+                                'info' => 'Berhasil',
+                                'data' => array(    
+                                                
+                                            ) 
+                                ); 
+		}else{
+			$result = array( 	'code' => 1,
+                                'info' => 'Gagal',
+                                'data' => array(    
+                                                
+                                            ) 
+                                );
 		}
     	
     	echo json_encode($result);

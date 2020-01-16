@@ -23,7 +23,7 @@ class ShippingModel extends CI_Model {
 
 	public function update($shipping, $id){
 		$this->db->get_where('order_transaction',array('shipping_id'=>$id));
-		$this->db->update('order_transaction', ['order_status' => 'TOCUSTOMER ']);
+		$this->db->update('order_transaction', ['order_status' => 'TOCUSTOMER']);
 		$this->db->get_where('shippings',array('shipping_id'=>$id));
 		// $this->db->where('shippings', $id);
 		return $this->db->update('shippings', $shipping);

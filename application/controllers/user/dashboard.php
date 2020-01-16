@@ -69,36 +69,9 @@ class Dashboard extends CI_Controller {
 
 	}
 
-	public function checkoutAct(){
+	public function transdetail(){
 
-		$order['order_status'] 		= $this->input->post('order_status');
-		$order['user_id'] 			= $this->input->post('user_id');
-		$order['product_id'] 		= $this->input->post('product_id');
-		$order['date_transaction']	= date("Y-m-d H:i:s");
-		$order['pay_by'] 			= $this->input->post('pay_by');
-		$order['price'] 			= $this->input->post('price');
-		$order['discount'] 			= $this->input->post('discount');
-		$order['address'] 			= $this->input->post('address');
- 
-		$query = $this->OrderModel->saveOrder($order);
- 
-		if($query){
-			$result = array( 	'code' => 0,
-                                'info' => 'Berhasil',
-                                'data' => array(    
-                                                
-                                            ) 
-                                ); 
-		}else{
-			$result = array( 	'code' => 1,
-                                'info' => 'Gagal',
-                                'data' => array(    
-                                                
-                                            ) 
-                                );
-		}
-    	
-    	echo json_encode($result);
+		$this->load->view('user/transdetail');
 
 	}
 
