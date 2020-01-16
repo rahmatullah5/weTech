@@ -2,7 +2,7 @@
 
 class Finance extends MY_Controller {
 	public function index(){
-        $this->db->where('order_status', 'SUBMITED');
+        $this->db->where('order_status', 'SUBMITTED');
         $data['result'] = $this->db->get('order_transaction')->result_array();
         $this->template->load('admin/layout/container','admin/finance/index', $data);
     }
@@ -22,7 +22,7 @@ class Finance extends MY_Controller {
 
     public function upstatus(){
         //update status table order transaction
-        $this->db->set('order_status','APPROVED');
+        $this->db->set('order_status','CONFIRMED');
         $this->db->where('order_id', $_POST['id']);
         $this->db->update('order_transaction');
         
