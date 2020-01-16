@@ -19,16 +19,16 @@ class InventoryModel extends CI_Model {
 		return $query->result();
 	}
 
-	public function save($shipping){
-		return $this->db->insert('products', $shipping);
+	public function save($data){
+		return $this->db->insert('products', $data);
 	}
 	
-	public function saveProcurement($shipping){
-		return $this->db->insert('products_entered', $shipping);
+	public function saveProcurement($data){
+		return $this->db->insert('products_entered', $data);
 	}
 	
-	public function saveSold($shipping){
-		return $this->db->insert('products_out', $shipping);
+	public function saveSold($data){
+		return $this->db->insert('products_out', $data);
 	}
 
 	public function getById($id){
