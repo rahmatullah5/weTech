@@ -68,10 +68,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<?php if (isset($this->session->userdata['login'])){ ?>
 							<li class="text-center border-right text-white">
 
-					            <?php echo $this->session->userdata['login']['username'] ?>
+					    <?php echo $this->session->userdata['login']['username'] ?>
 					        </li>
 					        <li class="text-center border-right text-white">
-					            <a href="admin/auth/logout" class="text-white">Logout</a>
+					            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 					        </li>
 				        <?php }else{ ?>
 							<li class="text-center border-right text-white">
@@ -172,7 +172,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="<?php echo base_url(); ?>index.php/user/dashboard/insert">
+					<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 						<div class="form-group">
 							<label class="col-form-label">Fullname</label>
 							<input type="text" class="form-control" placeholder=" " name="fullname" required="">
@@ -282,7 +282,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="http://localhost/weTech/user/">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -308,9 +308,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<a class="nav-link" href="contact.html">Contact Us</a>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
-						</li>
+						<?php if (isset($this->session->userdata['login'])){ ?>
+							<li class="nav-item">
+								<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
+							</li>
+						<?php } ?>
+
 					</ul>
 				</div>
 			</nav>
@@ -423,7 +426,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+														<?php if (isset($this->session->userdata['login'])){ ?>
+															<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+														<?php }else{ ?>
+															<a href="<?=base_url('user/usermgt/productdetail')?>" class="link-product-add-cart">Quick View</a>
+														<?php } ?>
 													</div>
 												</div>
 											</div>
@@ -527,7 +534,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3 class="heading-tittle text-center font-italic">Iphone</h3>
 							<div class="row">
 								<?php
-									for ($x = 1; $x <= 3; $x++) {
+                          			foreach ($product as $v):
+									// echo"<pre>"; print_r($v['product_id']);die();
+		                        
 								?> 
 									<div class="col-md-4 product-men mt-5">
 										<div class="men-pro-item simpleCart_shelfItem">
@@ -535,17 +544,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+														<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
 													</div>
 												</div>
 											</div>
 											<div class="item-info-product text-center border-top mt-4">
 												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
+													<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' ><?=$v['name']?></a>
 												</h4>
 												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
+													<span class="item_price">Rp. <?=$v['price']?> </span>
+													<!-- <del>$280.00</del> -->
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 													<form action="#" method="post">
@@ -553,7 +562,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															<input type="hidden" name="cmd" value="_cart" />
 															<input type="hidden" name="add" value="1" />
 															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+															<input type="hidden" name="item_name" value=<?=$v['name']?> />
 															<input type="hidden" name="amount" value="200.00" />
 															<input type="hidden" name="discount_amount" value="1.00" />
 															<input type="hidden" name="currency_code" value="USD" />
@@ -566,9 +575,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</div>
 										</div>
 									</div>
-								<?php 
-									}
-								?>
+								<?php
+		                          endforeach
+		                        ?>
 							</div>
 						</div>
 						<!-- //fourth section -->

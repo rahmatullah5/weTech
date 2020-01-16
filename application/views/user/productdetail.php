@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					            <?php echo $this->session->userdata['login']['username'] ?>
 					        </li>
 					        <li class="text-center border-right text-white">
-					            <a href="admin/auth/logout" class="text-white">Logout</a>
+					            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 					        </li>
 				        <?php }else{ ?>
 							<li class="text-center border-right text-white">
@@ -135,14 +135,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form action="<?=base_url('admin/auth/action_login')?>" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<input type="text" class="form-control" placeholder=" " name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Log in">
@@ -173,22 +173,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<label class="col-form-label">Fullname</label>
+							<input type="text" class="form-control" placeholder=" " name="fullname" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Username</label>
+							<input type="text" class="form-control" placeholder="Code for login" name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
+							<input type="email" class="form-control" placeholder=" " name="email" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" id="password1" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+							<input type="password" class="form-control" placeholder=" " name="c_password" id="password2" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Register">
@@ -264,7 +268,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="http://localhost/weTech/user/">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -289,10 +293,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact Us</a>
 						</li>
-
-						<li class="nav-item">
-							<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
-						</li>
+						<?php if (isset($this->session->userdata['login'])){ ?>
+							<li class="nav-item">
+								<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
+							</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</nav>
@@ -391,7 +396,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<a href="http://localhost/weTech/user/dashboard/checkout?id=1000" class="btn btn-primary "> Checkout </a>
+									<?php if (isset($this->session->userdata['login'])){ ?>
+										<a href="http://localhost/weTech/user/dashboard/checkout?id=1000" class="btn btn-primary "> Checkout </a>
+									<?php } ?>
 									<!-- <input type="submit" name="submit" value="Add to cart" class="button" /> -->
 								</fieldset>
 							</form>
