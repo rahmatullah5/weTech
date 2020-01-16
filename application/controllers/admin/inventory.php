@@ -20,13 +20,11 @@ class Inventory extends CI_Controller {
 		$product_id = $id;
 		$code = $_POST['code'];
 		$name = $_POST['name'];
-		$stock = $_POST['stock'];
 		$price = $_POST['price'];
 		$spesifikasi = $_POST['spesifikasi'];
 		$save_data = array(
 				'product_id' => $product_id,
 				'name' => $name,
-				'stock' => $stock,
 				'price' => $price,
 				'spesifikasi' => $spesifikasi
 		);
@@ -85,7 +83,7 @@ class Inventory extends CI_Controller {
       foreach($_FILES as $index => $data){
 			if ($_FILES[$index]['name'] !== '') {
 					#upload photo
-					$photo_name = date("YmdHis").$_FILES[$index]['name'];
+					$photo_name = date("YmdHis").preg_replace('/\s/', '', $_FILES[$index]['name']);
 					$config['upload_path']      = './assets/uploads/';
 					$config['allowed_types']    = 'gif|jpg|png|jpeg';
 					$config['maintain_ratio']   = TRUE;
