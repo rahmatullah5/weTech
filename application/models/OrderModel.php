@@ -25,7 +25,7 @@ class OrderModel extends CI_Model {
 		}
 
 		if ($param['user_id']) {
-			$this->db->where('user_id',$param['user_id']);
+			$this->db->where('t.user_id',$param['user_id']);
 		}
 
 		$query = $this->db->get();
@@ -35,7 +35,9 @@ class OrderModel extends CI_Model {
 	}
 
 	public function saveOrder($user){
-		return $this->db->insert('order_transaction', $user);
+		$this->db->insert('order_transaction', $user);
+		
+		return $this->db->insert_id();
 	}
 
 	public function updateTransaction($param){

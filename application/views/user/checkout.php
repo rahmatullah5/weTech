@@ -254,7 +254,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto text-center mr-xl-5">
 							<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-								<a class="nav-link" href="http://localhost/weTech/user/">Home
+								<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
@@ -306,7 +306,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="form-group">
 								<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Nama Lengkap </label>
 								<div class="col-xs-3">
-									<input type="text" id="user_id" class="form-control" hidden="" value="8" />
+									<input type="text" id="user_id" class="form-control" hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> />
 									<input type="text" id="fullname" class="form-control" style="height: 32px;" placeholder="Nama Lengkap"/>
 								</div>
 							</div>
@@ -363,7 +363,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="form-group">
 									<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Total Harga Bayar </label>
 									<div class="col-xs-3">
-										<input type="text" id="price" value="Rp. 1.084.000" class="form-control" style="height: 32px;" disabled="" />
+										<input type="text" id="price" class="form-control" style="height: 32px;" disabled="" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -375,7 +375,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="form-group">
 									<label id="label-acc" class="col-xs-3 control-label no-padding-left">Total Belanja</label>
 									<div class="col-xs-3">
-										<input type="text" id="allprice" value="Rp. 1.094.000" class="form-control" style="height: 32px;" disabled=""/>
+										<input type="text" id="allprice" class="form-control" style="height: 32px;" disabled=""/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -569,6 +569,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		});
 
+		const queryString 	= window.location.search;
+		const urlParams 	= new URLSearchParams(queryString);
+		const product_id	= urlParams.get('product_id');
+		$('#spdes').val(urlParams.get('prod_name'));
+		$('#price').val('Rp. '+urlParams.get('price'));
+		$('#allprice').val('Rp. '+ (parseInt(urlParams.get('price'))+10000));
+
 		$('#checkout').click(function(){
 
 			var userid 		= $('#user_id').val();
@@ -577,7 +584,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var mobile 		= $('#mobile').val();
 			var ket 		= $('#ket').val();
 			// var jasping 	= $('#jasping').val();
-			var idbarang 	= $('#idbarang').val();
+			var idbarang 	= product_id;
 			var allprice 	= parseInt($('#allprice').val().replace(/[^0-9]/g, ''), 10);
 
 			if (!fullname) {
@@ -606,9 +613,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			                    mobile 			: mobile,
 			                },
 			        success: function(result){
-
+			        	// console.log(result);
 			            if (result['code'] == 0 ) {
 			                alert('Order berhasil di submit');
+			            	window.location.href = "http://localhost/weTech/user/dashboard/transdetail?order_id="+result.data;
 			            }else{
 			                alert('Order gagal di submit');
 			            }
@@ -632,7 +640,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		        dataType: 'json',
 		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
 		        data    : {
-		                    order_status 	: 'SUBMITTED',
+		                    user_id 	: $('#user_id').val(),
 		                },
 		        success: function(result){
 

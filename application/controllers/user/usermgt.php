@@ -5,6 +5,34 @@ class Usermgt extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('UserModel');
+		$this->load->model('InventoryModel');
+		
+	}
+
+	public function index()
+	{
+		// print_r('test');die();
+		$data = $this->InventoryModel->getSelling();
+		$api = [];
+		foreach($data as $index => $d){
+			array_push($api, array(
+				'product_id' => $data[$index]->product_id,
+				'code' => $data[$index]->code,
+				'type' => $data[$index]->type,
+				'name' => $data[$index]->name,
+				'price' => $data[$index]->price,
+				'date' => $data[$index]->date,
+				'spesifikasi' => $data[$index]->spesifikasi,
+				'pictures' => explode(',', $data[$index]->pictures),
+				)
+			);
+		}
+
+		$p_data['product'] = $api;	
+		// print_r($p_data);die();
+        $content['body'] = $this->load->view('user/dashboard', $p_data);
+
+		$this->load->view('user/dashboard', $content);
 	}
 
 	public function insert(){

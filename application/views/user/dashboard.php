@@ -69,6 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="text-center border-right text-white">
 
 					    <?php echo $this->session->userdata['login']['username'] ?>
+					    <input type="text" id="user_id"  hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> >
 					        </li>
 					        <li class="text-center border-right text-white">
 					            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
@@ -282,7 +283,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="http://localhost/weTech/user/">Home
+							<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -418,133 +419,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
 							<div class="row">
 								<?php
-									for ($x = 1; $x <= 3; $x++) {
+									// echo"<pre>"; print_r($product);die();
+                          			foreach ($product as $v):
 								?> 
 									<div class="col-md-4 product-men mt-5">
 										<div class="men-pro-item simpleCart_shelfItem">
 											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
+												<!-- <img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt=""> -->
+												<img src='<?=base_url('assets/uploads/'.$v["pictures"][0])?>' width="239px" height="200px" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
 														<?php if (isset($this->session->userdata['login'])){ ?>
-															<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-														<?php }else{ ?>
-															<a href="<?=base_url('user/usermgt/productdetail')?>" class="link-product-add-cart">Quick View</a>
+															<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
+														<?php } else { ?>
+															<a href='<?=base_url('user/usermgt/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
 														<?php } ?>
-													</div>
-												</div>
-											</div>
-											<div class="item-info-product text-center border-top mt-4">
-												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
-												</h4>
-												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
-												</div>
-												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-													<form action="#" method="post">
-														<fieldset>
-															<input type="hidden" name="cmd" value="_cart" />
-															<input type="hidden" name="add" value="1" />
-															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-															<input type="hidden" name="amount" value="200.00" />
-															<input type="hidden" name="discount_amount" value="1.00" />
-															<input type="hidden" name="currency_code" value="USD" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
-															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
-														</fieldset>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								<?php 
-									}
-								?>
-							</div>
-						</div>
-						 
-						<!-- //first section -->
-						<!-- second section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							<h3 class="heading-tittle text-center font-italic">Another Product</h3>
-							<div class="row">
-								<?php
-									for ($x = 1; $x <= 3; $x++) {
-								?> 
-									<div class="col-md-4 product-men mt-5">
-										<div class="men-pro-item simpleCart_shelfItem">
-											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
-												<div class="men-cart-pro">
-													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-													</div>
-												</div>
-											</div>
-											<div class="item-info-product text-center border-top mt-4">
-												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
-												</h4>
-												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
-												</div>
-												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-													<form action="#" method="post">
-														<fieldset>
-															<input type="hidden" name="cmd" value="_cart" />
-															<input type="hidden" name="add" value="1" />
-															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-															<input type="hidden" name="amount" value="200.00" />
-															<input type="hidden" name="discount_amount" value="1.00" />
-															<input type="hidden" name="currency_code" value="USD" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
-															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
-														</fieldset>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								<?php 
-									}
-								?>
-							</div>
-						</div>
-						<!-- //second section -->
-						<!-- third section -->
-						<div class="product-sec1 product-sec2 px-sm-5 px-3">
-							<div class="row">
-								<h3 class="col-md-4 effect-bg">Summer Carnival</h3>
-								<p class="w3l-nut-middle">Get Extra 10% Off</p>
-								<div class="col-md-8 bg-right-nut">
-									<img src="<?=base_url('assets/assetsUser/images/image1.png"')?>" alt="">
-								</div>
-							</div>
-						</div>
-						<!-- //third section -->
-						<!-- fourth section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
-							<h3 class="heading-tittle text-center font-italic">Iphone</h3>
-							<div class="row">
-								<?php
-                          			foreach ($product as $v):
-									// echo"<pre>"; print_r($v['product_id']);die();
-		                        
-								?> 
-									<div class="col-md-4 product-men mt-5">
-										<div class="men-pro-item simpleCart_shelfItem">
-											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
-												<div class="men-cart-pro">
-													<div class="inner-men-cart-pro">
-														<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
 													</div>
 												</div>
 											</div>
@@ -580,7 +469,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		                        ?>
 							</div>
 						</div>
-						<!-- //fourth section -->
+						 
+						<!-- //second section -->
+						<!-- third section -->
+						<div class="product-sec1 product-sec2 px-sm-5 px-3">
+							<div class="row">
+								<h3 class="col-md-4 effect-bg">Summer Carnival</h3>
+								<p class="w3l-nut-middle">Get Extra 10% Off</p>
+								<div class="col-md-8 bg-right-nut">
+									<img src="<?=base_url('assets/assetsUser/images/image1.png"')?>" alt="">
+								</div>
+							</div>
+						</div>
+						<!-- //third section -->
 					</div>
 				</div>
 				<!-- //product left -->
@@ -987,7 +888,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		        dataType: 'json',
 		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
 		        data    : {
-		                    order_status 	: 'SUBMITTED',
+		                    user_id 	: $('#user_id').val(),
 		                },
 		        success: function(result){
 
