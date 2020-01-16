@@ -16,7 +16,7 @@ class InventoryModel extends CI_Model {
 	public function getSelling(){
 		$this->db->where('stock >=', 1);
 		$query = $this->db->get('products');
-		return $query; 
+		return $query->result();
 	}
 
 	public function save($shipping){
@@ -24,23 +24,23 @@ class InventoryModel extends CI_Model {
 	}
 	
 	public function saveProcurement($shipping){
-		return $this->db->insert('barang_masuk', $shipping);
+		return $this->db->insert('products_entered', $shipping);
 	}
 	
 	public function saveSold($shipping){
-		return $this->db->insert('barang_keluar', $shipping);
+		return $this->db->insert('products_out', $shipping);
 	}
 
 	public function getById($id){
 		$query = $this->db->get_where('products', array('product_id'=>$id));
-		return $query;
+		return $query->result(); 
 	}
 	
 	public function getReport(){
 		$this->db->select('a.*, b.qty as masuk, c.qty as keluar');
     $this->db->from('products a'); 
-    $this->db->join('barang_masuk b', 'b.product_id = a.product_id', 'left');
-    $this->db->join('barang_keluar c', 'c.product_id = a.product_id', 'left');
+    $this->db->join('products_entered b', 'b.product_id = a.product_id', 'left');
+    $this->db->join('products_out c', 'c.product_id = a.product_id', 'left');
 		$query = $this->db->get();
 		return $query;
 	}

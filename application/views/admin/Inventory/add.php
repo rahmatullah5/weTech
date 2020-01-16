@@ -28,7 +28,7 @@
                 <div class="card">
                   <!-- /.card-header -->
                   <div class="card-body table-responsive p-0">
-                    <form role="form" action="<?=base_url('admin/inventory/inputData')?>" method="post">
+                    <form role="form" action="<?=base_url('admin/inventory/inputData')?>" method="post" enctype="multipart/form-data">
                       <div class="line line-dashed b-b line-lg pull-in"></div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-id-1">Kode Barang</label>
@@ -56,40 +56,55 @@
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-id-1">Spesifikasi</label>
                         <div class="col-sm-10">
-                        <input type="text" name="spesifikasi" class="form-control" id="input-id-1">
+                          <textarea id="editor" class="form-control" name="spesifikasi" rows="6" data-minwords="6" data-required="true" placeholder=""></textarea>
+                        </div>
                       </div>
 
                       <div class="line line-dashed b-b line-lg pull-in"></div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-id-1">QTY</label>
                         <div class="col-sm-10">
-                        <input type="number" name="stock" class="form-control" id="input-id-1">
+                          <input type="number" name="stock" class="form-control" id="input-id-1">
+                        </div>
                       </div>
                       
                       <div class="line line-dashed b-b line-lg pull-in"></div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-id-1">Harga</label>
                         <div class="col-sm-10">
-                        <input type="text" name="price" class="form-control" id="input-id-1">
+                          <input type="text" name="price" class="form-control" id="input-id-1">
+                        </div>
                       </div>
-                      
-                      <!-- <div class="form-group">
+
+                      <div class="line line-dashed b-b line-lg pull-in"></div>
+                      <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-id-1">Pengirim</label>
                         <div class="col-sm-10">
-                        <input type="text" name="price" class="form-control" id="input-id-1">
-                      </div> -->
-
-                      <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-id-1">Tanggal</label>
-                        <div class="col-sm-10">
-                        <input type="text" name="price" class="form-control" id="input-id-1">
+                          <input type="text" name="pengirim" class="form-control" id="input-id-1">
+                        </div>
                       </div>
 
+                      <div class="line line-dashed b-b line-lg pull-in"></div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-id-1">No Faktur</label>
+                        <label class="col-sm-2 control-label" for="input-id-1">No. Faktur</label>
                         <div class="col-sm-10">
-                        <input type="text" name="price" class="form-control" id="input-id-1">
-                      </div> -->
+                          <input type="text" name="no_faktur" class="form-control" id="input-id-1">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">File input</br><p class="text-muted">File Gambar JPEG, PNG, GIF. Resolusi 350px & 260px</p></label>
+                        <div class="col-sm-10">
+                        <input type="file" name="gambar1" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                        <br />
+                        <input type="file" name="gambar2" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                        <br />
+                        <input type="file" name="gambar3" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                        <br />
+                        <input type="file" name="gambar4" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                        <br />
+                        <input type="file" name="gambar5" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                      </div>
 
                       <div class="form-group">
                         <button type="submit" class="btn btn-success">Simpan</button>
@@ -108,3 +123,9 @@
       <!--footer-->
     </div>
   </div>
+
+  <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+		
+  <script>
+    CKEDITOR.replace( 'editor' );
+  </script>

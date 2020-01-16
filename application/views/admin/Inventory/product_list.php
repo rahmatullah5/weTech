@@ -40,7 +40,7 @@
                           <th>No</th>
                           <th>Kode Barang</th>
                           <th>Nama Barang</th>
-                          <th>Spesifikasi</th>
+                          <th>Brand/Type</th>
                           <th>QTY</th>
                           <th>COGS</th>
                           <th>Aksi</th>
@@ -72,8 +72,60 @@
                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                  <form role="form" action="<?=base_url('admin/inventory/edit/'.$data->product_id)?>" method="post">
-                                  </form>
+                                  <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Kode Barang</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->code;?>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Tipe Barang</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->type;?>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Nama Barang</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->name;?>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Spesifikasi</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->spesifikasi;?>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Stock</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->stock;?>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label" for="input-id-1">Harga</label>
+                                      <div class="col-sm-10 text-muted">
+                                        <?php echo $data->price;?>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label">Gambar</br>
+                                      <div class="col-sm-10">
+                                        <?php 
+                                          $pict = explode(",", $data->pictures);
+                                          foreach ($pict as $index => $d) { 
+                                        ?>
+                                          <img src="<?php echo base_url('assets/uploads/'.$d);?>" width="130px">
+                                        <?php } ?>
+                                      </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -137,14 +189,7 @@
                                     <div class="form-group">
                                       <label class="col-sm-2 control-label" for="input-id-1">Spesifikasi</label>
                                       <div class="col-sm-10">
-                                      <input type="text" name="spesifikasi" class="form-control" value="<?php echo $data->spesifikasi;?>" id="input-id-1">
-                                    </div>
-
-                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-                                    <div class="form-group">
-                                      <label class="col-sm-2 control-label" for="input-id-1">QTY</label>
-                                      <div class="col-sm-10">
-                                      <input type="number" name="stock" class="form-control" value="<?php echo $data->stock;?>" id="input-id-1">
+                                      <textarea id="editor<?php echo $data->product_id; ?>" class="form-control" name="spesifikasi" rows="6" data-minwords="6" data-required="true" placeholder=""><?php echo $data->spesifikasi;?></textarea>
                                     </div>
                                     
                                     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -180,3 +225,11 @@
       <!--footer-->
     </div>
   </div>
+  <script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+  <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+		
+  <script>
+    <?php foreach ($inventory->result() as $key => $data) { ?>
+    CKEDITOR.replace( 'editor<?php echo $data->product_id; ?>' );
+    <?php } ?>
+  </script>

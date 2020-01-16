@@ -19,7 +19,7 @@
         <!-- /.content-header -->
         <!-- Main content -->
         <div class="card card-default">
-          <h1 class="m-1 text-dark">Inventory - List Analisa Pengadaan Barang</h1>
+          <h1 class="m-1 text-dark">Inventory - Barang Keluar</h1>
           <!-- /.card-header -->
           <div class="card-body">
             <!--View Data Shipping-->
@@ -54,7 +54,7 @@
                           <td><?php echo $data->type;?></td>
                           <td><?php echo $data->stock;?></td>
                           <td style="vertical-align:middle;">
-                             <a href="#" data-toggle="modal" data-target="#modalEdit<?php echo $data->product_id; ?>"><button class="btn btn-success">Tambah</button></a>
+                             <a href="#" data-toggle="modal" data-target="#modalEdit<?php echo $data->product_id; ?>"><button class="btn btn-success">Process</button></a>
                           </td>
                         </tr>
 
@@ -64,34 +64,24 @@
                               <!-- Modal content-->
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title">Tambah <b><?php echo $data->name.' - '.$data->code; ?></b></h4>
+                                  <h4 class="modal-title"><b><?php echo $data->name.' - '.$data->code; ?></b></h4>
                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                  <form role="form" action="<?=base_url('admin/inventory/procurementAdd/'.$data->product_id)?>" method="post">
+                                  <form role="form" action="<?=base_url('admin/inventory/soldAdd/'.$data->product_id)?>" method="post">
                                     <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <p class="text-muted">Process to Shipping?</p></label>
                                     <div class="form-group">
-                                      <label class="col-sm-2 control-label" for="input-id-1">Jumlah</label>
                                       <div class="col-sm-10">
+                                        <input type="hidden" name="qty" value="1">
                                         <input type="hidden" name="qty_" value="<?php echo $data->stock;?>">
-                                        <input type="number" name="qty" class="form-control" id="input-id-1">
+                                        <input type="hidden" name="order_id" value="<?php echo $data->order_id;?>">
                                       </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="col-sm-2 control-label" for="input-id-1">Pengirim</label>
-                                      <div class="col-sm-10">
-                                      <input type="text" name="pengirim" class="form-control" id="input-id-1">
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="col-sm-2 control-label" for="input-id-1">No Faktur</label>
-                                      <div class="col-sm-10">
-                                      <input type="text" name="no_faktur" class="form-control" id="input-id-1">
                                     </div>
 
                                     <div class="modal-footer">  
-                                      <button type="submit" class="btn btn-success">Tambah</button>
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-success">Yes</button>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                                     </div>
                                   </form>
                                 </div>
@@ -115,5 +105,4 @@
       <!--footer-->
     </div>
   </div>
-
   <script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
