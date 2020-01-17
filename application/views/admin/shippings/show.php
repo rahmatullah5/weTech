@@ -33,7 +33,7 @@
                   <input type="text" class="form-control" name="code_resi" value="<?=$shipping['code_resi']?>"  required  <?php echo (empty($order))? 'disabled' : '' ?>>
                 </div>
               </div>
-              <div class="col-md-6">
+<!--               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nama Penerima</label>
                   <input type="text" class="form-control" value=<?=$shipping['receiver']?> disabled>
@@ -50,11 +50,11 @@
                   <label>Alamat Penerima</label>
                   <input type="text" class="form-control" value=<?=$shipping['destination']?> disabled>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Kurir</label>
-                  <input type="text" class="form-control" value=<?=$shipping['courier']?> disabled>
+                  <input type="text" class="form-control" value="<?=$shipping['courier']?>" disabled>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -95,6 +95,9 @@
                         <th>Pay By</th>
                         <th>Price</th>
                         <th>Discount</th>
+                        <th>Receiver</th>
+                        <th>No Mobile</th>
+                        <th>Address</th>                        
                       </tr>
                       <tr>
                        <?php if (!empty($order)) { ?>
@@ -106,6 +109,9 @@
                         <td><?=$order['pay_by']?></td>
                         <td>Rp. <?=$order['price']?></td>
                         <td><?=$order['discount']?></td>
+                        <td><?=$order['receiver']?></td>
+                        <td><?=$order['no_mobile']?></td>
+                        <td><?=$order['address']?></td>
                       <?php } ?>
                       </tr>
                     </table>           
