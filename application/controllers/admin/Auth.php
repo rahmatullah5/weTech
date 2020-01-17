@@ -34,7 +34,7 @@ class Auth extends CI_Controller {
 			$this->session->set_userdata('login', $sessionData);
 			
 			if ($userData->user_type == 'user') {
-				redirect('/',$sessionData);
+				redirect('/user/dashboard',$sessionData);
 			}else{
 				redirect('/admin/dashboard');
 			}
@@ -50,12 +50,14 @@ class Auth extends CI_Controller {
 
 	public function logout()
 	{
-		if ($this->session->userdata['login']['type'] == 'user') {
-			$page = '/user';
+		// print_r($this->session->userdata['login']['type']);die();
+		if ($this->session->userdata['login']['type'] == 'user') { 
+			$page = '/user/usermgt';
 		}else{
 			$page = '/admin/auth';
 		}
 
+		// print_r($page);die();
 		$this->session->sess_destroy();
 
 		redirect($page);

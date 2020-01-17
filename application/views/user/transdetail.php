@@ -69,9 +69,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<li class="text-center border-right text-white">
 
 						            <?php echo $this->session->userdata['login']['username'] ?>
+						            <input type="text" id="user_id"  hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> >
 						        </li>
 						        <li class="text-center border-right text-white">
-						            <a href="admin/auth/logout" class="text-white">Logout</a>
+						            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 						        </li>
 					        <?php }else{ ?>
 								<li class="text-center border-right text-white">
@@ -101,14 +102,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="#" method="post">
+						<form action="<?=base_url('admin/auth/action_login')?>" method="post">
 							<div class="form-group">
 								<label class="col-form-label">Username</label>
-								<input type="text" class="form-control" placeholder=" " name="Name" required="">
+								<input type="text" class="form-control" placeholder=" " name="username" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Password" required="">
+								<input type="password" class="form-control" placeholder=" " name="password" required="">
 							</div>
 							<div class="right-w3l">
 								<input type="submit" class="form-control" value="Log in">
@@ -139,22 +140,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="#" method="post">
+						<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 							<div class="form-group">
-								<label class="col-form-label">Your Name</label>
-								<input type="text" class="form-control" placeholder=" " name="Name" required="">
+								<label class="col-form-label">Fullname</label>
+								<input type="text" class="form-control" placeholder=" " name="fullname" required="">
+							</div>
+							<div class="form-group">
+								<label class="col-form-label">Username</label>
+								<input type="text" class="form-control" placeholder="Code for login" name="username" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Email</label>
-								<input type="email" class="form-control" placeholder=" " name="Email" required="">
+								<input type="email" class="form-control" placeholder=" " name="email" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+								<input type="password" class="form-control" placeholder=" " name="password" id="password1" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Confirm Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+								<input type="password" class="form-control" placeholder=" " name="c_password" id="password2" required="">
 							</div>
 							<div class="right-w3l">
 								<input type="submit" class="form-control" value="Register">
@@ -194,6 +199,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	                                        <th>Amount</th>
 	                                        <th>Status</th>
 	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
 	                                    </tr>
 	                                </thead>
 	                            </table>
@@ -249,7 +255,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto text-center mr-xl-5">
 							<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-								<a class="nav-link" href="index.html">Home
+								<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
@@ -274,9 +280,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="nav-item">
 								<a class="nav-link" href="contact.html">Contact Us</a>
 							</li>
-							<li class="nav-item">
-								<a href="#" onclick="loadtransaction()" class="nav-link">My Order </a>
-							</li>
+							<?php if (isset($this->session->userdata['login'])){ ?>
+								<li class="nav-item">
+									<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
+								</li>
+							<?php } ?>
 						</ul>
 					</div>
 				</nav>
@@ -293,15 +301,83 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</h3>
 				<!-- //tittle heading -->
 				<div class="row">
-					<div class="col-sm-7" style="border: 1px solid black;">
-						<h2>Form Data </h2> 
+					<div class="col-sm-9" style="border: 1px solid black;">
+						<h2>Detail </h2> 
 						<div class="col-sm-12">
-							<div class="col-sm-5" style="background: #eaeaea;color: black;">Transaction Number <br><span>11241241241</span></div><div class="col-sm-3" style="background: #b0b0b0;color: black;">Transaction Number <br><span>11241241241</span></div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Transaction Number </label>
+								<div class="col-xs-3">
+									<input type="text" id="order_id" class="form-control" hidden="" value="8" />
+									<input type="text" id="order_idx" class="form-control" style="height: 32px;" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Date Transaction </label>
+								<div class="col-xs-3">
+									<input type="text" id="date_trans" class="form-control" style="height: 32px;" disabled="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Date of Receipt </label>
+								<div class="col-xs-3">
+									<input type="text" id="date_receipt" class="form-control" style="height: 32px;" disabled="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Alamat Penerima</label>
+								<div class="col-xs-3">
+									<textarea placeholder="Alamat Penerima" class="form-control" id="address" disabled=""></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left">Nomor Handphone</label>
+								<div class="col-xs-3">
+									<input type="text" id="mobile" class="form-control" style="height: 32px;" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Keterangan Tambahan </label>
+								<div class="col-xs-3">
+									<textarea class="form-control" id="ket" disabled=""></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Status </label>
+								<div class="col-xs-3">
+									<input type="text" id="status" class="form-control" style="height: 32px;" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Jasa Pengiriman </label>
+								<div class="col-xs-3">
+									<input type="text" id="jasping" class="form-control" style="height: 32px;" value="JNE" disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">No Resi </label>
+								<div class="col-xs-3">
+									<input type="text" id="noresi" class="form-control" style="height: 32px;"  disabled=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Smartphone </label>
+								<div class="col-xs-3">
+									<input type="text" id="spdes" class="form-control" style="height: 32px;" value="Samsung Galaksi J7" disabled="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Amount </label>
+								<div class="col-xs-3">
+									<input type="text" id="price" class="form-control" style="height: 32px;" disabled="" />
+								</div>
+							</div>
+<!-- 
+							<div class="col-sm-5" style="background: #eaeaea;color: black;">Transaction Number <br><span>11241241241</span></div>
+
+							<div class="col-sm-3" style="background: #b0b0b0;color: black;">Transaction Number <br><span>11241241241</span></div> -->
 						</div>
+						<div class="panel-footer"><a href="#" class="btn btn-success" id="brg-konfirm" style="display: block;" > Barang Diterima </a></div>
 					</div>
-					<div class="col-sm-1"></div>
-					
-					<div class="col-sm-4" style="border: 1px solid black; height: 320px;">
 						
 					</div>
 				</div>
@@ -438,63 +514,101 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 
 		});
+		
+		$("#brg-konfirm").css("display", "none");
+		
+		const queryString 	= window.location.search;
+		const urlParams 	= new URLSearchParams(queryString);
+		const orderid 		= urlParams.get('order_id');
 
-		$('#checkout').click(function(){
+		if (orderid) {
+			loadtransaction(orderid);
+		}
 
-			var userid 		= $('#user_id').val();
-			var fullname 	= $('#fullname').val();
-			var address 	= $('#address').val();
-			var mobile 		= $('#mobile').val();
-			var ket 		= $('#ket').val();
-			// var jasping 	= $('#jasping').val();
-			var idbarang 	= $('#idbarang').val();
-			var allprice 	= parseInt($('#allprice').val().replace(/[^0-9]/g, ''), 10);
+		$('#brg-konfirm').click(function(){
 
-			if (!fullname) {
-				alert('Nama lengkap tidak boleh kosong!');
-			}else if (!address) {
-				alert('Alamat tidak boleh kosong!');
-			}else if (!mobile) {
-				alert('Nomor Handphone tidak boleh kosong!');
-			}else if (!ket) {
-				alert('Keterangan tidak boleh kosong!');
-			}else{
+			// var orderid 		= $('#order_id').val();
+			// var orderid 		= 1;
 
-				$.ajax({
-			        type    : 'POST',
-			        dataType: 'json',
-			        url     : 'http://localhost/weTech/admin/selling/checkoutAct',
-			        data    : {
-			                    order_status 	: 'SUBMITTED',
-			                    order_desc		: ket,
-			                    user_id 		: userid,
-			                    product_id 		: idbarang,
-			                    pay_by 			: 'ATM BCA',
-			                    price 			: allprice,
-			                    fullname 		: fullname,
-			                    address 		: address,
-			                    mobile 			: mobile,
-			                },
-			        success: function(result){
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/selling/updTransaction',
+		        data    : {
+		                    order_id 	: orderid,
+		                    status		: 'FINISH',
+		                },
+		        success: function(result){
 
-			            if (result['code'] == 0 ) {
-			                alert('Order berhasil di submit');
-			            }else{
-			                alert('Order gagal di submit');
-			            }
+		            if (result['code'] == 0 ) {
+		                alert('Konfirmasi barang telah diterima berhasil!');
+		                loadtransaction(orderid);
+		            }else{
+		                alert('Konfirmasi barang telah diterima gagal!');
+		                loadtransaction(orderid);
+		            }
 
-			        },
-			        error: function(xhr) {
-			           
-			            if(xhr.status != 200){
-			                alert('gagal , xhr tidak 200'); 
-			            }
-			        }
-			    });
-			}
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+			
 		});
 
-		function loadtransaction(){
+		function loadtransaction(orderid){
+
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
+		        data    : {
+		                    order_id 	: orderid,
+		                    shipping	: 'yes',
+		                },
+		        success: function(result){
+		        	console.log(result['data']);
+		        	if (result.code == 0) {
+					    $('#order_id').val(result['data'][0].order_id);
+					    $('#order_idx').val(result['data'][0].order_id);
+					    $('#ket').val(result['data'][0].order_desc);
+					    
+					    $('#address').val(result['data'][0].address);
+					    $('#price').val(result['data'][0].price);
+					    $('#penerima').val(result['data'][0].receiver);
+					    $('#mobile').val(result['data'][0].no_mobile);
+					    $('#spdes').val(result['data'][0].name);
+					    $('#date_trans').val(result['data'][0].date_transaction);
+					    $('#date_receipt').val(result['data'][0].date_receipt);
+					    $('#noresi').val(result['data'][0].code_resi);
+
+					    if (result['data'][0].order_status == 'TOCUSTOMER') {
+					    	$('#status').val('Need Confirm');
+					    	$("#brg-konfirm").css("display", "block");
+					    }else if (result['data'][0].order_status == 'FINISH') {
+					    	$('#status').val('COMPLETED');
+					    	$("#brg-konfirm").css("display", "none");
+
+					    }else{
+					    	$("#brg-konfirm").css("display", "none");
+					    	$('#status').val('On Progress');
+					    }
+
+		        	}
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+		}
+
+		function loadtransaction_history(){
 			$('#m-transaction').modal('show');
 			$('#table-history').DataTable().clear().draw();
 			$.ajax({
@@ -502,7 +616,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		        dataType: 'json',
 		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
 		        data    : {
-		                    order_status 	: 'SUBMITTED',
+		                    user_id 	: $('#user_id').val(),
 		                },
 		        success: function(result){
 
@@ -521,7 +635,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					            { "data": "no_mobile" },
 					            { "data": "price" },
 					            { "data": "order_status" },
-					            { "data": "date_transaction" }
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
 					        ]
 					    } );
 		        	}
@@ -533,9 +651,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		            }
 		        }
 		    });
-			
-			
 		}
+
 	</script>
 
 	<script src="<?=base_url('assets/assetsUser/js/bootstrap.js')?>"></script>

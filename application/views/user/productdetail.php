@@ -41,6 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- web fonts -->
 	<link href="<?=base_url('assets/assetsUser/css/font-style.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<link href="<?=base_url('assets/assetsUser/css/font-style-2.css')?>" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?=base_url('assets/assetsUser/css/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<!-- //web fonts -->
 
 </head>
@@ -69,9 +70,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="text-center border-right text-white">
 
 					            <?php echo $this->session->userdata['login']['username'] ?>
+					            <input type="text" id="user_id"  hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> >
 					        </li>
 					        <li class="text-center border-right text-white">
-					            <a href="admin/auth/logout" class="text-white">Logout</a>
+					            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 					        </li>
 				        <?php }else{ ?>
 							<li class="text-center border-right text-white">
@@ -91,6 +93,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<!-- modals -->
+	<div class="modal fade" id="m-transaction" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content" style="margin-left: -200px; width: 200%;" >
+					<div class="modal-header">
+						<h5 class="modal-title">Transaction</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+	                        <div class="table-responsive">
+	                            <table id="table-history" class="table table-striped table-bordered table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Product Name</th>
+	                                        <th>Submit By</th>
+	                                        <th>Receiver</th>
+	                                        <th>Handphone Number</th>
+	                                        <th>Amount</th>
+	                                        <th>Status</th>
+	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
+	                                    </tr>
+	                                </thead>
+	                            </table>
+	                        </div>  
+		                </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<!-- log in -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -102,14 +136,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form action="<?=base_url('admin/auth/action_login')?>" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<input type="text" class="form-control" placeholder=" " name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Log in">
@@ -140,22 +174,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<label class="col-form-label">Fullname</label>
+							<input type="text" class="form-control" placeholder=" " name="fullname" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Username</label>
+							<input type="text" class="form-control" placeholder="Code for login" name="username" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
+							<input type="email" class="form-control" placeholder=" " name="email" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+							<input type="password" class="form-control" placeholder=" " name="password" id="password1" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+							<input type="password" class="form-control" placeholder=" " name="c_password" id="password2" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Register">
@@ -231,7 +269,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -256,6 +294,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact Us</a>
 						</li>
+						<?php if (isset($this->session->userdata['login'])){ ?>
+							<li class="nav-item">
+								<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
+							</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</nav>
@@ -273,11 +316,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="row">
 				<div class="col-lg-5 col-md-8 single-right-left ">
 					<div class="grid images_3_of_2">
-						<div class="flexslider">
+						<div class="flexslider" >
+							
 							<ul class="slides">
 								<li data-thumb="<?=base_url('assets/assetsUser/images/si1.jpg')?>">
 									<div class="thumb-image">
-										<img src="<?=base_url('assets/assetsUser/images/si1.jpg')?>" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="<?=base_url('assets/assetsUser/images/si1.jpg')?>" data-imagezoom="true" class="img-fluid" alt=""> 
+									</div>
 								</li>
 								<li data-thumb="<?=base_url('assets/assetsUser/images/si2.jpg')?>">
 									<div class="thumb-image">
@@ -294,11 +339,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
+					<h3 class="mb-3" id="p-name"></h3>
 					<p class="mb-3">
-						<span class="item_price">$200.00</span>
-						<del class="mx-2 font-weight-light">$280.00</del>
-						<label>Free delivery</label>
+						<span class="item_price" id="item_price"></span>
+						<!-- <label>Free delivery</label> -->
 					</p>
 					<div class="single-infoagile">
 						<ul>
@@ -311,9 +355,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="mb-3">
 								EMIs from $655/month.
 							</li>
-							<li class="mb-3">
-								Bank OfferExtra 5% off* with Axis Bank Buzz Credit CardT&C
-							</li>
 						</ul>
 					</div>
 					<div class="product-single-w3l">
@@ -321,7 +362,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<i class="far fa-hand-point-right mr-2"></i>
 							<label>1 Year</label>Manufacturer Warranty</p>
 						<ul>
-							<li class="mb-1">
+							<!-- <li class="mb-1">
 								3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
 							</li>
 							<li class="mb-1">
@@ -335,8 +376,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li class="mb-1">
 								Exynos 7870 Octa Core 1.6GHz Processor
-							</li>
+							</li> -->
+							<span id="desc-spec"></span>
 						</ul>
+
 						<p class="my-sm-4 my-3">
 							<i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
 						</p>
@@ -354,7 +397,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<a href="http://localhost/weTech/user/dashboard/checkout?id=1000" class="btn btn-primary "> Checkout </a>
+									<?php if (isset($this->session->userdata['login'])){ ?>
+										<a href="#" class="btn btn-primary " onclick="checkoutpage()"> Checkout </a>
+									<?php } ?>
 									<!-- <input type="submit" name="submit" value="Add to cart" class="button" /> -->
 								</fieldset>
 							</form>
@@ -561,12 +606,118 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				easingType: 'easeOutQuart'
 			});
 
+
 		});
+
+		const queryString 	= window.location.search;
+		const urlParams 	= new URLSearchParams(queryString);
+		const product_id	= urlParams.get('product_id');
+		var price;
+		var prod_name;
+		if (product_id) {
+			loadProduct(product_id);
+		}
+
+		function loadProduct(product_id){
+			$.ajax({
+		        type    : 'GET',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/inventory/getDetailProduk/'+product_id,
+		    
+		        success: function(result){
+		        	console.log(result);
+		        	document.getElementById('p-name').innerHTML = result.name;
+		        	document.getElementById('desc-spec').innerHTML = result.spesifikasi;
+		        	document.getElementById('item_price').innerHTML = 'Rp. ' +result.price;
+		        	// var apped = "<li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li>";
+
+
+		        	// $(".flexslider").append(apped);
+
+		        	// $("#one").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
+		        	// $("#two").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
+		        	// $("#three").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
+		        	// $("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
+		        	// $("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
+		        	// $("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
+
+		        	$("#one").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		        	$("#two").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		        	$("#three").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		        	$("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		        	$("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		        	$("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+
+
+		        	
+		        	prod_name 	= result.name;
+		        	price  		= result.price;
+					
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+
+		}
+
+		function checkoutpage(){
+			window.location.href = "http://localhost/weTech/user/dashboard/checkout?product_id="+product_id+"&price="+price+"&prod_name="+prod_name;
+		}
+
+		function loadtransaction_history(){
+			$('#m-transaction').modal('show');
+			$('#table-history').DataTable().clear().draw();
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
+		        data    : {
+		                    user_id 	: $('#user_id').val(),
+		                },
+		        success: function(result){
+
+		        	if (result.code == 0) {
+					    $('#table-history').DataTable( {
+					    	"processing" 	: true,
+                    		"serverSide" 	: false,
+                    		"paging" 		: true,
+                    		"autoWidth"		: true,
+                    		"destroy"		: true,
+					        "data" 			: result.data,
+					        "columns" : [
+					            { "data": "name" },
+					            { "data": "fullname" },
+					            { "data": "receiver" },
+					            { "data": "no_mobile" },
+					            { "data": "price" },
+					            { "data": "order_status" },
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
+					        ]
+					    } );
+		        	}
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+		}
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
 	<script src="<?=base_url('assets/assetsUser/js/bootstrap.js')?>"></script>
+	<script src="<?=base_url('assets/assetsUser/js/jquery.dataTables.min.js')?>"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 

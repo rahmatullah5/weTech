@@ -71,7 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						            <?php echo $this->session->userdata['login']['username'] ?>
 						        </li>
 						        <li class="text-center border-right text-white">
-						            <a href="admin/auth/logout" class="text-white">Logout</a>
+						            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 						        </li>
 					        <?php }else{ ?>
 								<li class="text-center border-right text-white">
@@ -101,14 +101,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="#" method="post">
+						<form action="<?=base_url('admin/auth/action_login')?>" method="post">
 							<div class="form-group">
 								<label class="col-form-label">Username</label>
-								<input type="text" class="form-control" placeholder=" " name="Name" required="">
+								<input type="text" class="form-control" placeholder=" " name="username" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Password" required="">
+								<input type="password" class="form-control" placeholder=" " name="password" required="">
 							</div>
 							<div class="right-w3l">
 								<input type="submit" class="form-control" value="Log in">
@@ -139,22 +139,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="#" method="post">
+						<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 							<div class="form-group">
-								<label class="col-form-label">Your Name</label>
-								<input type="text" class="form-control" placeholder=" " name="Name" required="">
+								<label class="col-form-label">Fullname</label>
+								<input type="text" class="form-control" placeholder=" " name="fullname" required="">
+							</div>
+							<div class="form-group">
+								<label class="col-form-label">Username</label>
+								<input type="text" class="form-control" placeholder="Code for login" name="username" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Email</label>
-								<input type="email" class="form-control" placeholder=" " name="Email" required="">
+								<input type="email" class="form-control" placeholder=" " name="email" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+								<input type="password" class="form-control" placeholder=" " name="password" id="password1" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">Confirm Password</label>
-								<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+								<input type="password" class="form-control" placeholder=" " name="c_password" id="password2" required="">
 							</div>
 							<div class="right-w3l">
 								<input type="submit" class="form-control" value="Register">
@@ -194,6 +198,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	                                        <th>Amount</th>
 	                                        <th>Status</th>
 	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
 	                                    </tr>
 	                                </thead>
 	                            </table>
@@ -249,7 +254,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto text-center mr-xl-5">
 							<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-								<a class="nav-link" href="index.html">Home
+								<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
@@ -274,9 +279,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="nav-item">
 								<a class="nav-link" href="contact.html">Contact Us</a>
 							</li>
-							<li class="nav-item">
-								<a href="#" onclick="loadtransaction()" class="nav-link">My Order </a>
-							</li>
+							<?php if (isset($this->session->userdata['login'])){ ?>
+								<li class="nav-item">
+									<a href="#" onclick="loadtransaction()" class="nav-link">My Order </a>
+								</li>
+							<?php } ?>
 						</ul>
 					</div>
 				</nav>
@@ -299,7 +306,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="form-group">
 								<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Nama Lengkap </label>
 								<div class="col-xs-3">
-									<input type="text" id="user_id" class="form-control" hidden="" value="8" />
+									<input type="text" id="user_id" class="form-control" hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> />
 									<input type="text" id="fullname" class="form-control" style="height: 32px;" placeholder="Nama Lengkap"/>
 								</div>
 							</div>
@@ -356,7 +363,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="form-group">
 									<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Total Harga Bayar </label>
 									<div class="col-xs-3">
-										<input type="text" id="price" value="Rp. 1.084.000" class="form-control" style="height: 32px;" disabled="" />
+										<input type="text" id="price" class="form-control" style="height: 32px;" disabled="" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -368,7 +375,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="form-group">
 									<label id="label-acc" class="col-xs-3 control-label no-padding-left">Total Belanja</label>
 									<div class="col-xs-3">
-										<input type="text" id="allprice" value="Rp. 1.094.000" class="form-control" style="height: 32px;" disabled=""/>
+										<input type="text" id="allprice" class="form-control" style="height: 32px;" disabled=""/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -562,6 +569,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		});
 
+		const queryString 	= window.location.search;
+		const urlParams 	= new URLSearchParams(queryString);
+		const product_id	= urlParams.get('product_id');
+		$('#spdes').val(urlParams.get('prod_name'));
+		$('#price').val('Rp. '+urlParams.get('price'));
+		$('#allprice').val('Rp. '+ (parseInt(urlParams.get('price'))+10000));
+
 		$('#checkout').click(function(){
 
 			var userid 		= $('#user_id').val();
@@ -570,7 +584,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var mobile 		= $('#mobile').val();
 			var ket 		= $('#ket').val();
 			// var jasping 	= $('#jasping').val();
-			var idbarang 	= $('#idbarang').val();
+			var idbarang 	= product_id;
 			var allprice 	= parseInt($('#allprice').val().replace(/[^0-9]/g, ''), 10);
 
 			if (!fullname) {
@@ -599,9 +613,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			                    mobile 			: mobile,
 			                },
 			        success: function(result){
-
+			        	// console.log(result);
 			            if (result['code'] == 0 ) {
 			                alert('Order berhasil di submit');
+			            	window.location.href = "http://localhost/weTech/user/dashboard/transdetail?order_id="+result.data;
 			            }else{
 			                alert('Order gagal di submit');
 			            }
@@ -625,7 +640,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		        dataType: 'json',
 		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
 		        data    : {
-		                    order_status 	: 'SUBMITTED',
+		                    user_id 	: $('#user_id').val(),
 		                },
 		        success: function(result){
 
@@ -644,7 +659,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					            { "data": "no_mobile" },
 					            { "data": "price" },
 					            { "data": "order_status" },
-					            { "data": "date_transaction" }
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
 					        ]
 					    } );
 		        	}
@@ -656,8 +675,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		            }
 		        }
 		    });
-			
-			
 		}
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->

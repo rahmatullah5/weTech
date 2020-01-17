@@ -9,17 +9,15 @@ class OrderModel extends CI_Model {
 
 	public function getAllOrder($param){
 		
-		$this->db->select('*');
-		$this->db->from('order_transaction');
-		$this->db->join('users', 'users.user_id = order_transaction.user_id');
-		$this->db->join('products', 'products.product_id = order_transaction.product_id');
+		$this->db->select('t.*,products.*,products.*,users.*,shippings.code_resi');
+		$this->db->from('order_transaction t');
+		$this->db->join('users', 'users.user_id = t.user_id');
+		$this->db->join('products', 'products.product_id = t.product_id');
+		$this->db->join('shippings', 'shippings.shipping_id = t.shipping_id' ,'left outer');
 		
-		if ($param['shipping']) {
-			$this->db->join('shippings', 'shippings.shipping_id = order_transaction.shipping_id');
-		}
 		
 		if ($param['order_id']) {
-			$this->db->where('order_id',$param['order_id']);
+			$this->db->where('t.order_id',$param['order_id']);
 		}
 
 		if ($param['status']) {
@@ -27,15 +25,19 @@ class OrderModel extends CI_Model {
 		}
 
 		if ($param['user_id']) {
-			$this->db->where('user_id',$param['user_id']);
+			$this->db->where('t.user_id',$param['user_id']);
 		}
 
 		$query = $this->db->get();
+		// print_r($query->result());die();
+		// print_r($this->db->last_query()); die();
 		return $query->result(); 
 	}
 
 	public function saveOrder($user){
-		return $this->db->insert('order_transaction', $user);
+		$this->db->insert('order_transaction', $user);
+		
+		return $this->db->insert_id();
 	}
 
 	public function updateTransaction($param){

@@ -41,6 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<link href="<?=base_url('assets/assetsUser/css/font-style.css')?>" rel="stylesheet" type="text/css" media="all" />
 	<link href="<?=base_url('assets/assetsUser/css/font-style-2.css')?>" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?=base_url('assets/assetsUser/css/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 
@@ -67,10 +68,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<?php if (isset($this->session->userdata['login'])){ ?>
 							<li class="text-center border-right text-white">
 
-					            <?php echo $this->session->userdata['login']['username'] ?>
+					    <?php echo $this->session->userdata['login']['username'] ?>
+					    <input type="text" id="user_id"  hidden="" value=<?php echo $this->session->userdata['login']['id'] ?> >
 					        </li>
 					        <li class="text-center border-right text-white">
-					            <a href="admin/auth/logout" class="text-white">Logout</a>
+					            <a href="http://localhost/weTech/admin/auth/logout/" class="text-white">Logout</a>
 					        </li>
 				        <?php }else{ ?>
 							<li class="text-center border-right text-white">
@@ -90,6 +92,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<!-- modals -->
+	<div class="modal fade" id="m-transaction" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content" style="margin-left: -200px; width: 200%;" >
+					<div class="modal-header">
+						<h5 class="modal-title">Transaction</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+	                        <div class="table-responsive">
+	                            <table id="table-history" class="table table-striped table-bordered table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Product Name</th>
+	                                        <th>Submit By</th>
+	                                        <th>Receiver</th>
+	                                        <th>Handphone Number</th>
+	                                        <th>Amount</th>
+	                                        <th>Status</th>
+	                                        <th>Date Transaction</th>
+	                                        <th>Action</th>
+	                                    </tr>
+	                                </thead>
+	                            </table>
+	                        </div>  
+		                </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<!-- log in -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -139,7 +173,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="<?php echo base_url(); ?>index.php/user/dashboard/insert">
+					<form method="POST" action="<?php echo base_url(); ?>index.php/user/usermgt/insert">
 						<div class="form-group">
 							<label class="col-form-label">Fullname</label>
 							<input type="text" class="form-control" placeholder=" " name="fullname" required="">
@@ -249,7 +283,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="http://localhost/weTech/user/dashboard">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -274,6 +308,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact Us</a>
 						</li>
+
+						<?php if (isset($this->session->userdata['login'])){ ?>
+							<li class="nav-item">
+								<a href="#" onclick="loadtransaction_history()" class="nav-link">My Order </a>
+							</li>
+						<?php } ?>
+
 					</ul>
 				</div>
 			</nav>
@@ -378,25 +419,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
 							<div class="row">
 								<?php
-									for ($x = 1; $x <= 3; $x++) {
+									// echo"<pre>"; print_r($product);die();
+                          			foreach ($product as $v):
 								?> 
 									<div class="col-md-4 product-men mt-5">
 										<div class="men-pro-item simpleCart_shelfItem">
 											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
+												<!-- <img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt=""> -->
+												<img src='<?=base_url('assets/uploads/'.$v["pictures"][0])?>' width="239px" height="200px" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
+														<?php if (isset($this->session->userdata['login'])){ ?>
+															<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
+														<?php } else { ?>
+															<a href='<?=base_url('user/usermgt/productdetail/?product_id='.$v["product_id"])?>' class="link-product-add-cart">Quick View</a>
+														<?php } ?>
 													</div>
 												</div>
 											</div>
 											<div class="item-info-product text-center border-top mt-4">
 												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
+													<a href='<?=base_url('user/dashboard/productdetail/?product_id='.$v["product_id"])?>' ><?=$v['name']?></a>
 												</h4>
 												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
+													<span class="item_price">Rp. <?=$v['price']?> </span>
+													<!-- <del>$280.00</del> -->
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 													<form action="#" method="post">
@@ -404,7 +451,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															<input type="hidden" name="cmd" value="_cart" />
 															<input type="hidden" name="add" value="1" />
 															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+															<input type="hidden" name="item_name" value=<?=$v['name']?> />
 															<input type="hidden" name="amount" value="200.00" />
 															<input type="hidden" name="discount_amount" value="1.00" />
 															<input type="hidden" name="currency_code" value="USD" />
@@ -417,62 +464,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</div>
 										</div>
 									</div>
-								<?php 
-									}
-								?>
+								<?php
+		                          endforeach
+		                        ?>
 							</div>
 						</div>
 						 
-						<!-- //first section -->
-						<!-- second section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							<h3 class="heading-tittle text-center font-italic">Another Product</h3>
-							<div class="row">
-								<?php
-									for ($x = 1; $x <= 3; $x++) {
-								?> 
-									<div class="col-md-4 product-men mt-5">
-										<div class="men-pro-item simpleCart_shelfItem">
-											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
-												<div class="men-cart-pro">
-													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-													</div>
-												</div>
-											</div>
-											<div class="item-info-product text-center border-top mt-4">
-												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
-												</h4>
-												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
-												</div>
-												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-													<form action="#" method="post">
-														<fieldset>
-															<input type="hidden" name="cmd" value="_cart" />
-															<input type="hidden" name="add" value="1" />
-															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-															<input type="hidden" name="amount" value="200.00" />
-															<input type="hidden" name="discount_amount" value="1.00" />
-															<input type="hidden" name="currency_code" value="USD" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
-															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
-														</fieldset>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								<?php 
-									}
-								?>
-							</div>
-						</div>
 						<!-- //second section -->
 						<!-- third section -->
 						<div class="product-sec1 product-sec2 px-sm-5 px-3">
@@ -485,56 +482,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 						</div>
 						<!-- //third section -->
-						<!-- fourth section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
-							<h3 class="heading-tittle text-center font-italic">Iphone</h3>
-							<div class="row">
-								<?php
-									for ($x = 1; $x <= 3; $x++) {
-								?> 
-									<div class="col-md-4 product-men mt-5">
-										<div class="men-pro-item simpleCart_shelfItem">
-											<div class="men-thumb-item text-center">
-												<img src="<?=base_url('assets/assetsUser/images/m1.jpg')?>" alt="">
-												<div class="men-cart-pro">
-													<div class="inner-men-cart-pro">
-														<a href="<?=base_url('user/dashboard/productdetail')?>" class="link-product-add-cart">Quick View</a>
-													</div>
-												</div>
-											</div>
-											<div class="item-info-product text-center border-top mt-4">
-												<h4 class="pt-1">
-													<a href="<?=base_url('user/dashboard/productdetail')?>">Samsung Galaxy J7</a>
-												</h4>
-												<div class="info-product-price my-2">
-													<span class="item_price">$200.00</span>
-													<del>$280.00</del>
-												</div>
-												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-													<form action="#" method="post">
-														<fieldset>
-															<input type="hidden" name="cmd" value="_cart" />
-															<input type="hidden" name="add" value="1" />
-															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-															<input type="hidden" name="amount" value="200.00" />
-															<input type="hidden" name="discount_amount" value="1.00" />
-															<input type="hidden" name="currency_code" value="USD" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
-															<!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
-														</fieldset>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								<?php 
-									}
-								?>
-							</div>
-						</div>
-						<!-- //fourth section -->
 					</div>
 				</div>
 				<!-- //product left -->
@@ -932,11 +879,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 
 		});
+
+		function loadtransaction_history(){
+			$('#m-transaction').modal('show');
+			$('#table-history').DataTable().clear().draw();
+			$.ajax({
+		        type    : 'POST',
+		        dataType: 'json',
+		        url     : 'http://localhost/weTech/admin/selling/getTransaction',
+		        data    : {
+		                    user_id 	: $('#user_id').val(),
+		                },
+		        success: function(result){
+
+		        	if (result.code == 0) {
+					    $('#table-history').DataTable( {
+					    	"processing" 	: true,
+                    		"serverSide" 	: false,
+                    		"paging" 		: true,
+                    		"autoWidth"		: true,
+                    		"destroy"		: true,
+					        "data" 			: result.data,
+					        "columns" : [
+					            { "data": "name" },
+					            { "data": "fullname" },
+					            { "data": "receiver" },
+					            { "data": "no_mobile" },
+					            { "data": "price" },
+					            { "data": "order_status" },
+					            { "data": "date_transaction" },
+					            { "data": function ( data, type, row ) {
+									        return "<a href='http://localhost/weTech/user/dashboard/transdetail/?order_id="+data.order_id+"'>Detail</a>";
+									    } 
+								}
+					        ]
+					    } );
+		        	}
+		        },
+		        error: function(xhr) {
+		           
+		            if(xhr.status != 200){
+		                alert('gagal , xhr tidak 200'); 
+		            }
+		        }
+		    });
+		}
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
 	<script src="<?=base_url('assets/assetsUser/js/bootstrap.js')?>"></script>
+	<script src="<?=base_url('assets/assetsUser/js/jquery.dataTables.min.js')?>"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 </body>

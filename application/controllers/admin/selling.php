@@ -47,6 +47,10 @@ class Selling extends CI_Controller {
 
 		if ($this->input->post('status')) {
 			$param['order_status'] 	= $this->input->post('status');
+
+			if ($param['order_status']  == 'FINISH') {
+				$param['date_receipt']	= date("Y-m-d H:i:s");
+			}
 		}
 
 		if ($this->input->post('shipping_id')) {
@@ -93,16 +97,12 @@ class Selling extends CI_Controller {
 		if($query){
 			$result = array( 	'code' => 0,
                                 'info' => 'Berhasil',
-                                'data' => array(    
-                                                
-                                            ) 
+                                'data' => $query 
                                 ); 
 		}else{
 			$result = array( 	'code' => 1,
                                 'info' => 'Gagal',
-                                'data' => array(    
-                                                
-                                            ) 
+                                'data' => $query
                                 );
 		}
     	
