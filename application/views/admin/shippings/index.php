@@ -22,25 +22,25 @@
                   <div class="card-body table-responsive p-0">
                     <table class="table table-hover">                    
                         <thead>
-                        <div class="input-group input-group-sm">
+                        <!-- <div class="input-group input-group-sm">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
                         <div class="input-group-append">
-                          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button> -->
                         </div>
                         </div>                         
                         <tr>  
                         <th>
-                        <div class="custom-control custom-checkbox">
+               <!--          <div class="custom-control custom-checkbox">
                           <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
                           <label for="customCheckbox1" class="custom-control-label"></label>
-                        </div>
+                        </div> -->
                         </th>
                           <th>Shipping ID</th>
                           <th>Kode Resi</th>
                           <th>Kurir</th>
-                          <th>Penerima</th>
+                      <!--     <th>Penerima</th>
                           <th>Alamat Pengiriman</th>
-                          <th>Alamat Tujuan</th>
+                          <th>Alamat Tujuan</th> -->
                           <th>Status</th>
                           <th>Aksi</th>
                         </tr>
@@ -54,14 +54,14 @@
                           <td><?=$v->shipping_id?></td>
                           <td><?=$v->code_resi?></td>
                           <td><?=$v->courier?></td>
-                          <td><?=$v->receiver?></td>
+   <!--                        <td><?=$v->receiver?></td> -->
                           <!-- <td><?=$v->image?></td> -->
-                          <td><?=$v->depart?></td>
-                          <td><?=$v->destination?></td>
+                          <!-- <td><?=$v->depart?></td> -->
+                          <!-- <td><?=$v->destination?></td> -->
                           <td><?=$v->status?></td>
                           <td>
                             <!-- <button class='btn btn-primary btn-sm'>Edit</button> -->
-                            <a href='<?=base_url('admin/shippings/show/'.$v->shipping_id)?>' class='btn btn-primary btn-sm'>Detail</a>
+                            <a href='<?=base_url('admin/shippings/show/'.$v->shipping_id)?>' class='btn btn-primary btn-sm'>Detail</a>                           
                             <a href='<?=base_url('admin/shippings/destroy/'.$v->shipping_id)?>' class='btn btn-danger btn-sm'>Hapus</a>
                           </td>
                         </tr>
