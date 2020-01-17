@@ -8,7 +8,11 @@ class ShippingModel extends CI_Model {
 	}
 
 	public function getAll(){
-		$query = $this->db->get('shippings');
+		$this->db->select('
+			shippings.* from shippings');
+		$this->db->order_by("shipping_id", "desc");
+		$query = $this->db->get();
+
 		return $query->result(); 
 	}
 
