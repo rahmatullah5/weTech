@@ -9,7 +9,7 @@ class Selling extends CI_Controller {
 
 	public function getAllOrder(){
 
-	    $data['orders'] 	= $this->OrderModel->getAllOrder();		
+	    $data['orders'] 	= $this->OrderModel->getAllOrderAdmin();		
         $content['body'] 	= $this->load->view('admin/selling/reporting', $data);
 
 		$this->load->view('admin/layout/container', $content);

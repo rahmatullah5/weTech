@@ -66,4 +66,10 @@ class OrderModel extends CI_Model {
 			return $ship_id;
 	}		
 
+	public function getAllOrderAdmin(){
+
+		$query = $this->db->get('order_transaction');
+		return $query->result(); 
+	}
+
 }

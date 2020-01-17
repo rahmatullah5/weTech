@@ -49,6 +49,7 @@
 		                      		</thead>
 			                      	<tbody>
 				                        <?php
+				                        	// print_r($orders);die();
 				                          	foreach ($orders as $v):
 				                        ?>
 				                        <tr>
@@ -59,9 +60,9 @@
 				                          	<td><?=$v->product_id?></td>
 				                          	<td><?=$v->date_transaction?></td>
 				                          	<td><?=$v->pay_by?></td>
-				                          	<td><?=$v->ship_id?></td>
+				                          	<td><?=$v->shipping_id?></td>
 				                          	<td><?=$v->price?></td>
-				                          	<td><?=$v->discount?></td>
+				                          	<td><?=$v->address?></td>
 				                         	
 				                         	<td>
 				                         		-
