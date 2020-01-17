@@ -319,19 +319,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="flexslider" >
 							
 							<ul class="slides">
-								<li data-thumb="<?=base_url('assets/assetsUser/images/si1.jpg')?>">
-									<div class="thumb-image">
-										<img src="<?=base_url('assets/assetsUser/images/si1.jpg')?>" data-imagezoom="true" class="img-fluid" alt=""> 
-									</div>
-								</li>
-								<li data-thumb="<?=base_url('assets/assetsUser/images/si2.jpg')?>">
-									<div class="thumb-image">
-										<img src="<?=base_url('assets/assetsUser/images/si2.jpg')?>" data-imagezoom="true" class="img-fluid" alt=""> </div>
-								</li>
-								<li data-thumb="<?=base_url('assets/assetsUser/images/si3.jpg')?>">
-									<div class="thumb-image">
-										<img src="<?=base_url('assets/assetsUser/images/si3.jpg')?>" data-imagezoom="true" class="img-fluid" alt=""> </div>
-								</li>
+
+								<?php
+									// echo"<pre>"; print_r($product);die();
+                          			foreach ($product_detail->pictures as $v):
+								?> 
+									<li data-thumb="<?=base_url('assets/uploads/'.$v)?>">
+										<div class="thumb-image">
+											<img src="<?=base_url('assets/uploads/'.$v)?>" data-imagezoom="true" class="img-fluid" alt=""> 
+										</div>
+									</li>
+
+								<?php
+		                         	endforeach
+		                        ?>
 							</ul>
 							<div class="clearfix"></div>
 						</div>
@@ -339,9 +340,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<h3 class="mb-3" id="p-name"></h3>
+					<h3 class="mb-3" id="p-name"><?=$product_detail->name?></h3>
 					<p class="mb-3">
-						<span class="item_price" id="item_price"></span>
+						<span class="item_price" id="item_price">Rp. <?=$product_detail->price?></span>
 						<!-- <label>Free delivery</label> -->
 					</p>
 					<div class="single-infoagile">
@@ -355,6 +356,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="mb-3">
 								EMIs from $655/month.
 							</li>
+							<!-- <li class="mb-3">
+								Quantity Product <?=$product_detail->stok?>
+							</li> -->
 						</ul>
 					</div>
 					<div class="product-single-w3l">
@@ -377,7 +381,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="mb-1">
 								Exynos 7870 Octa Core 1.6GHz Processor
 							</li> -->
-							<span id="desc-spec"></span>
+							<span id="desc-spec"><?=$product_detail->spesifikasi?></span>
 						</ul>
 
 						<p class="my-sm-4 my-3">
@@ -398,9 +402,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
 									<?php if (isset($this->session->userdata['login'])){ ?>
-										<a href="#" class="btn btn-primary " onclick="checkoutpage()"> Checkout </a>
+										<a href="<?=base_url('user/dashboard/checkout?product_id='.$product_detail->product_id.'&price='.$product_detail->price.'&prod_name='.$product_detail->name)?>" class="btn btn-primary ">Checkout</a>
 									<?php } ?>
-									<!-- <input type="submit" name="submit" value="Add to cart" class="button" /> -->
 								</fieldset>
 							</form>
 						</div>
@@ -609,61 +612,61 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		});
 
-		const queryString 	= window.location.search;
-		const urlParams 	= new URLSearchParams(queryString);
-		const product_id	= urlParams.get('product_id');
-		var price;
-		var prod_name;
-		if (product_id) {
-			loadProduct(product_id);
-		}
+		// const queryString 	= window.location.search;
+		// const urlParams 	= new URLSearchParams(queryString);
+		// const product_id	= urlParams.get('product_id');
+		// var price;
+		// var prod_name;
+		// if (product_id) {
+		// 	loadProduct(product_id);
+		// }
 
-		function loadProduct(product_id){
-			$.ajax({
-		        type    : 'GET',
-		        dataType: 'json',
-		        url     : 'http://localhost/weTech/admin/inventory/getDetailProduk/'+product_id,
+		// function loadProduct(product_id){
+		// 	$.ajax({
+		//         type    : 'GET',
+		//         dataType: 'json',
+		//         url     : 'http://localhost/weTech/admin/inventory/getDetailProduk/'+product_id,
 		    
-		        success: function(result){
-		        	console.log(result);
-		        	document.getElementById('p-name').innerHTML = result.name;
-		        	document.getElementById('desc-spec').innerHTML = result.spesifikasi;
-		        	document.getElementById('item_price').innerHTML = 'Rp. ' +result.price;
-		        	// var apped = "<li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li>";
+		//         success: function(result){
+		//         	console.log(result);
+		//         	document.getElementById('p-name').innerHTML = result.name;
+		//         	document.getElementById('desc-spec').innerHTML = result.spesifikasi;
+		//         	document.getElementById('item_price').innerHTML = 'Rp. ' +result.price;
+		//         	// var apped = "<li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li>";
 
-		        	// $("#one").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
-		        	// $("#two").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
-		        	// $("#three").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
-		        	// $("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
-		        	// $("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
-		        	// $("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
+		//         	// $("#one").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
+		//         	// $("#two").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
+		//         	// $("#three").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
+		//         	// $("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
+		//         	// $("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
+		//         	// $("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);
 
-		        	$("#one").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
-		        	$("#two").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
-		        	$("#three").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
-		        	$("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
-		        	$("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
-		        	$("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#one").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#two").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#three").attr("src", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#one-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#two-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
+		//         	$("#three-pg").attr("data-thumb", "http://localhost/weTech/assets/assetsUser/images/si3.jpg");
 
 
 		        	
-		        	prod_name 	= result.name;
-		        	price  		= result.price;
+		//         	prod_name 	= result.name;
+		//         	price  		= result.price;
 					
-		        },
-		        error: function(xhr) {
+		//         },
+		//         error: function(xhr) {
 		           
-		            if(xhr.status != 200){
-		                alert('gagal , xhr tidak 200'); 
-		            }
-		        }
-		    });
+		//             if(xhr.status != 200){
+		//                 alert('gagal , xhr tidak 200'); 
+		//             }
+		//         }
+		//     });
 
-		}
+		// }
 
-		function checkoutpage(){
-			window.location.href = "http://localhost/weTech/user/dashboard/checkout?product_id="+product_id+"&price="+price+"&prod_name="+prod_name;
-		}
+		// function checkoutpage(product_id,price,prod_name){
+		// 	window.location.href = "http://localhost/weTech/user/dashboard/checkout?product_id="+product_id+"&price="+price+"&prod_name="+prod_name;
+		// }
 
 		function loadtransaction_history(){
 			$('#m-transaction').modal('show');

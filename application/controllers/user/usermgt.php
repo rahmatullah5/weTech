@@ -52,8 +52,10 @@ class Usermgt extends CI_Controller {
 	}
 
 	public function productdetail(){
-		
-		$this->load->view('user/productdetail');
+
+		$json = file_get_contents('http://localhost/weTech/admin/inventory/getDetailProduk/'.$_GET["product_id"]);
+        $obj['product_detail'] = json_decode($json);
+		$this->load->view('user/productdetail',$obj);
 
 	}
 }
