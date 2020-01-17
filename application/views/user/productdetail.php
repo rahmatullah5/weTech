@@ -631,9 +631,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		        	document.getElementById('item_price').innerHTML = 'Rp. ' +result.price;
 		        	// var apped = "<li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[0]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[1]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li><li data-thumb='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"'><div class='thumb-image'><img src='http://localhost/weTech/assets/uploads/"+result.pictures[2]+"' data-imagezoom='true' class='img-fluid' alt=''></div></li>";
 
-
-		        	// $(".flexslider").append(apped);
-
 		        	// $("#one").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[0]);
 		        	// $("#two").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[1]);
 		        	// $("#three").attr("src", "http://localhost/weTech/assets/uploads/"+result.pictures[2]);

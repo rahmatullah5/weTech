@@ -52,7 +52,7 @@ class Usermgt extends CI_Controller {
 	}
 
 	public function productdetail(){
-
+		
 		$this->load->view('user/productdetail');
 
 	}
