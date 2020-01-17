@@ -179,7 +179,7 @@ class Inventory extends CI_Controller {
 		redirect('admin/inventory/sold', 'refresh');
 	}
 	
-	public function report($filter) {
+	public function report($filter='') {
 		$data['page'] = 'report';
 		if ($filter) {
 			$month = $_GET['month'];
@@ -213,16 +213,24 @@ class Inventory extends CI_Controller {
 	
 	public function getDetailProduk($id) {
 		$data = $this->InventoryModel->getById($id);
-		$api = array(
-			'product_id' => $data[0]->product_id,
-			'code' => $data[0]->code,
-			'type' => $data[0]->type,
-			'name' => $data[0]->name,
-			'price' => $data[0]->price,
-			'date' => $data[0]->date,
-			'spesifikasi' => $data[0]->spesifikasi,
-			'pictures' => explode(',', $data[0]->pictures),
+		$api = [];
+		if (isset($data[0])) {
+			$api = array(
+				'product_id' => $data[0]->product_id,
+				'code' => $data[0]->code,
+				'type' => $data[0]->type,
+				'name' => $data[0]->name,
+				'price' => $data[0]->price,
+				'date' => $data[0]->date,
+				'spesifikasi' => $data[0]->spesifikasi,
+				'pictures' => explode(',', $data[0]->pictures),
+				);
+		} else {
+			$api = array('code' => 1,
+				'info' => 'Gagal',
+				'data' => array() 
 			);
+		}
 		echo json_encode($api, TRUE);
 	}
 

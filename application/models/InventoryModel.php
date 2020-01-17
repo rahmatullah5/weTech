@@ -46,12 +46,19 @@ class InventoryModel extends CI_Model {
 	}
 
 	public function getReportByDate($month, $year){
+		// $this->db->select_sum('qty');
+		// $this->db->from('products_entered');
+		// $this->db->where('date LIKE','%2020');
+		// $sum_masuk = $this->db->get();
+
 		$this->db->select('a.*, b.qty as masuk, c.qty as keluar');
     $this->db->from('products a'); 
-    $this->db->join('barang_masuk b', 'b.product_id = a.product_id', 'left');
-    $this->db->join('barang_keluar c', 'c.product_id = a.product_id', 'left');
-		$this->db->where('a.date LIKE','%'.$month.'-'.$year);
+    $this->db->join('products_entered b', 'b.product_id = a.product_id', 'left');
+    $this->db->join('products_out c', 'c.product_id = a.product_id', 'left');
+		$this->db->where('b.date LIKE','%2020');
+		$this->db->where('c.date LIKE','%2020');
 		$query = $this->db->get();
+
 		return $query;
 	}
 	
