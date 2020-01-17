@@ -44,12 +44,22 @@
                 <th>Code</th>
                 <th>Name</th>
                 <th>Potongan</th>
-                <!-- <th>Image</th> -->
+                <th>Image</th>
                 <th>Description</th>
                 <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
+              <?php
+                if (empty($voucher)):
+              ?>
+              <tr>
+                <td colspan="7" align="center">Tidak ada data</td>
+              </tr>
+              <?php
+                endif
+              ?>
+
               <?php
                 foreach ($voucher as $v):
               ?>
@@ -58,11 +68,11 @@
                 <td><?=$v->code?></td>
                 <td><?=$v->name?></td>
                 <td>Rp. <?=$v->discount?></td>
-                <!-- <td><?=$v->image?></td> -->
+                <td><img src="<?=base_url('assets/uploads/voucher/' . $v->image)?>" height="100px"></td>
                 <td><?=$v->description?></td>
                 <td>
-                  <!-- <button class='btn btn-primary btn-sm'>Edit</button> -->
-                  <a href='<?=base_url('admin/voucher/delete/'.$v->voucher_id)?>' class='btn btn-danger btn-sm'>Hapus</a>
+                  <button onClick='edit(<?=json_encode($v)?>)' class='btn btn-primary btn-sm'>Edit</button>
+                  <button onClick='del(<?=$v->voucher_id?>)' class='btn btn-danger btn-sm'>Hapus</button>
                 </td>
               </tr>
               <?php
@@ -82,13 +92,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Voucher</h5>
+        <h5 class="modal-title" id="addModalLabel">Tambah Voucher</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form role="form" method='post'  action="<?=base_url('admin/voucher/action_insert')?>">
+        <form role="form" method='post' action="<?=base_url('admin/voucher/action_insert')?>" enctype="multipart/form-data">
           <div class="row">
             <div class="col-sm-8">
               <div class="form-group">
@@ -119,6 +129,14 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
+                <label>Gambar</label>
+                <div><input type="file" name="image" accept="image/*" required/></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
                 <label>Deskripsi</label>
                 <textarea class="form-control" rows="3" name='description'></textarea>
               </div>
@@ -133,3 +151,92 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Voucher</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" method='post' action="<?=base_url('admin/voucher/action_edit')?>" enctype="multipart/form-data">
+          <input type="hidden" id="editId" name="voucher_id">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name='name' id="editName" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Code</label>
+                <input type="text" name='code' id="editCode" class="form-control" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Potongan</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rp. </span>
+                  </div>
+                  <input type="text" name='discount' id="editDiscount" class="form-control" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Gambar</label>
+                <div><input type="file" name="image" accept="image/*"/></div>
+              </div>
+              <div class="mb-2">
+                <img id="editImage" height="100px" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Deskripsi</label>
+                <textarea class="form-control" id="editDescription" rows="3" name='description'></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="float-right">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+<script>
+function edit(data) {
+  $('#editId').val(data.voucher_id)
+  $('#editName').val(data.name)
+  $('#editCode').val(data.code)
+  $('#editDiscount').val(data.discount)
+  $('#editDescription').val(data.description)
+  $('#editImage').attr('src', "<?=base_url('assets/uploads/voucher')?>/" + data.image)
+
+  $('#editModal').modal('show')
+}
+
+function del(id) {
+  var result = confirm("Want to delete?");
+  if (result) {
+      location.href = "<?=base_url('admin/voucher/delete')?>/" + id
+  }
+}
+</script>
