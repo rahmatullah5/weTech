@@ -402,7 +402,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
 									<?php if (isset($this->session->userdata['login'])){ ?>
-										<a href="<?=base_url('user/dashboard/checkout?product_id='.$product_detail->product_id.'&price='.$product_detail->price.'&prod_name='.$product_detail->name)?>" class="btn btn-primary ">Checkout</a>
+										<a href="<?=base_url('user/dashboard/checkout?product_id='.$product_detail->product_id.'&price='.$product_detail->price.'&discount='.$product_detail->discount.'&prod_name='.$product_detail->name)?>" class="btn btn-primary ">Checkout</a>
 									<?php } ?>
 								</fieldset>
 							</form>

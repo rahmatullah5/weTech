@@ -223,6 +223,7 @@ class Inventory extends CI_Controller {
 				'type' => $data[0]->type,
 				'name' => $data[0]->name,
 				'price' => $data[0]->price,
+				'discount' => $data[0]->discount,
 				'date' => $data[0]->date,
 				'spesifikasi' => $data[0]->spesifikasi,
 				'pictures' => explode(',', $data[0]->pictures),

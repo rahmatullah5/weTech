@@ -7,6 +7,7 @@ class Dashboard extends MY_Controller {
 		$this->load->model('UserModel');
 		$this->load->model('OrderModel');
 		$this->load->model('InventoryModel');
+		$this->load->model('VoucherModel');
 	}
 
 	public function index()
@@ -29,6 +30,8 @@ class Dashboard extends MY_Controller {
 		}
 
 		$p_data['product'] = $api;	
+		$p_data['voucherList'] = $this->VoucherModel->getAll();
+
 		// print_r($p_data);die();
         $content['body'] = $this->load->view('user/dashboard', $p_data);
 

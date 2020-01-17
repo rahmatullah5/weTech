@@ -357,13 +357,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-sm-1"></div>
 					
-					<div class="col-sm-4" style="border: 1px solid black; height: 320px;">
+					<div class="col-sm-4" style="border: 1px solid black;">
 						<h2>Detail Pembayaran</h2> 
 							<form class="form-horizontal">
+								<div class="row">
+									<div class="form-group col-md-8">
+										<label id="label-acc" class="col-xs-3 control-label no-padding-left">Voucher</label>
+										<div class="col-xs-3">
+											<input type="text" id='voucherCode' class="form-control" style="height: 32px;"/>
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<label id="label-acc" class="col-xs-3 control-label no-padding-left"></label>
+										<div class="col-xs-3">
+											<button type="button" class="btn btn-success btn-sm" id="checkVoucher">Gunakan</button>
+											<button type="button" class="btn btn-danger btn-sm" id="deleteVoucher">Hapus</button>
+										</div>
+									</div>
+								</div>
 								<div class="form-group">
 									<label id="label-acc" class="col-xs-3 control-label no-padding-left red">Total Harga Bayar </label>
 									<div class="col-xs-3">
 										<input type="text" id="price" class="form-control" style="height: 32px;" disabled="" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Potongan Harga Produk </label>
+									<div class="col-xs-3">
+										<input type="text" id="priceDiscount" class="form-control" style="height: 32px;" disabled=""/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label id="label-acc" class="col-xs-3 control-label no-padding-left ">Potongan Voucher </label>
+									<div class="col-xs-3">
+										<input type="text" id="voucherDiscount" class="form-control" style="height: 32px;" disabled=""/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -572,12 +599,81 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		const queryString 	= window.location.search;
 		const urlParams 	= new URLSearchParams(queryString);
 		const product_id	= urlParams.get('product_id');
-		$('#spdes').val(urlParams.get('prod_name'));
-		$('#price').val('Rp. '+urlParams.get('price'));
-		$('#allprice').val('Rp. '+ (parseInt(urlParams.get('price'))+10000));
+		const priceDiscount = parseInt(urlParams.get('discount'));
+		
+		function refreshData() {
+			if (!localStorage.getItem('voucherId')) {
+				localStorage.setItem("voucherId", "");
+				localStorage.setItem("voucherCode", "");
+				localStorage.setItem("voucherDiscount", 0);
+			} 
+
+			const voucherDiscount = parseInt(localStorage.getItem('voucherDiscount'))
+
+			$('#spdes').val(urlParams.get('prod_name'));
+			$('#price').val('Rp. '+urlParams.get('price'));
+			$('#priceDiscount').val('Rp. '+urlParams.get('discount'));
+			$('#voucherDiscount').val('Rp. '+localStorage.getItem('voucherDiscount'));
+			$('#voucherCode').val(localStorage.getItem('voucherCode'));
+			$('#allprice').val('Rp. '+ (parseInt(urlParams.get('price'))+10000-priceDiscount-voucherDiscount));
+
+			if (localStorage.getItem('voucherId')) {
+				$('#voucherCode').attr('disabled', true)
+				$('#checkVoucher').hide()
+				$('#deleteVoucher').show()
+			} else {
+				$('#voucherCode').attr('disabled', false)
+				$('#checkVoucher').show()
+				$('#deleteVoucher').hide()
+			}
+		}
+
+		refreshData()		
+
+		$('#deleteVoucher').click(function (){
+			$('#voucherCode').val('');
+			localStorage.setItem("voucherId", "");
+			localStorage.setItem("voucherDiscount", 0);
+			localStorage.setItem("voucherCode", "");
+			refreshData();
+		})
+
+		$('#checkVoucher').click(function (){
+			var voucherCode = $('#voucherCode').val();
+			$.ajax({
+				type    : 'POST',
+				dataType: 'json',
+				url     : 'http://localhost/weTech/admin/selling/checkVoucher',
+				data    : {
+					code 	: voucherCode,
+				},
+				success: function(result){
+					if (result['code'] == 0 ) {
+						localStorage.setItem("voucherId", result['data']['voucher_id']);
+						localStorage.setItem("voucherDiscount", result['data']['discount']);
+						localStorage.setItem("voucherCode", result['data']['code']);
+						refreshData();
+						alert('Voucher ditemukan');
+					}else{
+						$('#voucherCode').val('');
+						localStorage.setItem("voucherId", "");
+						localStorage.setItem("voucherDiscount", 0);
+						localStorage.setItem("voucherCode", "");
+						refreshData();
+						alert('Voucher tidak ditemukan');
+					}
+
+				},
+				error: function(xhr) {
+					
+					if(xhr.status != 200){
+						alert('gagal , xhr tidak 200'); 
+					}
+				}
+			});
+		})
 
 		$('#checkout').click(function(){
-
 			var userid 		= $('#user_id').val();
 			var fullname 	= $('#fullname').val();
 			var address 	= $('#address').val();
@@ -586,6 +682,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			// var jasping 	= $('#jasping').val();
 			var idbarang 	= product_id;
 			var allprice 	= parseInt($('#allprice').val().replace(/[^0-9]/g, ''), 10);
+			var priceDiscount 	= parseInt($('#priceDiscount').val().replace(/[^0-9]/g, ''), 10);
+			var voucherDiscount 	= parseInt($('#voucherDiscount').val().replace(/[^0-9]/g, ''), 10);
+			var voucherId 	= localStorage.getItem("voucherId");
 
 			if (!fullname) {
 				alert('Nama lengkap tidak boleh kosong!');
@@ -611,9 +710,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			                    fullname 		: fullname,
 			                    address 		: address,
 			                    mobile 			: mobile,
+			                    discount 		: priceDiscount + voucherDiscount,
+			                    voucherId 		: voucherId,
 			                },
 			        success: function(result){
-			        	// console.log(result);
+			        	
+						$('#voucherCode').val('');
+						localStorage.setItem("voucherId", "");
+						localStorage.setItem("voucherDiscount", 0);
+						localStorage.setItem("voucherCode", "");
+						refreshData();
+
 			            if (result['code'] == 0 ) {
 			                alert('Order berhasil di submit');
 			            	window.location.href = "http://localhost/weTech/user/dashboard/transdetail?order_id="+result.data;
@@ -623,7 +730,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 			        },
 			        error: function(xhr) {
-			           
+						
+						$('#voucherCode').val('');
+						localStorage.setItem("voucherId", "");
+						localStorage.setItem("voucherDiscount", 0);
+						localStorage.setItem("voucherCode", "");
+						refreshData();
+						
 			            if(xhr.status != 200){
 			                alert('gagal , xhr tidak 200'); 
 			            }

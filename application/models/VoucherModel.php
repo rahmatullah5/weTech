@@ -40,4 +40,16 @@ class VoucherModel extends CI_Model {
 
 		return $data;
 	}
+
+	public function getVoucher($code)
+	{
+		$data = $this
+			->db
+			->get_where('voucher', [
+				'code' => $code
+			])
+			->row();
+
+		return $data;
+	}
 }

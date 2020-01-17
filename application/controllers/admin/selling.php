@@ -5,6 +5,7 @@ class Selling extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('OrderModel');
+		$this->load->model('VoucherModel');
 	}
 
 	public function getAllOrder(){
@@ -91,6 +92,8 @@ class Selling extends CI_Controller {
 		$order['receiver'] 			= $this->input->post('fullname');
 		$order['address'] 			= $this->input->post('address');
 		$order['no_mobile'] 		= $this->input->post('mobile');
+		$order['voucher_id'] 		= empty($this->input->post('voucherId')) ? null : $this->input->post('voucherId');
+		$order['discount'] 			= $this->input->post('discount');
  
 		$query = $this->OrderModel->saveOrder($order);
  
@@ -108,6 +111,27 @@ class Selling extends CI_Controller {
     	
     	echo json_encode($result);
 
+	}
+
+	public function checkVoucher() {
+		$code = $this->input->post('code');
+		$data = $this->VoucherModel->getVoucher($code);
+
+		if (empty($data)) {
+			$result = array( 	
+				'code' => 1,
+				'info' => 'Gagal',
+				'data' => null 
+			); 
+		} else {
+			$result = array( 	
+				'code' => 0,
+				'info' => 'Berhasil',
+				'data' => $data
+			); 
+		}
+
+		echo json_encode($result);
 	}
 
 }
