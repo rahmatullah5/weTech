@@ -119,7 +119,7 @@
           <!-- ADMIN ADVERTISING -->
           <?php if (in_array($this->session->userdata['login']['type'], ['admin-super', 'admin-advertising'])): ?>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   ADVERTISING

@@ -44,11 +44,20 @@
                 <th>Name</th>
                 <th>Harga Normal</th>
                 <th>Potongan</th>
-                <!-- <th>Image</th> -->
                 <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
+              <?php
+                if (empty($promo)):
+              ?>
+              <tr>
+                <td colspan="7" align="center">Tidak ada data</td>
+              </tr>
+              <?php
+                endif
+              ?>
+
               <?php
                 foreach ($promo as $v):
               ?>
@@ -57,10 +66,9 @@
                 <td><?=$v->name?></td>
                 <td><?=$v->price?></td>
                 <td>Rp. <?=$v->discount?></td>
-                <!-- <td><?=$v->image?></td> -->
                 <td>
-                  <!-- <button class='btn btn-primary btn-sm'>Edit</button> -->
-                  <a href='<?=base_url('admin/promo/delete/'.$v->product_id)?>' class='btn btn-danger btn-sm'>Hapus</a>
+                  <button onClick='edit(<?=json_encode($v)?>)' class='btn btn-primary btn-sm'>Edit</button>
+                  <button onClick='del(<?=$v->product_id?>)' class='btn btn-danger btn-sm'>Hapus</button>
                 </td>
               </tr>
               <?php
@@ -80,26 +88,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah promo</h5>
+        <h5 class="modal-title" id="addModalLabel">Tambah promo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form role="form" method='post'  action="<?=base_url('admin/promo/action_update')?>">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Potongan</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Rp. </span>
-                  </div>
-                  <input type="text" name='discount' class="form-control" required>
-                </div>
-              </div>
-            </div>
-          </div>
+        <form role="form" method='post' action="<?=base_url('admin/promo/action_update')?>">
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
@@ -118,6 +113,19 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Potongan</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rp. </span>
+                  </div>
+                  <input type="text" name='discount' class="form-control" required>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="float-right">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -127,3 +135,56 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit promo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" method='post' action="<?=base_url('admin/promo/action_update')?>">
+          <input type="hidden" id="editProductId" name="productId">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Potongan</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rp. </span>
+                  </div>
+                  <input type="text" id="editDiscount" name='discount' class="form-control" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-right">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+<script>
+function edit(data) {
+  $('#editProductId').val(data.product_id)
+  $('#editDiscount').val(data.discount)
+
+  $('#editModal').modal('show')
+}
+
+function del(id) {
+  var result = confirm("Want to delete?");
+  if (result) {
+      location.href = "<?=base_url('admin/promo/delete')?>/" + id
+  }
+}
+</script>

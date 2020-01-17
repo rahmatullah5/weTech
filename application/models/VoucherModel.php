@@ -15,6 +15,12 @@ class VoucherModel extends CI_Model {
 			->insert('voucher', $voucher);
 	}
 
+	public function update($id, $data)
+	{
+		$this->db->where('voucher_id', $id);
+		return $this->db->update('voucher', $data);
+	}
+
 	public function delete($id)
 	{
 		$this->db->where('voucher_id', $id);

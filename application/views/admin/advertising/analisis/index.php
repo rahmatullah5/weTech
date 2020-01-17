@@ -40,7 +40,8 @@
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Total</th>
+                <th>Total Terjual</th>
+                <th>Stok</th>
               </tr>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@
                 <td><?=$v['product_id']?></td>
                 <td><?=$v['name']?></td>
                 <td><?=$v['total']?></td>
+                <td><?=$v['stock']?></td>
               </tr>
               <?php
                 endforeach
@@ -80,7 +82,8 @@
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Total</th>
+                <th>Total Terjual</th>
+                <th>Stok</th>
               </tr>
             </thead>
             <tbody>
@@ -91,6 +94,7 @@
                 <td><?=$v['product_id']?></td>
                 <td><?=$v['name']?></td>
                 <td><?=$v['total']?></td>
+                <td><?=$v['stock']?></td>
               </tr>
               <?php
                 endforeach
@@ -103,3 +107,5 @@
     </div>
   </div>
 </div>
+
+<script src="<?=base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
