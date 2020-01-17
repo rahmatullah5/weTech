@@ -165,7 +165,9 @@ class Inventory extends CI_Controller {
 
 		// INSERT TO SHIPPING
 		$save_data = array(
-			'order_id' => $order_id
+			'order_id' => $order_id,
+			'courier' => 'JNE',
+			'status' => 'Pending'
 		);
 		$this->db->insert('shippings', $save_data);
 		$insert_id = $this->db->insert_id();
